@@ -49,13 +49,21 @@ github = "zsh-users/zsh-history-substring-search"
 [plugins.history-search-multi-word]
 github = "zdharma/history-search-multi-word"
 
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 
-[plugins.zsh-sync]
-local = "~/.zsh/sync"
+[plugins.dotfiles-sync]
+local = "~/.sheldon/zsh/sync"
 use = ["*.zsh"]
 apply = ["source"]
+
+[plugins.dotfiles-defer]
+local = "~/.sheldon/zsh/defe"
+use = ["*.zsh"]
+apply = ["defer"]
