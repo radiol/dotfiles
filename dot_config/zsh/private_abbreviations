@@ -1,4 +1,4 @@
-abbr ca="chezmoi apply"
+abbr ca="chezmoi apply -v"
 abbr ce="chezmoi edit"
 abbr cga="chezmoi git -- add -A"
 abbr cgd="chezmoi git diff -v HEAD"
