@@ -58,6 +58,9 @@ github = "zsh-users/zsh-completions"
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+
 [plugins.dotfiles-sync]
 local = "~/.sheldon/zsh/sync"
 use = ["*.zsh"]

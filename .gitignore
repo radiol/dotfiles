@@ -6,6 +6,7 @@
 !dot_zshrc
 !dot_sheldon/
 !dot_sheldon/
+!dot_config/zsh/private_abbreviations
 
 !.gitignore
 !README.md
