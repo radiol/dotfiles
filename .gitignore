@@ -1,0 +1,14 @@
+# ignore all
+*
+*/
+
+# add white list
+!dot_sheldon/
+!dot_zsh/
+!dot_zshrc
+
+!.gitignore
+!README.md
+
+# add black list
+.keep
