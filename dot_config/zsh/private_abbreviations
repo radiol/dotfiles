@@ -1,3 +1,8 @@
 abbr ca="chezmoi apply"
 abbr ce="chezmoi edit"
+abbr cga="chezmoi git -- add -A"
+abbr cgd="chezmoi git diff -v HEAD"
+abbr cgc="chezmoi git -- commit -m"
+abbr cgp="chezmoi git -- push origin main"
 abbr gcm="git checkout main"
+
