@@ -5,7 +5,8 @@
 # add white list
 !dot_zshrc
 !dot_sheldon/
-!dot_sheldon/
+!dot_config/
+!dot_config/zsh/
 !dot_config/zsh/private_abbreviations
 
 !.gitignore
