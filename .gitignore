@@ -6,14 +6,9 @@
 !/dot_zshrc
 !/dot_sheldon/
 !/dot_sheldon/**
-!/dot_sheldon/zsh/
-!/dot_sheldon/zsh/**
-!/dot_sheldon/zsh/sync/**
-!/dot_sheldon/zsh/defe/**
 !/dot_config/
 !/dot_config/zsh/
 !/dot_config/zsh/private_abbreviations
-!/dot_sheldon/zsh/
 
 !.gitignore
 !README.md
