@@ -35,7 +35,7 @@ defer = { value = 'zsh-defer source "{{ file }}"', each = true }
 
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
-#apply = ["defer"]
+apply = ["defer"]
 
 [plugins.zsh-256color]
 github = "chrissicool/zsh-256color"
