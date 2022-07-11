@@ -4,10 +4,14 @@
 
 # add white list
 !dot_zshrc
+!dot_p10k.zsh
 !dot_sheldon/
 !dot_config/
 !dot_config/zsh/
 !dot_config/zsh/private_abbreviations
+!dot_sheldon/zsh/
+!dot_sheldon/zsh/sync/*
+!dot_sheldon/zsh/defe/*
 
 !.gitignore
 !README.md
