@@ -1,2 +1,14 @@
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Check OS and set brew path
+if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
+ # Linux/WSL
+ HOMEBREW_HOME='/home/linuxbrew/.linuxbrew'
+elif [[ -d '/opt/homebrew' ]]; then
+ # M1 Mac
+ HOMEBREW_HOME='/opt/homebrew'
+else
+ # Intel Mac
+ HOMEBREW_HOME='/usr/local'
+fi
+eval "$($HOMEBREW_HOME/bin/brew shellenv)"
+# Load sheldon
 eval "$(sheldon --config-dir ~/.sheldon source)"
