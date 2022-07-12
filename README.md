@@ -1,6 +1,7 @@
 # dotfiles
 2022/07/07作成。
-Ubuntu用のdotfile。chezmoi + sheldonで作成。
+Mac, Ubuntu共用のdotfile。chezmoi + sheldonで作成。
+homebrewを利用。
 
 # Install
 ## 必要なソフト
@@ -38,3 +39,33 @@ brew install chezmoi sheldon
 ```
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
 ```
+
+# Update
+## dotfilesの設定変更
+
+### dotfilesの編集(.zshrcの場合)
+編集だけでは設定に反映されない
+
+```
+chezmoi edit .zshrc
+```
+
+### 変更の反映
+
+```
+chezmoi apply -v
+```
+
+## remote(GitHub)の変更をlocalに適用
+
+```
+chezmoi update -v
+```
+
+## localの変更をGitHubへpush
+
+```
+chezmoi git -- add -A
+chezmoi git -- commit
+chezmoi git -- push origin main
+``
