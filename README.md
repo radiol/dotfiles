@@ -4,11 +4,6 @@ Mac, Ubuntu共用のdotfile。chezmoi + sheldonで作成。
 homebrewを利用。
 
 # Install
-Linuxでzshやja_JP.UTF-8が入っていない場合、インストールする
-```
-sudo apt install zsh language-pack-ja -y
-```
-
 ```
 /bin/bash -c "$(curl -fsSL HEAD/install.sh)"
 ```
@@ -18,6 +13,10 @@ chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
 ```
 
 ## install.shで行なっていること
+### Linuxでzshやhomebrewに必要なパッケージ、ja_JP.UTF-8が入っていない場合、インストールする
+```
+sudo apt install zsh build-essential procps curl file git language-pack-ja -y
+```
 ### homebrewのインストール
 
 ```
