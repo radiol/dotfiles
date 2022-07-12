@@ -11,8 +11,10 @@
 !/dot_config/zsh/private_abbreviations
 
 !.gitignore
+!.chezmoiignore
 !README.md
 !install.sh
+
 
 # add black list
 .keep
