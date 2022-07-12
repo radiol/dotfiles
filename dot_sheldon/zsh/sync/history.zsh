@@ -8,5 +8,7 @@ zshaddhistory() {
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir|exit)($| )" ]]
 }
 # enable prefix match
-bindkey ${key[Up]} history-beginning-search-backward
-bindkey ${key[Down]} history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+#bindkey "^P" history-beginning-search-backward
+#bindkey "^N" history-beginning-search-forward

@@ -12,3 +12,7 @@ abbr chepush="chezmoi git -- add -A && chezmoi git -- commit && chezmoi git -- p
 # git
 abbr gcm="git checkout main"
 
+# Atcoder-cli
+abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
+abbr acct="poetry run oj t -c 'python3 main.py' -d ./tests/"
+abbr accn='(){acc new $1 && cd $1}'
