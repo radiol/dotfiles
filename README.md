@@ -4,12 +4,21 @@ Mac, Ubuntu共用のdotfile。chezmoi + sheldonで作成。
 homebrewを利用。
 
 # Install
-## 必要なソフト
+Linuxでzshやja_JP.UTF-8が入っていない場合、インストールする
+```
+sudo apt install zsh language-pack-ja -y
+```
 
 ```
-sudo apt install zsh build-essential procps curl file git language-pack-ja -y
+/bin/bash -c "$(curl -fsSL HEAD/install.sh)"
 ```
-## homebrewのインストール
+git@github.com:radiol/dotfiles.gitは各自のリポジトリに変更
+```
+chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
+```
+
+## install.shで行なっていること
+### homebrewのインストール
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -28,13 +37,13 @@ fi
 eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 ```
 
-## chezmoi, sheldonなどのインストール
+### chezmoi, sheldonなどのインストール
 
 ```
 brew install chezmoi sheldon
 ```
 
-## chezmoiを用いてdotfilesをcloneし適用
+### chezmoiを用いてdotfilesをcloneし適用
 
 ```
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
