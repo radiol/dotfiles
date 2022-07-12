@@ -15,3 +15,5 @@
 
 # add black list
 .keep
+.ssh/
+ssh/
