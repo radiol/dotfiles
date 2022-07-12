@@ -14,8 +14,27 @@ sudo apt install zsh build-essential procps curl file git language-pack-ja -y
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+### homebrewのパスを一時的に通す
+
+```
+if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
+ HOMEBREW_HOME='/home/linuxbrew/.linuxbrew'
+elif [[ -d '/opt/homebrew' ]]; then
+ HOMEBREW_HOME='/opt/homebrew'
+else
+ HOMEBREW_HOME='/usr/local'
+fi
+eval "$($HOMEBREW_HOME/bin/brew shellenv)"
+```
+
 ## chezmoi, sheldonなどのインストール
 
 ```
 brew install chezmoi sheldon
+```
+
+## chezmoiを用いてdotfilesをcloneし適用
+
+```
+chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
 ```
