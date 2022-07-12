@@ -1,0 +1,5 @@
+[user]
+	name = yuji
+	email = radiol@github.com
+[init]
+	defaultBranch = main

@@ -2,6 +2,7 @@
 abbr cu="chezmoi update -v"
 abbr ca="chezmoi apply -v"
 abbr ce="chezmoi edit"
+abbr ccd="chezmoi cd"
 abbr cga="chezmoi git -- add -A"
 abbr cgd="chezmoi git diff -v HEAD"
 abbr cgc="chezmoi git -- commit"
