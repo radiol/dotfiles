@@ -1,8 +1,12 @@
+# chezmoi
+abbr cu="chezmoi update -v"
 abbr ca="chezmoi apply -v"
 abbr ce="chezmoi edit"
 abbr cga="chezmoi git -- add -A"
 abbr cgd="chezmoi git diff -v HEAD"
 abbr cgc="chezmoi git -- commit"
 abbr cgp="chezmoi git -- push origin main"
+
+# git
 abbr gcm="git checkout main"
 
