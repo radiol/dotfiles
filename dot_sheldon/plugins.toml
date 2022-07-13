@@ -27,6 +27,7 @@ apply = ["source"]
 
 [templates]
 defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+dircolor = { value = "eval 'dircolors {{file}}'", each = true}
 
 [plugins.pure]
 github = "sindresorhus/pure"
@@ -70,3 +71,4 @@ apply = ["source"]
 local = "~/.sheldon/zsh/defe"
 use = ["*.zsh"]
 apply = ["defer"]
+

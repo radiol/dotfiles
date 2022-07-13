@@ -1,6 +1,11 @@
 # edit abbr
 abbr ae="chezmoi edit .config/zsh/abbreviations"
 
+# base command
+abbr ls="ls -GF"
+abbr la="ls -AGF"
+abbr ll="ls -AlhG"
+
 # chezmoi
 abbr cheup="chezmoi update -v"
 abbr ca="chezmoi apply -v"

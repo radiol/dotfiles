@@ -1,8 +1,18 @@
 #!/bin/bash
 
+# Get operating system
+platform='unknown'
+unamestr=$(uname)
+if [[ $unamestr == 'Linux' ]]; then
+  platform='linux'
+elif [[ $unamestr == 'Darwin' ]]; then
+  platform='darwin'
+fi
+
 # If OS is Ubuntu, install require apps
-if [ "$(uname)" == "Darwin" ]; then
+if [ $platform == "linux" ]; then
     sudo apt install zsh build-essential procps curl file git language-pack-ja -y
+fi
 
 # Check Homebrew
 if !(type "brew" > /dev/null 2>&1); then
@@ -24,6 +34,11 @@ fi
 
 # Install apps
 brew install chezmoi sheldon
+
+# Install apps for macOS
+if [ $platform == "darwin" ]; then
+    brew install coreutils
+fi
 
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
