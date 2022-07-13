@@ -7,6 +7,6 @@ zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|jj?|lazygit|la|ll|ls|rm|rmdir|exit)($| )" ]]
 }
-# enable prefix match
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+# enable substring search(up, down)
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
