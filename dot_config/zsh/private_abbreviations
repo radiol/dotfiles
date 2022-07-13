@@ -1,3 +1,6 @@
+# edit abbr
+abbr ae="chezmoi edit .config/zsh/abbreviations"
+
 # chezmoi
 abbr cheup="chezmoi update -v"
 abbr ca="chezmoi apply -v"
@@ -11,6 +14,9 @@ abbr chepush="chezmoi git -- add -A && chezmoi git -- commit && chezmoi git -- p
 
 # git
 abbr gcm="git checkout main"
+
+# Homebrew
+alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 
 # Atcoder-cli
 abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
