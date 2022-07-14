@@ -33,7 +33,11 @@ if !(type "brew" > /dev/null 2>&1); then
 fi
 
 # Install apps
-brew install chezmoi sheldon
+brew install \
+    chezmoi \
+    sheldon \
+    bat \
+    exa 
 
 # Install apps for macOS
 if [ $platform == "darwin" ]; then

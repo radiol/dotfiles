@@ -1,7 +1,7 @@
 # Change dircolor blue -> cyan
-export LSCOLORS=gxfxcxdxbxegedabagacad
+#export LSCOLORS=gxfxcxdxbxegedabagacad
 
-# Enable LSCOLORS to completion
-if [ -n "$LSCOLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LSCOLORS}
-fi
+## Enable LSCOLORS to completion
+#if [ -n "$LSCOLORS" ]; then
+#    zstyle ':completion:*' list-colors ${(s.:.)LSCOLORS}
+#fi
