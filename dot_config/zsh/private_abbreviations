@@ -3,9 +3,8 @@ abbr ae="chezmoi edit .sheldon/zsh/defe/alias.zsh"
 abbr abe="chezmoi edit .config/zsh/abbreviations"
 
 # base command
-abbr la="ls -A"
-abbr ll="ls -Alh"
-abbr cat="bat"
+abbr la="ls -a"
+abbr ll="ls -alh"
 
 # chezmoi
 abbr cup="chezmoi update -v"
