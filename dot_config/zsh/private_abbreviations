@@ -1,8 +1,12 @@
-# edit alias, abbr
-abbr ae="chezmoi edit .sheldon/zsh/defe/alias.zsh"
-abbr abe="chezmoi edit .config/zsh/abbreviations"
+# edit alias
+abbr ae="chezmoi edit ~/.config/zsh/defe/alias.zsh"
+# edit abbr
+abbr abe="chezmoi edit ~/.config/zsh/abbreviations"
+#edit sheldon plugins.toml
+abbr se="chezmoi edit .sheldon/plugins.toml"
 
 # base command
+# ls is replaced by exa
 abbr la="ls -a"
 abbr ll="ls -alh --git"
 
