@@ -1,11 +1,11 @@
-# edit abbr
+# edit alias, abbr
 abbr ae="chezmoi edit .sheldon/zsh/defe/alias.zsh"
 abbr abe="chezmoi edit .config/zsh/abbreviations"
 
 # base command
-abbr ls="ls -GF"
-abbr la="ls -AGF"
-abbr ll="ls -AlhG"
+abbr la="ls -A"
+abbr ll="ls -Alh"
+abbr cat="bat"
 
 # chezmoi
 abbr cu="chezmoi update -v"
