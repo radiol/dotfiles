@@ -4,7 +4,7 @@ abbr abe="chezmoi edit .config/zsh/abbreviations"
 
 # base command
 abbr la="ls -a"
-abbr ll="ls -alh"
+abbr ll="ls -alh --git"
 
 # chezmoi
 abbr cup="chezmoi update -v"
