@@ -37,7 +37,8 @@ brew install \
     chezmoi \
     sheldon \
     bat \
-    exa 
+    exa \
+    fd 
 
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
