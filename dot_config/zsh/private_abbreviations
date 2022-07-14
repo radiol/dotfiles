@@ -8,7 +8,7 @@ abbr ll="ls -Alh"
 abbr cat="bat"
 
 # chezmoi
-abbr cu="chezmoi update -v"
+abbr cup="chezmoi update -v"
 abbr ca="chezmoi apply -v"
 abbr ce="chezmoi edit"
 abbr ccd="chezmoi cd"
@@ -16,7 +16,7 @@ abbr cga="chezmoi git -- add -A"
 abbr cgd="chezmoi git diff -v HEAD"
 abbr cgc="chezmoi git -- commit"
 abbr cgp="chezmoi git -- push origin main"
-abbr cp="chezmoi git -- add -A && chezmoi git -- commit && chezmoi git -- push origin main"
+abbr cpush="chezmoi git -- add -A && chezmoi git -- commit && chezmoi git -- push origin main"
 
 # git
 abbr gcm="git checkout main"

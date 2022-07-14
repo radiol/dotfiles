@@ -4,11 +4,12 @@
 
 # add white list
 !/dot_zshrc
-!/dot_sheldon/
-!/dot_sheldon/**
-!/dot_config/
+!/dot_sheldon
+!/dot_sheldon/plugins.toml
+!/dot_config
+!/dot_config/git/
 !/dot_config/zsh/
-!/dot_config/zsh/private_abbreviations
+!/dot_config/zsh/**
 
 !.gitignore
 !.chezmoiignore
@@ -17,6 +18,7 @@
 
 
 # add black list
+.DS_Store
 .keep
 .git/
 .ssh/

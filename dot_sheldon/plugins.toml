@@ -27,12 +27,17 @@ apply = ["source"]
 
 [templates]
 defer = { value = 'zsh-defer source "{{ file }}"', each = true }
-dircolor = { value = "eval 'dircolors {{file}}'", each = true}
+clone = { value = '', each = true}
 
 [plugins.pure]
 github = "sindresorhus/pure"
 use = ["async.zsh", "pure.zsh"]
 apply = ["source"]
+
+[plugins.dircolors-solarized]
+github = "seebi/dircolors-solarized"
+use = ["dircolors.256dark"]
+apply = ["clone"]
 
 [plugins.zsh-256color]
 github = "chrissicool/zsh-256color"
@@ -53,6 +58,9 @@ github = "zsh-users/zsh-completions"
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
 
+[plugins.promptinit]
+inline = "autoload -Uz promptinit && zsh-defer promptinit"
+
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 
@@ -63,12 +71,12 @@ github = "olets/zsh-abbr"
 github = "asdf-vm/asdf"
 
 [plugins.dotfiles-sync]
-local = "~/.sheldon/zsh/sync"
+local = "~/.config/zsh/sync"
 use = ["*.zsh"]
 apply = ["source"]
 
 [plugins.dotfiles-defer]
-local = "~/.sheldon/zsh/defe"
+local = "~/.config/zsh/defe"
 use = ["*.zsh"]
 apply = ["defer"]
 
