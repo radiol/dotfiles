@@ -11,7 +11,10 @@ fi
 
 # If OS is Ubuntu, install require apps
 if [ $platform == "linux" ]; then
-    sudo apt install zsh build-essential procps curl file git language-pack-ja -y
+    # For Homebrew
+    sudo apt install -y zsh build-essential procps curl file git language-pack-ja
+    # For asdf-python
+    sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 fi
 
 # Check Homebrew
@@ -42,7 +45,8 @@ brew install \
 
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
-    brew install coreutils
+    # For asdf-python
+    brew install openssl readline sqlite3 xz zlib tcl-tk
 fi
 
 # Install dotfiles
