@@ -41,14 +41,16 @@ brew install \
     sheldon \
     bat \
     exa \
-    fd \
-    poetry
+    fd 
 
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
     # For asdf-python
     brew install openssl readline sqlite3 xz zlib tcl-tk
 fi
+
+# Install poetry 
+curl -sSL https://install.python-poetry.org | python3 -
 
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply

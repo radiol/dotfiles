@@ -49,9 +49,6 @@ github = "zsh-users/zsh-history-substring-search"
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
-[plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit"
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 
@@ -60,6 +57,17 @@ github = "olets/zsh-abbr"
 
 [plugins.asdf]
 github = "asdf-vm/asdf"
+
+[plugins.poetry]
+local = "~/.local/bin"
+apply = ["PATH"]
+
+[plugins.completions]
+local = "~/.config/zsh/completions"
+apply = ["fpath"]
+
+[plugins.compinit]
+inline = "autoload -Uz compinit && zsh-defer compinit"
 
 [plugins.dotfiles-sync]
 local = "~/.config/zsh/sync"
