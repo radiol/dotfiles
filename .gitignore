@@ -18,5 +18,6 @@
 
 # add black list
 .keep
+.git/
 .ssh/
 ssh/
