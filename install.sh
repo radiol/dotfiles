@@ -41,7 +41,8 @@ brew install \
     sheldon \
     bat \
     exa \
-    fd 
+    fd \
+    poetry
 
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
