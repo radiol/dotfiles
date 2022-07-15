@@ -3,7 +3,7 @@ abbr ae="chezmoi edit ~/.config/zsh/defe/alias.zsh"
 # edit abbr
 abbr abe="chezmoi edit ~/.config/zsh/abbreviations"
 #edit sheldon plugins.toml
-abbr se="chezmoi edit .sheldon/plugins.toml"
+abbr se="chezmoi edit ~/.sheldon/plugins.toml"
 
 # base command
 # ls is replaced by exa
