@@ -39,7 +39,7 @@ abbr gpum="git pull upstream main"
 abbr gs="git status"
 
 # Homebrew
-alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
+abbr brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 
 # Atcoder-cli
 abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
