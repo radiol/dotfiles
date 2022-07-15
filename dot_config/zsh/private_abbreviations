@@ -14,7 +14,7 @@ abbr ll="ls -alh --git"
 abbr cup="chezmoi update -v"
 abbr ca="chezmoi apply -v"
 abbr ce="chezmoi edit"
-abbr ccd="chezmoi cd"
+abbr ccd="cd $(chezmoi source-path)"
 abbr cga="chezmoi git -- add -A"
 abbr cgd="chezmoi git diff -v HEAD"
 abbr cgc="chezmoi git -- commit"
@@ -22,7 +22,21 @@ abbr cgp="chezmoi git -- push origin main"
 abbr cpush="chezmoi git -- add -A && chezmoi git -- commit && chezmoi git -- push origin main"
 
 # git
+abbr ga="git add"
+abbr gaa="git add --all"
+abbr gb="git branch"
+abbr gc="git commit -v"
+abbr gco"git checkout"
 abbr gcm="git checkout main"
+abbr gd="git diff"
+abbr gf="git fetch"
+abbr gp="git push"
+abbr gpl="git pull"
+abbr gpo="git pull origin"
+abbr gpom="git pull origin main"
+abbr gpu="git pull upstream"
+abbr gpum="git pull upstream main"
+abbr gs="git status"
 
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
@@ -30,4 +44,4 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 # Atcoder-cli
 abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
 abbr acct="poetry run oj t -c 'python3 main.py' -d ./tests/"
-abbr accn='(){acc new $1 && cd $1}'
+abbr accn='(){acc new$1 && cd $1}'
