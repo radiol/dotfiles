@@ -50,7 +50,9 @@ if [ $platform == "darwin" ]; then
 fi
 
 # Install poetry 
-curl -sSL https://install.python-poetry.org | python3 -
-
+if [ ! -e ~/.local/bin/poetry ]; then
+    curl -sSL https://install.python-poetry.org | python3 -
+fi
+~/.local/bin/poetry config virtualenvs.in-project true
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
