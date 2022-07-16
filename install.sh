@@ -41,7 +41,9 @@ brew install \
     sheldon \
     bat \
     exa \
-    fd 
+    fd \
+    fzf \
+    ripgrep
 
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
