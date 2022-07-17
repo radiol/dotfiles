@@ -44,4 +44,4 @@ abbr brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 # Atcoder-cli
 abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
 abbr acct="poetry run oj t -c 'python3 main.py' -d ./tests/"
-abbr accn='(){acc new$1 && cd $1}'
+abbr accn='(){acc new $1 && cd $1}'
