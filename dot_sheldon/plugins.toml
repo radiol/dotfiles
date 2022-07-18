@@ -40,6 +40,11 @@ github = "chrissicool/zsh-256color"
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
 
+[plugins.autojump]
+github = "wting/autojump"
+dir = "bin"
+apply = ["PATH", "source"]
+
 [plugins.history-search-multi-word]
 github = "zdharma/history-search-multi-word"
 

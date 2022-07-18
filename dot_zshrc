@@ -9,6 +9,8 @@ else
  # Intel Mac
  HOMEBREW_HOME='/usr/local'
 fi
+
 eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 # Load sheldon
 eval "$(sheldon --config-dir ~/.sheldon source)"
+

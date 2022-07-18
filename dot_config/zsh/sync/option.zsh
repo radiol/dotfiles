@@ -3,7 +3,15 @@
 # ---------------------------------------------------------
 export LANG=ja_JP.UTF-8
 
+export EDITOR="nvim"
+export VIEWER="nvim"
+
+# autosuggetion color
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
+
+# ---------------------------------------------------------
 # XDG
+# ---------------------------------------------------------
 # basedir defaults, in case they're not already set up.
 if [[ -z "$XDG_DATA_HOME" ]]; then
 	export XDG_DATA_HOME="$HOME/.local/share"
@@ -27,8 +35,8 @@ else
 	export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
 fi
 
-export EDITOR="nvim"
-export VIEWER="nvim"
+# ---------------------------------------------------------
+# Path
+# ---------------------------------------------------------
+export PATH="/Users/yuji/.local/bin:$PATH"
 
-# autosuggetion color
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
