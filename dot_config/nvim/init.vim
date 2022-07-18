@@ -8,6 +8,7 @@ syntax enable
 " Install vim-jetpack
 let s:jetpack_root = expand('~/.cache/jetpack-vim')
 let s:jetpack_vim = s:jetpack_root . '/jetpack.vim'
+
 if !filereadable(s:jetpack_vim)
   execute '!curl -fLo' s:jetpack_vim '--create-dirs'
     \ 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
@@ -15,9 +16,7 @@ if !filereadable(s:jetpack_vim)
 endif
 execute 'source ' . s:jetpack_vim
 
-" Plugin setting
-packadd vim-jetpack
-call jetpack#begin()
+call jetpack#begin(s:jetpack_root)
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 Jetpack 'https://github.com/dense-analysis/ale'
 Jetpack 'junegunn/fzf.vim'
@@ -35,6 +34,10 @@ Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
 call jetpack#end()
+
+if get(s:, 'jetpack_sync', 0)
+  call jetpack#sync()
+endif
 
 colorscheme dracula
 set termguicolors
