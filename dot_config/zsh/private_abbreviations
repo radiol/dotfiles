@@ -10,6 +10,9 @@ abbr se="chezmoi edit ~/.sheldon/plugins.toml"
 abbr la="ls -a"
 abbr ll="ls -alh --git"
 
+# grep set color
+abbr grep="grep --color=auto"
+
 # chezmoi
 abbr cup="chezmoi update -v"
 abbr ca="chezmoi apply -v"

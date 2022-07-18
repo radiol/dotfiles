@@ -16,6 +16,7 @@ if !filereadable(s:jetpack_vim)
 endif
 execute 'source ' . s:jetpack_vim
 
+" Plugin
 call jetpack#begin(s:jetpack_root)
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 Jetpack 'https://github.com/dense-analysis/ale'
@@ -39,6 +40,7 @@ if get(s:, 'jetpack_sync', 0)
   call jetpack#sync()
 endif
 
+" change theme
 colorscheme dracula
 set termguicolors
 
