@@ -1,9 +1,9 @@
 # edit alias
-abbr ae="chezmoi edit ~/.config/zsh/defe/alias.zsh"
+abbr ae="chezmoi edit $XDG_CONFIG_HOME/zsh/defe/alias.zsh"
 # edit abbr
-abbr abe="chezmoi edit ~/.config/zsh/abbreviations"
+abbr abe="chezmoi edit $XDG_CONFIG_HOME/zsh/abbreviations"
 #edit sheldon plugins.toml
-abbr se="chezmoi edit ~/.sheldon/plugins.toml"
+abbr se="chezmoi edit $XDG_CONFIG_HOME/sheldon/plugins.toml"
 
 # base command
 # ls is replaced by exa
