@@ -43,7 +43,7 @@ brew install \
     exa \
     fd \
     fzf \
-    nvim \
+    neovim \
     ripgrep
 
 # Install apps for macOS
