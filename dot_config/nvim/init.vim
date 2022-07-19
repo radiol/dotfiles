@@ -1,9 +1,18 @@
 set number
+set nowritebackup
+set nobackup
+set autoread
+set ambiwidth=double
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-syntax enable
+
+set ignorecase
+set smartcase
+set wrapscan
+set incsearch
+set hlsearch
 
 " Install vim-jetpack
 let s:jetpack_root = expand('~/.cache/jetpack-vim')
@@ -34,6 +43,7 @@ Jetpack 'ervandew/supertab' "tab補完
 Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
+Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析してsyntax hightlight
 call jetpack#end()
 
 if get(s:, 'jetpack_sync', 0)
