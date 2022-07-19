@@ -1,3 +1,6 @@
+" ---------------------------------------------------------
+" General
+" ---------------------------------------------------------
 set number
 set nowritebackup
 set nobackup
@@ -14,7 +17,9 @@ set wrapscan
 set incsearch
 set hlsearch
 
+" ---------------------------------------------------------
 " Install vim-jetpack
+" ---------------------------------------------------------
 let s:jetpack_root = expand('~/.cache/jetpack-vim')
 let s:jetpack_vim = s:jetpack_root . '/jetpack.vim'
 
@@ -25,7 +30,9 @@ if !filereadable(s:jetpack_vim)
 endif
 execute 'source ' . s:jetpack_vim
 
+" ---------------------------------------------------------
 " Plugin
+" ---------------------------------------------------------
 call jetpack#begin(s:jetpack_root)
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 Jetpack 'https://github.com/dense-analysis/ale'
@@ -34,51 +41,109 @@ Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
 Jetpack 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 Jetpack 'vlime/vlime', { 'rtp': 'vim' }
-Jetpack 'dracula/vim', { 'as': 'dracula' }
 Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
 Jetpack 'tpope/vim-commentary' "範囲コメントアウト
 Jetpack 'vim-airline/vim-airline'
 Jetpack 'preservim/nerdtree'
 Jetpack 'ervandew/supertab' "tab補完
 Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
-Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
+"Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
+Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
-Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析してsyntax hightlight
+Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
+
+" colorschemes
+Jetpack 'dracula/vim', { 'as': 'dracula' }
+Jetpack 'sainnhe/gruvbox-material', { 'as': 'gruvbox-material' }
+Jetpack 'cocopon/iceberg.vim', { 'as': 'iceberg' }
+Jetpack 'tomasiser/vim-code-dark', { 'as': 'codedark' }
 call jetpack#end()
 
+" ---------------------------------------------------------
+" run JetpackSync
+" ---------------------------------------------------------
 if get(s:, 'jetpack_sync', 0)
   call jetpack#sync()
 endif
 
-" change theme
+" ---------------------------------------------------------
+" Treesitter Setting
+" ---------------------------------------------------------
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "python"},
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    --disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+" ---------------------------------------------------------
+" Colorscheme Setting
+" ---------------------------------------------------------
 colorscheme dracula
+"colorscheme iceberg
+"colorscheme gruvbox-material
 set termguicolors
 
-" NERDTree SETTINGS
+" ---------------------------------------------------------
+" NERDTree Setting
+" ---------------------------------------------------------
 nmap <C-f> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 
-
-" Airline SETTINGS
+" ---------------------------------------------------------
+" Airline Setting
+" ---------------------------------------------------------
 let g:airline_powerline_fonts = 1
 
-" Esc SETTINGS
+" ---------------------------------------------------------
+" ESC Setting
+" ---------------------------------------------------------
 inoremap jk <Esc>
 inoremap jj <Esc>
 
-" /// Enable Netrw (default file browser)
-" filetype plugin on
-" /// Netrw SETTINGS
-" let g:netwr_banner = 0
-" let g:netrw_liststyle = 3
-" let g:netrw_browse_split = 4
-" let g:netrw_winsize = 30
-" let g:netrw_sizestyle = "H"
-" let g:netrw_timefmt = "%Y/%m/%d(%a) %H:%M:%S"
-" " let g:netrw_preview = 1
+" ---------------------------------------------------------
+" Enable Netrw (default file browser)
+" ---------------------------------------------------------
+"filetype plugin on
+"" Netrw Setting
+"let g:netwr_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_winsize = 30
+"let g:netrw_sizestyle = "H"
+"let g:netrw_timefmt = "%Y/%m/%d(%a) %H:%M:%S"
+"let g:netrw_preview = 1
 
-"/// SPLIT BORDER SETTINGS
+" ---------------------------------------------------------
+" SPLIT BORDER Setting
+" ---------------------------------------------------------
 hi VertSplit cterm=none
 
