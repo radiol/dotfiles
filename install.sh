@@ -11,6 +11,7 @@ fi
 
 # If OS is Ubuntu, install require apps
 if [ $platform == "linux" ]; then
+    sudo apt update -y
     # For Homebrew
     sudo apt install -y zsh build-essential procps curl file git language-pack-ja
     # For asdf-python
@@ -20,7 +21,7 @@ fi
 # Check Homebrew
 if !(type "brew" > /dev/null 2>&1); then
     # Install Homebrew
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # Activate Homebrew path
     if [[ -d '/home/linuxbrew/.linuxbrew' ]]
