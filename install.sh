@@ -21,7 +21,7 @@ fi
 # Check Homebrew
 if !(type "brew" > /dev/null 2>&1); then
     # Install Homebrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # Activate Homebrew path
     if [[ -d '/home/linuxbrew/.linuxbrew' ]]
@@ -40,6 +40,7 @@ fi
 brew install \
     chezmoi \
     sheldon \
+    asdf \
     bat \
     exa \
     fd \
