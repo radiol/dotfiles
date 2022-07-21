@@ -11,11 +11,11 @@ fi
 
 # If OS is Ubuntu, install require apps
 if [ $platform == "linux" ]; then
-    sudo apt update -y
+    sudo apt update && \
     # For Homebrew
-    sudo apt install -y zsh build-essential procps curl file git language-pack-ja
+    sudo apt install -y zsh build-essential procps curl file git language-pack-ja && \
     # For asdf-python
-    sudo apt install -y python3.10-venv make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    python3.10-venv make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 fi
 
 # Check Homebrew
@@ -53,10 +53,16 @@ if [ $platform == "darwin" ]; then
     brew install openssl readline sqlite3 xz zlib tcl-tk
 fi
 
+# Install python with asdf
+asdf plugin add python
+asdf install python latest
+asdf global python latest
+
 # Install poetry 
 if [ ! -e ~/.local/bin/poetry ]; then
-    curl -sSL https://install.python-poetry.org | python3 -
+    curl -sSL https://install.python-poetry.org | python -
 fi
 ~/.local/bin/poetry config virtualenvs.in-project true
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
+
