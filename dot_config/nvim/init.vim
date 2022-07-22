@@ -44,20 +44,23 @@ Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
 Jetpack 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 "Jetpack 'vlime/vlime', { 'rtp': 'vim' }
 " Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
-Jetpack 'tpope/vim-commentary' "範囲コメントアウト
-" Jetpack 'vim-airline/vim-airline'
+Jetpack 'vim-airline/vim-airline'
 " Jetpack 'itchyny/lightline.vim'
 Jetpack 'nvim-lualine/lualine.nvim'
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
 Jetpack 'ervandew/supertab' "tab補完
-Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
+"Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 "Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
+Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト gcc
+Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
 Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
+Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
+Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる ss
 
-" colorschemes
+"colorschemes
 Jetpack 'dracula/vim', { 'as': 'dracula' }
 Jetpack 'sainnhe/gruvbox-material', { 'as': 'gruvbox-material' }
 Jetpack 'cocopon/iceberg.vim', { 'as': 'iceberg' }
@@ -75,10 +78,10 @@ endif
 " ---------------------------------------------------------
 " Colorscheme
 " ---------------------------------------------------------
-"colorscheme dracula
-"colorscheme iceberg
-"colorscheme gruvbox-material
-colorscheme nightfox
+colorscheme dracula
+" colorscheme iceberg
+" colorscheme gruvbox-material
+" colorscheme nightfox
 
 " ---------------------------------------------------------
 " Telescope Setting
@@ -89,11 +92,23 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Using Lua functions
-"nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-"nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-"nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+" ---------------------------------------------------------
+" fuzzy-motion setting
+" ---------------------------------------------------------
+nnoremap ss <cmd>FuzzyMotion<cr>
+
+" ---------------------------------------------------------
+" Coc.nvim setting
+" ---------------------------------------------------------
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+
+" inoremap <silent><expr> <Tab>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<Tab>" :
+"       \ coc#refresh()
 
 " ---------------------------------------------------------
 " Treesitter Setting
@@ -175,19 +190,6 @@ let g:lightline = {
 " ---------------------------------------------------------
 inoremap jk <Esc>
 inoremap jj <Esc>
-
-" ---------------------------------------------------------
-" Enable Netrw (default file browser)
-" ---------------------------------------------------------
-"filetype plugin on
-"" Netrw Setting
-"let g:netwr_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_winsize = 30
-"let g:netrw_sizestyle = "H"
-"let g:netrw_timefmt = "%Y/%m/%d(%a) %H:%M:%S"
-"let g:netrw_preview = 1
 
 " ---------------------------------------------------------
 " SPLIT BORDER Setting

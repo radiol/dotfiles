@@ -63,6 +63,7 @@ brew install \
     sheldon \
     asdf \
     bat \
+    deno \
     exa \
     fd \
     fzf \
