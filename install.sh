@@ -4,9 +4,9 @@
 platform='unknown'
 unamestr=$(uname)
 if [[ $unamestr == 'Linux' ]]; then
-  platform='linux'
+    platform='linux'
 elif [[ $unamestr == 'Darwin' ]]; then
-  platform='darwin'
+    platform='darwin'
 fi
 
 # If OS is Ubuntu, install require apps(for homebrew, asdf-python)
