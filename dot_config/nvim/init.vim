@@ -41,12 +41,12 @@ Jetpack 'https://github.com/dense-analysis/ale'
 Jetpack 'nvim-lua/plenary.nvim' "telescopeに必要
 Jetpack 'nvim-telescope/telescope.nvim' "fuzzy finder
 Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
-Jetpack 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+" Jetpack 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 "Jetpack 'vlime/vlime', { 'rtp': 'vim' }
 " Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
-Jetpack 'vim-airline/vim-airline'
-" Jetpack 'itchyny/lightline.vim'
-Jetpack 'nvim-lualine/lualine.nvim'
+" Jetpack 'vim-airline/vim-airline'
+Jetpack 'itchyny/lightline.vim'
+" Jetpack 'nvim-lualine/lualine.nvim'
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
 Jetpack 'ervandew/supertab' "tab補完
@@ -100,15 +100,15 @@ nnoremap ss <cmd>FuzzyMotion<cr>
 " ---------------------------------------------------------
 " Coc.nvim setting
 " ---------------------------------------------------------
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<Tab>" :
-"       \ coc#refresh()
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " ---------------------------------------------------------
 " Treesitter Setting
