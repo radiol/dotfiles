@@ -46,8 +46,8 @@ Jetpack 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-
 " Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
 Jetpack 'tpope/vim-commentary' "範囲コメントアウト
 " Jetpack 'vim-airline/vim-airline'
-Jetpack 'itchyny/lightline.vim'
-" Jetpack 'nvim-lualine/lualine.nvim'
+" Jetpack 'itchyny/lightline.vim'
+Jetpack 'nvim-lualine/lualine.nvim'
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
 Jetpack 'ervandew/supertab' "tab補完
