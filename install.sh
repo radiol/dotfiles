@@ -9,13 +9,34 @@ elif [[ $unamestr == 'Darwin' ]]; then
   platform='darwin'
 fi
 
-# If OS is Ubuntu, install require apps
+# If OS is Ubuntu, install require apps(for homebrew, asdf-python)
 if [ $platform == "linux" ]; then
-    sudo apt update && \
-    # For Homebrew
-    sudo apt install -y zsh build-essential procps curl file git language-pack-ja && \
-    # For asdf-python
-    python3.10-venv make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    sudo apt update && sudo apt upgrade -y && \
+    sudo apt install -y \
+    build-essential \
+    curl \
+    file \
+    git \
+    language-pack-ja \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    llvm \
+    make \
+    procps \
+    python3.10-venv \
+    tk-dev \
+    wget \
+    xz-utils \
+    zlib1g-dev \
+    zsh && \
+    sudo apt autoclean
 fi
 
 # Check Homebrew
@@ -46,6 +67,7 @@ brew install \
     fd \
     fzf \
     neovim \
+    nodejs \
     ripgrep
 
 # Install apps for macOS
@@ -55,8 +77,8 @@ if [ $platform == "darwin" ]; then
 fi
 
 # Install python with asdf
-asdf plugin add python
-asdf install python latest
+asdf plugin add python && \
+asdf install python latest && \
 asdf global python latest
 
 # Install poetry 
