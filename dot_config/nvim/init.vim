@@ -38,8 +38,8 @@ execute 'source ' . s:jetpack_vim
 call jetpack#begin(s:jetpack_root)
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 Jetpack 'https://github.com/dense-analysis/ale'
-"Jetpack 'junegunn/fzf.vim'
-"Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
+Jetpack 'junegunn/fzf.vim'
+Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Jetpack 'nvim-lua/plenary.nvim' "telescopeに必要
 Jetpack 'nvim-telescope/telescope.nvim' "fuzzy finder
 Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -47,8 +47,8 @@ Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
 "Jetpack 'vlime/vlime', { 'rtp': 'vim' }
 " Jetpack 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Jetpack 'vim-airline/vim-airline'
-Jetpack 'itchyny/lightline.vim'
-" Jetpack 'nvim-lualine/lualine.nvim'
+"Jetpack 'itchyny/lightline.vim'
+Jetpack 'nvim-lualine/lualine.nvim'
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
 "Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
@@ -79,10 +79,11 @@ endif
 " ---------------------------------------------------------
 " Colorscheme
 " ---------------------------------------------------------
-colorscheme dracula
+" colorscheme dracula
 " colorscheme iceberg
 " colorscheme gruvbox-material
 " colorscheme nightfox
+colorscheme duskfox
 
 " ---------------------------------------------------------
 " Telescope Setting
@@ -183,24 +184,24 @@ set statusline=2
 " ---------------------------------------------------------
 " let g:airline_powerline_fonts = 1
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-
+"let g:lightline = {
+"      \ 'colorscheme': 'wombat',
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ],
+"      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+"      \ },
+"      \ 'component_function': {
+"      \   'gitbranch': 'fugitive#head'
+"      \ },
+"      \ }
+"
 
 " ---------------------------------------------------------
 " lualine Setting
 " ---------------------------------------------------------
-" lua << END
-" require('lualine').setup()
-" END
+lua << END
+require('lualine').setup()
+END
 
 " ---------------------------------------------------------
 " ESC Setting
