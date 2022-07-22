@@ -83,7 +83,7 @@ asdf global python latest
 
 # Install poetry 
 if [ ! -e ~/.local/bin/poetry ]; then
-    curl -sSL https://install.python-poetry.org | python -
+    curl -sSL https://install.python-poetry.org | python3 -
 fi
 ~/.local/bin/poetry config virtualenvs.in-project true
 # Install dotfiles
