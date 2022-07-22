@@ -1,6 +1,7 @@
 " ---------------------------------------------------------
 " General
 " ---------------------------------------------------------
+set encoding=utf-8
 set number
 set nowritebackup
 set nobackup
@@ -10,6 +11,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set cmdheight=2
 
 set ignorecase
 set smartcase
@@ -49,7 +51,6 @@ Jetpack 'itchyny/lightline.vim'
 " Jetpack 'nvim-lualine/lualine.nvim'
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
-Jetpack 'ervandew/supertab' "tab補完
 "Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 "Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
@@ -100,15 +101,31 @@ nnoremap ss <cmd>FuzzyMotion<cr>
 " ---------------------------------------------------------
 " Coc.nvim setting
 " ---------------------------------------------------------
-function! s:check_back_space() abort
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " ---------------------------------------------------------
 " Treesitter Setting
