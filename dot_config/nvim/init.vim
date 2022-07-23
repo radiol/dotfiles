@@ -19,6 +19,9 @@ set wrapscan
 set incsearch
 set hlsearch
 
+set undodir=$XDG_CACHE_HOME/nvim
+set undofile
+
 " ---------------------------------------------------------
 " Install vim-jetpack
 " ---------------------------------------------------------
@@ -51,15 +54,21 @@ Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
 Jetpack 'nvim-lualine/lualine.nvim'
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
+Jetpack 'LumaKernel/fern-mapping-fzf.vim' "Fernプラグイン, fzf連携
+:Jetpack 'yuki-yano/fern-preview.vim' "Fernプラグイン, preview
 "Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 "Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
+Jetpack 'tpope/vim-commentary' "範囲コメントアウト
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
-Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト gcc
+Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるcommentstringの設定
+Jetpack 'numToStr/Comment.nvim' "treesitter, contest-context_commentstring依存の範囲コメントアウト gcc
+Jetpack 'yioneko/nvim-yati' "インデントの改善
 Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
 Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
 Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
 Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる ss
+Jetpack 'mbbill/undotree' "Undo, Redo履歴の管理 <leader> + u, g+, g-
 
 "colorschemes
 Jetpack 'dracula/vim', { 'as': 'dracula' }
@@ -67,6 +76,7 @@ Jetpack 'sainnhe/gruvbox-material', { 'as': 'gruvbox-material' }
 Jetpack 'cocopon/iceberg.vim', { 'as': 'iceberg' }
 Jetpack 'Mofiqul/vscode.nvim', { 'as': 'codedark' }
 Jetpack 'EdenEast/nightfox.nvim', { 'as': 'nightfox' }
+Jetpack 'projekt0n/github-nvim-theme', { 'as': 'github' }
 call jetpack#end()
 
 " ---------------------------------------------------------
@@ -79,11 +89,11 @@ endif
 " ---------------------------------------------------------
 " Colorscheme
 " ---------------------------------------------------------
-" colorscheme dracula
+colorscheme dracula
 " colorscheme iceberg
 " colorscheme gruvbox-material
 " colorscheme nightfox
-colorscheme duskfox
+" colorscheme duskfox
 
 " ---------------------------------------------------------
 " Telescope Setting
@@ -97,7 +107,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " ---------------------------------------------------------
 " fuzzy-motion setting
 " ---------------------------------------------------------
-nnoremap ss <cmd>FuzzyMotion<cr>
+nnoremap s <cmd>FuzzyMotion<cr>
 
 " ---------------------------------------------------------
 " Coc.nvim setting
@@ -161,16 +171,18 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+  -- 'JoosepAlviste/nvim-ts-context-commentstring' setting
+  context_commentstring = {
+    enable = true
+  },
+  -- 'yioneko/nvim-yati' setting
+  yati = {
+    enable = true
+  },
 }
+-- 'numToStr/Comment.nvim' setting
+-- require('Comment').setup()
 EOF
-
-" ---------------------------------------------------------
-" NERDTree Setting
-" ---------------------------------------------------------
-"nmap <C-f> :NERDTreeToggle<CR>
-"let g:airline#extensions#tabline#enabled = 1
-"nmap <C-p> <Plug>AirlineSelectPrevTab
-"nmap <C-n> <Plug>AirlineSelectNextTab
 
 " ---------------------------------------------------------
 " Fern Setting
@@ -179,22 +191,50 @@ EOF
 nmap <C-f> :Fern . -reveal=% -drawer<CR>
 set statusline=2
 
-" ---------------------------------------------------------
-" Airline Setting
-" ---------------------------------------------------------
-" let g:airline_powerline_fonts = 1
+" fern-fzf setting
+function! Fern_mapping_fzf_customize_option(spec)
+    let a:spec.options .= ' --multi'
+    " Note that fzf#vim#with_preview comes from fzf.vim
+    if exists('*fzf#vim#with_preview')
+        return fzf#vim#with_preview(a:spec)
+    else
+        return a:spec
+    endif
+endfunction
 
-"let g:lightline = {
-"      \ 'colorscheme': 'wombat',
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ],
-"      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-"      \ },
-"      \ 'component_function': {
-"      \   'gitbranch': 'fugitive#head'
-"      \ },
-"      \ }
-"
+function! Fern_mapping_fzf_before_all(dict)
+    if !len(a:dict.lines)
+        return
+    endif
+    return a:dict.fern_helper.async.update_marks([])
+endfunction
+
+function! s:reveal(dict)
+    execute "FernReveal -wait" a:dict.relative_path
+    execute "normal \<Jetpack>(fern-action-mark:set)"
+endfunction
+
+let g:Fern_mapping_fzf_file_sink = function('s:reveal')
+let g:Fern_mapping_fzf_dir_sink = function('s:reveal')
+
+" fern-preview setting
+function! s:fern_settings() abort
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+endfunction
+
+augroup fern-settings
+  autocmd!
+  autocmd FileType fern call s:fern_settings()
+augroup END
+
+" ---------------------------------------------------------
+" undotree setting
+" ---------------------------------------------------------
+" <leader>uでUndo treeの表示, g+, g-で前後の番号の履歴へ
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " ---------------------------------------------------------
 " lualine Setting
