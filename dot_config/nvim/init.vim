@@ -67,6 +67,9 @@ Jetpack 'sainnhe/gruvbox-material', { 'as': 'gruvbox-material' }
 Jetpack 'cocopon/iceberg.vim', { 'as': 'iceberg' }
 Jetpack 'Mofiqul/vscode.nvim', { 'as': 'codedark' }
 Jetpack 'EdenEast/nightfox.nvim', { 'as': 'nightfox' }
+Jetpack 'folke/tokyonight.nvim', {'as': 'tokyonight'}
+Jetpack 'sainnhe/everforest', {'as': 'everforest'}
+
 call jetpack#end()
 
 " ---------------------------------------------------------
@@ -79,11 +82,7 @@ endif
 " ---------------------------------------------------------
 " Colorscheme
 " ---------------------------------------------------------
-" colorscheme dracula
-" colorscheme iceberg
-" colorscheme gruvbox-material
-" colorscheme nightfox
-colorscheme duskfox
+colorscheme tokyonight 
 
 " ---------------------------------------------------------
 " Telescope Setting
