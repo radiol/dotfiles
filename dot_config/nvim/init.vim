@@ -49,8 +49,12 @@ Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
 " Jetpack 'vim-airline/vim-airline'
 "Jetpack 'itchyny/lightline.vim'
 Jetpack 'nvim-lualine/lualine.nvim'
+
+
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
+Jetpack 'lambdalisue/fern-git-status.vim' "fernでgit差分を表示
+Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' "fernでアイコンを表示
 "Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 "Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
@@ -60,6 +64,7 @@ Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
 Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
 Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
 Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる ss
+Jetpack 'lambdalisue/nerdfont.vim' "Nerd font
 
 "colorschemes
 Jetpack 'dracula/vim', { 'as': 'dracula' }
@@ -175,7 +180,9 @@ EOF
 " Fern Setting
 " ---------------------------------------------------------
 " open a current working directory.(focused, split view)
-nmap <C-f> :Fern . -reveal=% -drawer<CR>
+let g:fern#renderer = "nerdfont"
+
+nmap <C-f> :Fern . -reveal=% -drawer -toggle<CR>
 set statusline=2
 
 " ---------------------------------------------------------

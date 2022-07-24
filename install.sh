@@ -71,6 +71,10 @@ brew install \
     nodejs \
     ripgrep
 
+# Install Nerd font
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
     # For asdf-python
