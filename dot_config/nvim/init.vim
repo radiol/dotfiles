@@ -19,6 +19,8 @@ set wrapscan
 set incsearch
 set hlsearch
 
+let mapleader = "\<Space>"
+
 " ---------------------------------------------------------
 " Install vim-jetpack
 " ---------------------------------------------------------
@@ -63,8 +65,10 @@ Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
 Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
 Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
-Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる ss
 Jetpack 'lambdalisue/nerdfont.vim' "Nerd font
+Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる Ctrl+s
+Jetpack 'hrsh7th/vim-searchx' "標準の検索をoverwrite
+Jetpack 'phaazon/hop.nvim' "easymotionのlua版 ss
 
 "colorschemes
 Jetpack 'dracula/vim', { 'as': 'dracula' }
@@ -97,11 +101,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" ---------------------------------------------------------
-" fuzzy-motion setting
-" ---------------------------------------------------------
-nnoremap ss <cmd>FuzzyMotion<cr>
 
 " ---------------------------------------------------------
 " Coc.nvim setting
@@ -184,6 +183,72 @@ let g:fern#renderer = "nerdfont"
 
 nmap <C-f> :Fern . -reveal=% -drawer -toggle<CR>
 set statusline=2
+
+" ---------------------------------------------------------
+" fuzzy-motion Setting
+" ---------------------------------------------------------
+nnoremap <leader>ss <cmd>FuzzyMotion<cr>
+
+" ---------------------------------------------------------
+" vim-searchx Setting
+" ---------------------------------------------------------
+" Overwrite / and ?.
+nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+cnoremap ; <Cmd>call searchx#select()<CR>
+
+" Move to next/prev match.
+nnoremap N <Cmd>call searchx#prev_dir()<CR>
+nnoremap n <Cmd>call searchx#next_dir()<CR>
+xnoremap N <Cmd>call searchx#prev_dir()<CR>
+xnoremap n <Cmd>call searchx#next_dir()<CR>
+nnoremap <C-k> <Cmd>call searchx#prev()<CR>
+nnoremap <C-j> <Cmd>call searchx#next()<CR>
+xnoremap <C-k> <Cmd>call searchx#prev()<CR>
+xnoremap <C-j> <Cmd>call searchx#next()<CR>
+cnoremap <C-k> <Cmd>call searchx#prev()<CR>
+cnoremap <C-j> <Cmd>call searchx#next()<CR>
+
+" Clear highlights
+nnoremap <C-l> <Cmd>call searchx#clear()<CR>
+
+let g:searchx = {}
+
+" Auto jump if the recent input matches to any marker.
+let g:searchx.auto_accept = v:true
+
+" The scrolloff value for moving to next/prev.
+let g:searchx.scrolloff = &scrolloff
+
+" To enable scrolling animation.
+let g:searchx.scrolltime = 500
+
+" To enable auto nohlsearch after cursor is moved
+let g:searchx.nohlsearch = {}
+let g:searchx.nohlsearch.jump = v:true
+
+" Marker characters.
+let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '.\zs')
+
+" Convert search pattern.
+function g:searchx.convert(input) abort
+  if a:input !~# '\k'
+    return '\V' .. a:input
+  endif
+  return a:input[0] .. substitute(a:input[1:], '\\\@<! ', '.\\{-}', 'g')
+endfunction
+
+" ---------------------------------------------------------
+" Hop Setting
+" ---------------------------------------------------------
+lua << EOF
+require('hop').setup()
+EOF
+nnoremap ss <cmd>HopWord<cr>
+nnoremap ll <cmd>HopLine<cr>
+
 
 " ---------------------------------------------------------
 " Airline Setting
