@@ -62,7 +62,7 @@ Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析に�
 Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト gcc
 "Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
-Jetpack 'nathanaelkane/vim-indent-guides' "インデントを可視化
+Jetpack 'lukas-reineke/indent-blankline.nvim' "インデントを可視化
 Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
 Jetpack 'lambdalisue/nerdfont.vim' "Nerd font
 Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
@@ -186,10 +186,19 @@ nmap <C-f> :Fern . -reveal=% -drawer -toggle<CR>
 set statusline=2
 
 " ---------------------------------------------------------
-" indent guide Setting
+" indent blankline Setting
 " ---------------------------------------------------------
-let g:indent_guides_enable_on_vim_startup = 1
-nnoremap <leader>ig <cmd>IndentGuidesToggle<cr>
+lua << EOF
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+  show_current_context = true,
+  show_current_context_start = true,
+  space_char_blankline = " ",
+}
+EOF
 
 " ---------------------------------------------------------
 " fuzzy-motion Setting
