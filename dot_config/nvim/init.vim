@@ -39,7 +39,7 @@ execute 'source ' . s:jetpack_vim
 " ---------------------------------------------------------
 call jetpack#begin(s:jetpack_root)
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
-Jetpack 'https://github.com/dense-analysis/ale'
+"Jetpack 'https://github.com/dense-analysis/ale'
 Jetpack 'junegunn/fzf.vim'
 Jetpack 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Jetpack 'nvim-lua/plenary.nvim' "telescopeに必要
@@ -61,11 +61,12 @@ Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' "fernでアイコンを表示
 "Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
 Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト gcc
-Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
+"Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
+Jetpack 'nathanaelkane/vim-indent-guides' "インデントを可視化
 Jetpack 'mhinz/vim-startify' "起動時のスタートメニューを追加
-Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
 Jetpack 'lambdalisue/nerdfont.vim' "Nerd font
+Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
 Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる Ctrl+s
 Jetpack 'hrsh7th/vim-searchx' "標準の検索をoverwrite
 Jetpack 'phaazon/hop.nvim' "easymotionのlua版 ss
@@ -134,7 +135,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " ---------------------------------------------------------
 " Treesitter Setting
 " ---------------------------------------------------------
-lua <<EOF
+lua << EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "python"},
@@ -183,6 +184,12 @@ let g:fern#renderer = "nerdfont"
 
 nmap <C-f> :Fern . -reveal=% -drawer -toggle<CR>
 set statusline=2
+
+" ---------------------------------------------------------
+" indent guide Setting
+" ---------------------------------------------------------
+let g:indent_guides_enable_on_vim_startup = 1
+nnoremap <leader>ig <cmd>IndentGuidesToggle<cr>
 
 " ---------------------------------------------------------
 " fuzzy-motion Setting
@@ -270,9 +277,9 @@ nnoremap ll <cmd>HopLine<cr>
 " ---------------------------------------------------------
 " lualine Setting
 " ---------------------------------------------------------
-lua << END
+lua << EOF
 require('lualine').setup()
-END
+EOF
 
 " ---------------------------------------------------------
 " ESC Setting
