@@ -8,8 +8,8 @@ set nobackup
 set autoread
 " set ambiwidth=double
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set cmdheight=2
 
@@ -52,7 +52,6 @@ Jetpack 'neoclide/coc.nvim', { 'branch': 'release' }
 "Jetpack 'itchyny/lightline.vim'
 Jetpack 'nvim-lualine/lualine.nvim'
 
-
 "Jetpack 'preservim/nerdtree' "ファイラー
 Jetpack 'lambdalisue/fern.vim' "ファイラー
 Jetpack 'lambdalisue/fern-git-status.vim' "fernでgit差分を表示
@@ -70,6 +69,7 @@ Jetpack 'vim-denops/denops.vim' "fuzzy-motionに必要
 Jetpack 'yuki-yano/fuzzy-motion.vim' "fuzzyにjump移動できる Ctrl+s
 Jetpack 'hrsh7th/vim-searchx' "標準の検索をoverwrite
 Jetpack 'phaazon/hop.nvim' "easymotionのlua版 ss
+Jetpack 'terryma/vim-expand-region' "visualmodeの範囲拡張 Jで縮小, Kで拡張
 
 "colorschemes
 Jetpack 'dracula/vim', { 'as': 'dracula' }
@@ -256,6 +256,11 @@ EOF
 nnoremap ss <cmd>HopWord<cr>
 nnoremap ll <cmd>HopLine<cr>
 
+" ---------------------------------------------------------
+" vim-expand-region Setting
+" ---------------------------------------------------------
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
 
 " ---------------------------------------------------------
 " Airline Setting
