@@ -18,6 +18,7 @@ set smartcase
 set wrapscan
 set incsearch
 set hlsearch
+set autoread
 
 let mapleader = "\<Space>"
 
@@ -59,7 +60,8 @@ Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' "fernでアイコンを表示
 "Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
 "Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
-Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト gcc
+Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト, vim-commentaryと合わせて使う
+Jetpack 'numToStr/Comment.nvim' "範囲コメントアウト 選択行gcc vモードgc
 "Jetpack 'haringsrob/nvim_context_vt' "対応する括弧を表示する
 Jetpack 'Vimjas/vim-python-pep8-indent' "pep8準拠のインデント
 Jetpack 'lukas-reineke/indent-blankline.nvim' "インデントを可視化
@@ -165,16 +167,17 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+-- nvim-ts-context-commentstring Setting
+context_commentstring = {
+    enable =true
+  },
 }
 EOF
 
 " ---------------------------------------------------------
-" NERDTree Setting
+" Comment.nvim Setting
 " ---------------------------------------------------------
-"nmap <C-f> :NERDTreeToggle<CR>
-"let g:airline#extensions#tabline#enabled = 1
-"nmap <C-p> <Plug>AirlineSelectPrevTab
-"nmap <C-n> <Plug>AirlineSelectNextTab
+lua require('Comment').setup()
 
 " ---------------------------------------------------------
 " Fern Setting

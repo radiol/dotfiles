@@ -26,17 +26,16 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
+  
   // Format on save
   "coc.preferences.formatOnSaveFiletypes": ["python"],
+  
   //codelens
   "diagnostic.checkCurrentLine": true,
   "codeLens.enable": true,
-  //python
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": false,
-  // replace flake8 to pflake8
-  "python.linting.flake8Path": ".venv/bin/pflake8",
-  "python.linting.flake8Enabled": true,
-  "python.linting.lintOnSave": true,
+  
+  //pyright
+  //"python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "pflake8",
   "python.formatting.provider": "black"
 }
