@@ -35,7 +35,9 @@
   "codeLens.enable": true,
   
   //pyright
-  //"python.linting.flake8Enabled": true,
+  "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "pflake8",
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "pyright.disableDiagnostics": true,
+  "python.venvPath": ".venv"
 }

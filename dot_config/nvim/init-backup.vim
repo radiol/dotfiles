@@ -57,8 +57,6 @@ Jetpack 'nvim-lualine/lualine.nvim'
 Jetpack 'lambdalisue/fern.vim' "ファイラー
 Jetpack 'lambdalisue/fern-git-status.vim' "fernでgit差分を表示
 Jetpack 'lambdalisue/fern-renderer-nerdfont.vim' "fernでアイコンを表示
-"Jetpack 'jiangmiao/auto-pairs' "カッコの自動入力
-"Jetpack 'sheerun/vim-polyglot' "色々な言語のsyntax highlightなどを提供
 Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "構文解析によるsyntax highlight
 Jetpack 'JoosepAlviste/nvim-ts-context-commentstring' "treesitterによるコメントアウト, vim-commentaryと合わせて使う
 Jetpack 'numToStr/Comment.nvim' "範囲コメントアウト 選択行gcc vモードgc
@@ -185,7 +183,7 @@ lua require('Comment').setup()
 " open a current working directory.(focused, split view)
 let g:fern#renderer = "nerdfont"
 
-nmap <C-f> :Fern . -reveal=% -drawer -toggle<CR>
+nmap <C-f> :Fern %:h -reveal=% -drawer -toggle<CR>
 set statusline=2
 
 " ---------------------------------------------------------
@@ -273,6 +271,7 @@ nnoremap ll <cmd>HopLine<cr>
 " ---------------------------------------------------------
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
+
 
 " ---------------------------------------------------------
 " Airline Setting
