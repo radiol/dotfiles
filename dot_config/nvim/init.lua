@@ -1,35 +1,44 @@
 -----------------------------------------------------------
 -- Install Vim-Jetpack
 -----------------------------------------------------------
-local jetpack_root = vim.fn.expand("~/.cache").."/jetpack-vim"
-local jetpack_vim = jetpack_root.."/jetpack.vim"
+local jetpack_root = vim.fn.expand("~/.cache") .. "/jetpack-vim"
+local jetpack_vim = jetpack_root .. "/jetpack.vim"
 if vim.fn.filereadable(jetpack_vim) == 0 then
-vim.fn.execute("!curl -fLo "..jetpack_vim.." --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim") 
+  vim.fn.execute("!curl -fLo " ..
+    jetpack_vim .. " --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim")
 end
-vim.fn.execute("source "..jetpack_vim)
+vim.fn.execute("source " .. jetpack_vim)
 
 -----------------------------------------------------------
 -- Plugins
 -----------------------------------------------------------
 require("jetpack").startup(function(use)
-  use {"tani/vim-jetpack", opt = 1}
+  use { "tani/vim-jetpack", opt = 1 }
   use "junegunn/fzf.vim"
-  use {"junegunn/fzf", run = "call fzf#install()" }
+  use { "junegunn/fzf", run = "call fzf#install()" }
   use "nvim-lua/plenary.nvim" --telescopeに必要
   use "nvim-telescope/telescope.nvim" --fuzzy finder
   use "nvim-lualine/lualine.nvim" --status lineのカスタマイズ
-  use "williamboman/mason.nvim"  --lsp-installerの後継
+  -- completion
+  use "williamboman/mason.nvim" --lsp-installerの後継
   use "williamboman/mason-lspconfig.nvim" --lspconfigとの差分を吸収
   use "neovim/nvim-lspconfig" --lsp設定
+  use "L3MON4D3/LuaSnip" --nvim-cmp用
+  use "saadparwaiz1/cmp_luasnip" --nvim-cmp用
+  use "VonHeikemen/lsp-zero.nvim" --lspのall-in-one設定
   use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer" 
+  use "hrsh7th/cmp-nvim-lua"
+  use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-cmdline"
   use "hrsh7th/nvim-cmp"
-  use {"lambdalisue/fern.vim", branch = "main"} --ファイラー
+  use "windwp/nvim-autopairs"
+  use "j-hui/fidget.nvim" --lspの進捗を表示
+
+  use { "lambdalisue/fern.vim", branch = "main" } --ファイラー
   use "lambdalisue/fern-git-status.vim" --fernでgit差分を表示
   use "lambdalisue/fern-renderer-nerdfont.vim" --fernでアイコンを表示
-  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"} --構文解析によるsyntax highlight
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" } --構文解析によるsyntax highlight
   use "JoosepAlviste/nvim-ts-context-commentstring" --treesitterによるコメントアウト, vim-commentaryと合わせて使う
   use "numToStr/Comment.nvim" --範囲コメントアウト 選択行gcc vモードgc
   use "Vimjas/vim-python-pep8-indent" --pep8準拠のインデント
@@ -40,14 +49,14 @@ require("jetpack").startup(function(use)
   use "phaazon/hop.nvim" --easymotionのlua版 ss
   use "terryma/vim-expand-region" --visualmodeの範囲拡張 Jで縮小, Kで拡張
 
--- colorschemes
-  use {"dracula/vim", as = "dracula" }
-  use {"sainnhe/gruvbox-material", as = "gruvbox-material" }
-  use {"cocopon/iceberg.vim", as = "iceberg" }
-  use {"Mofiqul/vscode.nvim", as = "codedark" }
-  use {"EdenEast/nightfox.nvim", as = "nightfox" }
-  use {"folke/tokyonight.nvim", as = "tokyonight"}
-  use {"sainnhe/everforest", as = "everforest"}
+  -- colorschemes
+  use { "dracula/vim", as = "dracula" }
+  use { "sainnhe/gruvbox-material", as = "gruvbox-material" }
+  use { "cocopon/iceberg.vim", as = "iceberg" }
+  use { "Mofiqul/vscode.nvim", as = "codedark" }
+  use { "EdenEast/nightfox.nvim", as = "nightfox" }
+  use { "folke/tokyonight.nvim", as = "tokyonight" }
+  use { "sainnhe/everforest", as = "everforest" }
 end)
 
 -----------------------------------------------------------
@@ -85,27 +94,23 @@ local set = vim.keymap.set
 vim.g.mapleader = " "
 set("i", "jj", "<Esc>")
 
------------------------------------------------------------
--- Mason.nvim setting
------------------------------------------------------------
-require("mason").setup()
-require("mason-lspconfig").setup({
-  automatic_installation = true,
-})
+-- Format on save
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+
 
 -----------------------------------------------------------
 -- Nvim-cmp setting
 -----------------------------------------------------------
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require("cmp")
 
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
@@ -114,56 +119,76 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
+    { name = "nvim_lsp" },
+    -- { name = "vsnip" }, -- For vsnip users.
+    { name = "luasnip" }, -- For luasnip users.
+    -- { name = "ultisnips" }, -- For ultisnips users.
+    -- { name = "snippy" }, -- For snippy users.
   }, {
-    { name = 'buffer' },
+    { name = "buffer" },
   })
 })
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
+cmp.setup.filetype("gitcommit", {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
   }, {
-    { name = 'buffer' },
+    { name = "buffer" },
   })
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+-- Use buffer source for `/` (if you enabled `native_menu`, this won"t work anymore).
+cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
+    { name = "buffer" }
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
+-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore).
+cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = "path" }
   }, {
-    { name = 'cmdline' }
+    { name = "cmdline" }
   })
 })
 
+-----------------------------------------------------------
+-- Mason.nvim setting with lsp-zero
+-----------------------------------------------------------
+require("mason").setup()
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup()
+
+local lsp = require("lsp-zero")
+lsp.preset("recommended")
+lsp.setup()
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-  capabilities = capabilities
-}
+-- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you"ve enabled.
+-- require("lspconfig")["<YOUR_LSP_SERVER>"].setup {
+--   capabilities = capabilities
+-- }
+-----------------------------------------------------------
+-- Fidget setting
+-----------------------------------------------------------
+require("fidget").setup()
+
+-----------------------------------------------------------
+-- nvim-autopairs setting
+-----------------------------------------------------------
+require("nvim-autopairs").setup()
+
 
 -----------------------------------------------------------
 -- Telescope setting
@@ -177,9 +202,9 @@ set("n", "<leader>fh", builtin.help_tags)
 -----------------------------------------------------------
 -- Treesitter setting
 -----------------------------------------------------------
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "python"},
+  ensure_installed = { "python" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -206,9 +231,9 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
--- nvim-ts-context-commentstring Setting
-context_commentstring = {
-    enable =true
+  -- nvim-ts-context-commentstring Setting
+  context_commentstring = {
+    enable = true
   },
 }
 
@@ -242,11 +267,11 @@ require("indent_blankline").setup {
 -- Vim-searchx setting (INCOMPLETE)
 -----------------------------------------------------------
 -- Overwrite / and ?
-set("n", "?", "<Cmd>call searchx#start({ 'dir': 0 })<CR>", {noremap = true})
-set("n", "/", "<Cmd>call searchx#start({ 'dir': 1 })<CR>", {noremap = true})
-set("x", "?", "<Cmd>call searchx#start({ 'dir': 0 })<CR>", {noremap = true})
-set("x", "/", "<Cmd>call searchx#start({ 'dir': 1 })<CR>", {noremap = true})
-set("c", ";", "<Cmd>call searchx#select()<CR>", {noremap = true})
+set("n", "?", "<Cmd>call searchx#start({ 'dir': 0 })<CR>", { noremap = true })
+set("n", "/", "<Cmd>call searchx#start({ 'dir': 1 })<CR>", { noremap = true })
+set("x", "?", "<Cmd>call searchx#start({ 'dir': 0 })<CR>", { noremap = true })
+set("x", "/", "<Cmd>call searchx#start({ 'dir': 1 })<CR>", { noremap = true })
+set("c", ";", "<Cmd>call searchx#select()<CR>", { noremap = true })
 
 -----------------------------------------------------------
 -- Hop setting
@@ -266,5 +291,3 @@ set("v", "<C-j>", "<Plug>(expand_region_shrink)")
 -- Lualine setting
 -----------------------------------------------------------
 require("lualine").setup()
-
-
