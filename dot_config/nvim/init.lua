@@ -34,6 +34,7 @@ require("jetpack").startup(function(use)
   use "hrsh7th/nvim-cmp"
   use "windwp/nvim-autopairs"
   use "j-hui/fidget.nvim" --lspの進捗を表示
+  use 'folke/lsp-colors.nvim' --lspの色をカラフルに
 
   use { "lambdalisue/fern.vim", branch = "main" } --ファイラー
   use "lambdalisue/fern-git-status.vim" --fernでgit差分を表示
@@ -48,6 +49,7 @@ require("jetpack").startup(function(use)
   use "hrsh7th/vim-searchx" --標準の検索をoverwrite
   use "phaazon/hop.nvim" --easymotionのlua版 ss
   use "terryma/vim-expand-region" --visualmodeの範囲拡張 Jで縮小, Kで拡張
+  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
   -- colorschemes
   use { "dracula/vim", as = "dracula" }
@@ -89,6 +91,22 @@ opt.wrapscan = true
 opt.incsearch = true
 opt.hlsearch = true
 
+-- Diagnostic
+-- disable virtual text
+vim.diagnostic.config({ virtual_text = false })
+-- change icons
+local signs = {
+  Error = "",
+  Warn = "",
+  Hint = "",
+  Info = ""
+}
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- Keymap
 local set = vim.keymap.set
 vim.g.mapleader = " "
@@ -96,7 +114,6 @@ set("i", "jj", "<Esc>")
 
 -- Format on save
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
-
 
 -----------------------------------------------------------
 -- Nvim-cmp setting
@@ -108,10 +125,7 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
       require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-      -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
   window = {
@@ -126,7 +140,7 @@ cmp.setup({
     ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -144,10 +158,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    -- { name = "vsnip" }, -- For vsnip users.
     { name = "luasnip" }, -- For luasnip users.
-    -- { name = "ultisnips" }, -- For ultisnips users.
-    -- { name = "snippy" }, -- For snippy users.
   }, {
     { name = "buffer" },
   })
@@ -183,19 +194,36 @@ cmp.setup.cmdline(":", {
 -----------------------------------------------------------
 -- Mason.nvim setting with lsp-zero
 -----------------------------------------------------------
-require("mason").setup()
+require("mason").setup({
+  border = "rounded",
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  }
+})
+local nvim_lsp = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup()
+mason_lspconfig.setup_handlers({
+  function(server_name)
+    local opts = {}
 
-local lsp = require("lsp-zero")
-lsp.preset("lsp-compe")
-lsp.setup()
--- Setup lspconfig.
--- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you"ve enabled.
--- require("lspconfig")["<YOUR_LSP_SERVER>"].setup {
---   capabilities = capabilities
--- }
+    if server_name == "sumneko_lua" then
+      opts.settings = {
+        -- "undefined global vim" errorを回避
+        Lua = {
+          diagnostics = { globals = { 'vim' } },
+        }
+      }
+    end
+
+    nvim_lsp[server_name].setup(opts)
+  end
+})
+
 -----------------------------------------------------------
 -- Fidget setting
 -----------------------------------------------------------
@@ -205,7 +233,12 @@ require("fidget").setup()
 -- nvim-autopairs setting
 -----------------------------------------------------------
 require("nvim-autopairs").setup()
-
+-----------------------------------------------------------
+-- lsp-lines setting
+-----------------------------------------------------------
+local lsp_lines = require("lsp_lines")
+lsp_lines.setup()
+set("", "<leader>l", lsp_lines.toggle)
 
 -----------------------------------------------------------
 -- Telescope setting
