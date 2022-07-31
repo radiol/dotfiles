@@ -22,7 +22,7 @@ abbr cga="chezmoi git -- add -A"
 abbr cgd="chezmoi git diff -v HEAD"
 abbr cgc="chezmoi git -- commit"
 abbr cgp="chezmoi git -- push origin main"
-abbr cpush="chezmoi git -- add -A && chezmoi git -- commit && chezmoi git -- push origin main"
+abbr cpush="chezmoi git -- add -A && chezmoi git -- commit -v && chezmoi git -- push origin main"
 
 # git
 abbr ga="git add"
