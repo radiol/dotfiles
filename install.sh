@@ -67,9 +67,11 @@ brew install \
     exa \
     fd \
     fzf \
-    neovim \
     nodejs \
     ripgrep
+
+# Install neovim v0.8
+brew install --HEAD neovim
 
 # Install Nerd font
 brew tap homebrew/cask-fonts
