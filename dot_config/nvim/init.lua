@@ -97,6 +97,14 @@ opt.wrapscan = true
 opt.incsearch = true
 opt.hlsearch = true
 
+-- 前回のカーソル位置を復元
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.api.nvim_exec('silent! normal! g`"zv', false)
+	end,
+})
+
 -- Diagnostic
 -- disable virtual text
 -- vim.diagnostic.config({ virtual_text = false })
@@ -192,8 +200,6 @@ lsp.configure("sumneko_lua", {
 		},
 	},
 })
-
-lsp.on_attach = on_attach
 
 lsp.setup()
 
