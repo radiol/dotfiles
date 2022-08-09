@@ -1,14 +1,11 @@
 -----------------------------------------------------------
 -- Install Vim-Jetpack
 -----------------------------------------------------------
+local jetpack_url = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
 local jetpack_root = vim.fn.expand("~/.cache") .. "/jetpack-vim"
 local jetpack_vim = jetpack_root .. "/jetpack.vim"
 if vim.fn.filereadable(jetpack_vim) == 0 then
-	vim.fn.execute(
-		"!curl -fLo "
-			.. jetpack_vim
-			.. " --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
-	)
+	vim.fn.execute("!curl -fLo " .. jetpack_vim .. " --create-dirs " .. jetpack_url)
 end
 vim.fn.execute("source " .. jetpack_vim)
 
@@ -141,6 +138,7 @@ local sources = {
 	formatting.isort,
 	diagnostics.pyproject_flake8,
 	diagnostics.mypy,
+	diagnostics.shellcheck,
 }
 
 local lsp_formatting = function(bufnr)
@@ -191,7 +189,7 @@ require("mason.settings").set({
 })
 
 local lsp = require("lsp-zero")
-lsp.preset("lsp-only")
+lsp.preset("recommended")
 -- lua language server config
 lsp.configure("sumneko_lua", {
 	settings = {
