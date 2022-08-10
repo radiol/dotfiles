@@ -102,44 +102,68 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	end,
 })
 
--- Diagnostic
--- disable virtual text
--- vim.diagnostic.config({ virtual_text = false })
--- change icons
--- local signs = {
--- 	Error = "",
--- 	Warn = "",
--- 	Hint = "",
--- 	Info = "",
--- }
-
--- for type, icon in pairs(signs) do
--- 	local hl = "DiagnosticSign" .. type
--- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
--- end
-
 -- Keymap
 local set = vim.keymap.set
 vim.g.mapleader = " "
 set("i", "jj", "<Esc>")
 
--- Format on save
--- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+-----------------------------------------------------------
+-- LSP setting
+-----------------------------------------------------------
+-- Mason setting
+require("mason.settings").set({
+	ui = {
+		border = "rounded",
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
+
+local lsp = require("lsp-zero")
+lsp.preset("lsp-compe")
+lsp.set_preferences({
+	sign_icons = {
+		error = "",
+		warn = "",
+		hint = "",
+		info = "",
+	},
+})
+
+-- lua language server config
+lsp.configure("sumneko_lua", {
+	settings = {
+		Lua = {
+			diagnostics = { globals = { "vim" } },
+		},
+	},
+})
+
+lsp.setup()
 
 -----------------------------------------------------------
 -- null-ls setting
 -----------------------------------------------------------
-local formatting = require("null-ls").builtins.formatting
-local diagnostics = require("null-ls").builtins.diagnostics
+local mason_package = require("mason-core.package")
+local mason_registry = require("mason-registry")
+local null_ls = require("null-ls")
 
-local sources = {
-	formatting.stylua,
-	formatting.black,
-	formatting.isort,
-	diagnostics.pyproject_flake8,
-	diagnostics.mypy,
-	diagnostics.shellcheck,
-}
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
+
+local null_sources = {}
+for _, package in ipairs(mason_registry.get_installed_packages()) do
+	local package_categories = package.spec.categories[1]
+	if package_categories == mason_package.Cat.Formatter then
+		table.insert(null_sources, formatting[package.name])
+	end
+	if package_categories == mason_package.Cat.Linter then
+		table.insert(null_sources, diagnostics[package.name])
+	end
+end
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
@@ -169,37 +193,9 @@ local on_attach = function(client, bufnr)
 end
 
 require("null-ls").setup({
-	sources = sources,
+	sources = null_sources,
 	on_attach = on_attach,
 })
-
------------------------------------------------------------
--- LSP setting
------------------------------------------------------------
--- Mason setting
-require("mason.settings").set({
-	ui = {
-		border = "rounded",
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
-local lsp = require("lsp-zero")
-lsp.preset("lsp-compe")
--- lua language server config
-lsp.configure("sumneko_lua", {
-	settings = {
-		Lua = {
-			diagnostics = { globals = { "vim" } },
-		},
-	},
-})
-
-lsp.setup()
 
 -- -----------------------------------------------------------
 -- -- Nvim-cmp setting
@@ -284,12 +280,6 @@ require("fidget").setup()
 -- nvim-autopairs setting
 -----------------------------------------------------------
 require("nvim-autopairs").setup()
------------------------------------------------------------
--- lsp-lines setting
------------------------------------------------------------
--- local lsp_lines = require("lsp_lines")
--- lsp_lines.setup()
--- set("", "<leader>ll", lsp_lines.toggle)
 
 -----------------------------------------------------------
 -- Telescope setting
@@ -319,17 +309,6 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		-- `false` will disable the whole extension
 		enable = true,
-
-		-- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-		-- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-		-- the name of the parser)
-		-- list of language that will be disabled
-		--disable = { "c", "rust" },
-
-		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-		-- Using this option may slow down your editor, and you may see some duplicate highlights.
-		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
 	indent = {
@@ -368,14 +347,57 @@ require("indent_blankline").setup({
 })
 
 -----------------------------------------------------------
--- Vim-searchx setting (INCOMPLETE)
+-- Vim-searchx setting
 -----------------------------------------------------------
--- Overwrite / and ?
-set("n", "?", "<Cmd>call searchx#start({ 'dir': 0 })<CR>", { noremap = true })
-set("n", "/", "<Cmd>call searchx#start({ 'dir': 1 })<CR>", { noremap = true })
-set("x", "?", "<Cmd>call searchx#start({ 'dir': 0 })<CR>", { noremap = true })
-set("x", "/", "<Cmd>call searchx#start({ 'dir': 1 })<CR>", { noremap = true })
-set("c", ";", "<Cmd>call searchx#select()<CR>", { noremap = true })
+vim.cmd([[
+" Overwrite / and ?.
+nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+cnoremap ; <Cmd>call searchx#select()<CR>
+
+" Move to next/prev match.
+nnoremap N <Cmd>call searchx#prev_dir()<CR>
+nnoremap n <Cmd>call searchx#next_dir()<CR>
+xnoremap N <Cmd>call searchx#prev_dir()<CR>
+xnoremap n <Cmd>call searchx#next_dir()<CR>
+nnoremap <C-k> <Cmd>call searchx#prev()<CR>
+nnoremap <C-j> <Cmd>call searchx#next()<CR>
+xnoremap <C-k> <Cmd>call searchx#prev()<CR>
+xnoremap <C-j> <Cmd>call searchx#next()<CR>
+cnoremap <C-k> <Cmd>call searchx#prev()<CR>
+cnoremap <C-j> <Cmd>call searchx#next()<CR>
+
+" Clear highlights
+nnoremap <C-l> <Cmd>call searchx#clear()<CR>
+
+let g:searchx = {}
+
+" Auto jump if the recent input matches to any marker.
+let g:searchx.auto_accept = v:true
+
+" The scrolloff value for moving to next/prev.
+let g:searchx.scrolloff = &scrolloff
+
+" To enable scrolling animation.
+let g:searchx.scrolltime = 500
+
+" To enable auto nohlsearch after cursor is moved
+let g:searchx.nohlsearch = {}
+let g:searchx.nohlsearch.jump = v:true
+
+" Marker characters.
+let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '.\zs')
+
+" Convert search pattern.
+function g:searchx.convert(input) abort
+  if a:input !~# '\k'
+    return '\V' .. a:input
+  endif
+  return a:input[0] .. substitute(a:input[1:], '\\\@<! ', '.\\{-}', 'g')
+endfunction
+]])
 
 -----------------------------------------------------------
 -- Hop setting
