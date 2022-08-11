@@ -36,6 +36,7 @@ require("jetpack").startup(function(use)
 	use("windwp/nvim-autopairs")
 	use("j-hui/fidget.nvim") --lspの進捗を表示
 	use("folke/lsp-colors.nvim") --lspの色をカラフルに
+	use("onsails/lspkind.nvim") --補完にアイコンを表示
 
 	use("jose-elias-alvarez/null-ls.nvim")
 
@@ -161,7 +162,13 @@ for _, package in ipairs(mason_registry.get_installed_packages()) do
 		table.insert(null_sources, formatting[package.name])
 	end
 	if package_categories == mason_package.Cat.Linter then
-		table.insert(null_sources, diagnostics[package.name])
+		local linter = diagnostics[package.name]
+		if package.name == "flake8" then
+			linter = linter.with({
+				extra_args = { "--max-line-length", "119", "--ignore", "E203,E741" },
+			})
+		end
+		table.insert(null_sources, linter)
 	end
 end
 
@@ -201,8 +208,15 @@ require("null-ls").setup({
 -- -- Nvim-cmp setting
 -- -----------------------------------------------------------
 local cmp = require("cmp")
+local lspkind = require("lspkind")
 
 cmp.setup({
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = "symbol",
+			maxwidth = 50,
+		}),
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
