@@ -59,8 +59,7 @@ jetpack.startup(function(use)
 	use("hrsh7th/vim-searchx") --標準の検索をoverwrite
 	use("phaazon/hop.nvim") --easymotionのlua版 ss
 	use("terryma/vim-expand-region") --visualmodeの範囲拡張 Jで縮小, Kで拡張
-	use("https://git.sr.ht/~whynothugo/lsp_lines.nvim")
-
+	use("norcalli/nvim-colorizer.lua") -- 色コードをその色に変換
 	-- colorschemes
 	use({ "dracula/vim", as = "dracula" })
 	use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
