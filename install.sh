@@ -40,7 +40,7 @@ if [ $platform == "linux" ]; then
 fi
 
 # Check Homebrew
-if !(type "brew" > /dev/null 2>&1); then
+if ! (type "brew" > /dev/null 2>&1); then
     # Install Homebrew
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -74,9 +74,14 @@ brew install \
 brew install --HEAD neovim
 
 # Install Nerd font
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
-
+if [ $platform == 'darwin' ]; then
+  brew tap homebrew/cask-fonts
+  brew install --cask font-hack-nerd-font
+elif [ $platform == 'linux' ]; then
+  git clone https://github.com/ryanoasis/nerd-fonts
+  cd nerd-fonts
+  sudo ./install.sh Hack
+fi
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
     # For asdf-python
