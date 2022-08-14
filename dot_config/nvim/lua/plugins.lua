@@ -45,17 +45,7 @@ jetpack.startup(function(use)
 	use("j-hui/fidget.nvim") --lspの進捗を表示
 	use("folke/lsp-colors.nvim") --lspの色をカラフルに
 	use("onsails/lspkind.nvim") --補完にアイコンを表示
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		config = function()
-			local saga = require("lspsaga")
-
-			saga.init_lsp_saga({
-				-- your configuration
-			})
-		end,
-	})
+	use({ "glepnir/lspsaga.nvim", branch = "main" })
 
 	use("jose-elias-alvarez/null-ls.nvim")
 

@@ -6,9 +6,7 @@ if not status then
 	return
 end
 
-saga.init_lsp_saga({
-	diagnostic_source_bracket = { "" },
-})
+saga.init_lsp_saga({})
 
 local opts = { noremap = true, silent = true }
 -- lsp
