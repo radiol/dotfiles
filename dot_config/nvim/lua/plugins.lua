@@ -1,4 +1,17 @@
 -----------------------------------------------------------
+-- Install Vim-Jetpack
+-----------------------------------------------------------
+local jetpack_url = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
+local jetpack_root = vim.fn.expand("~/.cache") .. "/jetpack-vim"
+local jetpack_vim = jetpack_root .. "/jetpack.vim"
+local do_sync = false
+if vim.fn.filereadable(jetpack_vim) == 0 then
+	vim.fn.execute("!curl -fLo " .. jetpack_vim .. " --create-dirs " .. jetpack_url)
+	do_sync = true
+end
+vim.fn.execute("source " .. jetpack_vim)
+
+-----------------------------------------------------------
 -- Plugins
 -----------------------------------------------------------
 local status, jetpack = pcall(require, "jetpack")
@@ -69,3 +82,7 @@ jetpack.startup(function(use)
 	use({ "folke/tokyonight.nvim", as = "tokyonight" })
 	use({ "sainnhe/everforest", as = "everforest" })
 end)
+
+if do_sync then
+	jetpack.sync()
+end

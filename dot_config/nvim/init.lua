@@ -1,5 +1,3 @@
-require("install-jetpack")
-
 require("base")
 require("plugins")
 require("color")

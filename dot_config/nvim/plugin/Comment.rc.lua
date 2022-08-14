@@ -1,4 +1,9 @@
 -----------------------------------------------------------
 -- Comment.nvim setting
 -----------------------------------------------------------
-require("Comment").setup()
+local status, Comment = pcall(require, "Comment")
+if not status then
+	return
+end
+
+Comment.setup()

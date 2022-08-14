@@ -33,4 +33,3 @@ lsp.configure("sumneko_lua", {
 })
 
 lsp.setup()
-

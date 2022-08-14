@@ -1,8 +1,14 @@
 -----------------------------------------------------------
 -- Nvim-cmp setting
 -----------------------------------------------------------
-local cmp = require("cmp")
-local lspkind = require("lspkind")
+local status1, cmp = pcall(require, "cmp")
+if not status1 then
+	return
+end
+local status2, lspkind = pcall(require, "lspkind")
+if not status2 then
+	return
+end
 
 cmp.setup({
 	formatting = {

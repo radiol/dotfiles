@@ -1,9 +1,18 @@
 -----------------------------------------------------------
 -- null-ls setting
 -----------------------------------------------------------
-local mason_package = require("mason-core.package")
-local mason_registry = require("mason-registry")
-local null_ls = require("null-ls")
+local status1, null_ls = pcall(require, "null-ls")
+if not status1 then
+	return
+end
+local status2, mason_package = pcall(require, "mason-core.package")
+if not status2 then
+	return
+end
+local status3, mason_registry = pcall(require, "mason-registry")
+if not status3 then
+	return
+end
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
@@ -52,9 +61,7 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-require("null-ls").setup({
+null_ls.setup({
 	sources = null_sources,
 	on_attach = on_attach,
 })
-
-
