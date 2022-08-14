@@ -27,6 +27,7 @@ jetpack.startup(function(use)
 	use({ "junegunn/fzf", run = "call fzf#install()" })
 	use("nvim-lua/plenary.nvim") --telescope, null-lsに必要
 	use("nvim-telescope/telescope.nvim") --fuzzy finder
+	use("nvim-telescope/telescope-file-browser.nvim") -- telescopeでファイルを開く
 	use("nvim-lualine/lualine.nvim") --status lineのカスタマイズ
 	-- completion
 	use("williamboman/mason.nvim") --lsp-installerの後継
