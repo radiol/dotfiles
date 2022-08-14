@@ -3,9 +3,6 @@ require("plugins")
 require("color")
 require("keymap")
 
-require("lsp")
-require("searchx")
-require("expand_region")
 -----------------------------------------------------------
 -- lspsaga setting
 -----------------------------------------------------------
