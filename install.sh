@@ -73,9 +73,6 @@ brew install \
 # Install neovim v0.8
 brew install --HEAD neovim
 
-# Install LunarVim
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
-
 # Install Nerd font
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
