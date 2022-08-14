@@ -23,6 +23,7 @@ opt.wrapscan = true
 opt.incsearch = true
 opt.hlsearch = true
 
+vim.wo.signcolumn = "yes"
 -- 前回のカーソル位置を復元
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	pattern = { "*" },
@@ -30,3 +31,18 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 		vim.api.nvim_exec('silent! normal! g`"zv', false)
 	end,
 })
+-- disable virtual text
+vim.diagnostic.config({
+	virtual_text = false,
+})
+-- change diagnostic icons
+local signs = {
+	Error = "",
+	Warn = "",
+	Hint = "",
+	Info = "",
+}
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
