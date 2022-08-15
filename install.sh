@@ -31,7 +31,6 @@ if [ $platform == "linux" ]; then
     llvm \
     make \
     procps \
-    python3.10-venv \
     tk-dev \
     wget \
     xz-utils \
