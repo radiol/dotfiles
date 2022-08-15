@@ -68,11 +68,9 @@ brew install \
     exa \
     fd \
     fzf \
+    neovim \
     nodejs \
     ripgrep
-
-# Install neovim v0.8
-brew install --HEAD neovim
 
 # Install Nerd font. MacOS only
 # WSL and linux need manual installation
