@@ -73,14 +73,11 @@ brew install \
 # Install neovim v0.8
 brew install --HEAD neovim
 
-# Install Nerd font
+# Install Nerd font. MacOS only
+# WSL and linux need manual installation
 if [ $platform == 'darwin' ]; then
   brew tap homebrew/cask-fonts
   brew install --cask font-hack-nerd-font
-elif [ $platform == 'linux' ]; then
-  git clone https://github.com/ryanoasis/nerd-fonts
-  cd nerd-fonts
-  sudo ./install.sh Hack
 fi
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
