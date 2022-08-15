@@ -16,7 +16,6 @@ if [ $platform == "linux" ]; then
     build-essential \
     curl \
     file \
-    gcc \
     git \
     language-pack-ja \
     libbz2-dev \
