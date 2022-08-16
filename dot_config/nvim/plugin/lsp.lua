@@ -5,8 +5,12 @@ local status1, mason = pcall(require, "mason.settings")
 if not status1 then
 	return
 end
-local status2, lsp = pcall(require, "lsp-zero")
+local status2, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status2 then
+	return
+end
+local status3, lsp = pcall(require, "lsp-zero")
+if not status3 then
 	return
 end
 
@@ -18,6 +22,18 @@ mason.set({
 			package_pending = "➜",
 			package_uninstalled = "✗",
 		},
+	},
+})
+
+mason_lspconfig.setup({
+	ensure_installed = {
+		"sumneko_lua",
+		"pyright",
+		"bashls",
+		"dockerls",
+		"jsonls",
+		"taplo",
+		"yamlls",
 	},
 })
 
