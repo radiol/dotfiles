@@ -34,6 +34,8 @@ for _, package in ipairs(mason_registry.get_installed_packages()) do
 	end
 end
 
+-- for Neovim 0.8
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
