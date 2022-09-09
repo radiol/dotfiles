@@ -34,6 +34,9 @@ for _, package in ipairs(mason_registry.get_installed_packages()) do
 	end
 end
 
+-- Add rustfmt
+table.insert(null_sources, formatting.rustfmt)
+
 -- for Neovim 0.8
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
 local lsp_formatting = function(bufnr)
