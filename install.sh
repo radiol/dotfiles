@@ -69,7 +69,7 @@ brew install \
     nodejs \
     ripgrep
 # Install neovim 0.8 (for null-ls.rc.lua)
-brew install neovim --HEAD
+brew install neovim
 
 # Install Nerd font. MacOS only
 # WSL and linux need manual installation
