@@ -22,11 +22,22 @@ sudo pacman -S --noconfirm \
   git \
   gtk2 \
   neovim \
+  python-poetry \
   ripgrep \
   sheldon \
   ufw \
   wezterm \
-  yay \
-  
+  yay
+ 
+# Install AUR applications
+yay -S --noconfirm \
+  asdf \
+  visual-studio-code-bin
+
+# Install python by asdf
+asdf plugin add python
+asdf install python latest
+asdf global python latest
+
 # Change default shell to zsh
 sudo chsh -s $(which zsh) $(whoami)
