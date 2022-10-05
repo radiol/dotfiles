@@ -14,7 +14,9 @@ LANG=C xdg-user-dirs-gtk-update
 # Install applications
 sudo pacman -S --noconfirm \
   manjaro-asian-input-support-ibus \
+  chezmoi \
   gtk2 \
+  sheldon \
   ufw \
   wezterm \
   yay \
