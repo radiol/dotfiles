@@ -13,10 +13,15 @@ LANG=C xdg-user-dirs-gtk-update
 
 # Install applications
 sudo pacman -S --noconfirm \
-  manjaro-asian-input-support-ibus \
+  base-devel \
+  bat \
   chezmoi \
+  exa \
+  fzf \
+  git \
   gtk2 \
   neovim \
+  ripgrep \
   sheldon \
   ufw \
   wezterm \
