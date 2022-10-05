@@ -38,8 +38,10 @@ else
  # Intel Mac
     HOMEBREW_HOME='/usr/local'
 fi
-eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 
+if type $HOMEBREW_HOME/bin/brew > /dev/null;then
+    eval "$($HOMEBREW_HOME/bin/brew shellenv)"
+fi
 # ---------------------------------------------------------
 # Sheldon
 # ---------------------------------------------------------
