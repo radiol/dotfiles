@@ -16,6 +16,7 @@ sudo pacman -S --noconfirm \
   base-devel \
   bat \
   chezmoi \
+  curl \
   exa \
   fzf \
   git \
