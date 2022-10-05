@@ -18,6 +18,7 @@ sudo pacman -S --noconfirm \
   chezmoi \
   curl \
   exa \
+  fd \
   fzf \
   git \
   gtk2 \
