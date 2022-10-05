@@ -95,3 +95,5 @@ fi
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
+# Change default shell to zsh
+sudo chsh -s $(which zsh) $(whoami)

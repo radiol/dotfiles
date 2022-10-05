@@ -16,8 +16,11 @@ sudo pacman -S --noconfirm \
   manjaro-asian-input-support-ibus \
   chezmoi \
   gtk2 \
+  neovim \
   sheldon \
   ufw \
   wezterm \
   yay \
   
+# Change default shell to zsh
+sudo chsh -s $(which zsh) $(whoami)
