@@ -16,6 +16,6 @@ sudo pacman -S --noconfirm \
   manjaro-asian-input-support-ibus \
   gtk2 \
   ufw \
+  wezterm \
   yay \
   
-yay -S ibus-mozc
