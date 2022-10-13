@@ -73,8 +73,8 @@ brew install \
 # Install Nerd font. MacOS only
 # WSL and linux need manual installation
 if [ $platform == "darwin" ]; then
-  brew tap homebrew/cask-fonts
-  brew install --cask font-hack-nerd-font
+    brew tap homebrew/cask-fonts
+    brew install --cask font-hack-nerd-font
 fi
 # Install apps for macOS
 if [ $platform == "darwin" ]; then
