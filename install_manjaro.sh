@@ -29,7 +29,7 @@ sudo pacman -S --noconfirm \
   ufw \
   wezterm \
   yay
- 
+
 # Install AUR applications
 yay -S --noconfirm \
   asdf \
