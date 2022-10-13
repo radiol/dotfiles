@@ -6,5 +6,5 @@ return {
 	font = wezterm.font("JetBrains Mono"),
 	use_ime = true,
 	color_scheme = "tokyonight",
-  window_background_opacity = 0.8,
+	window_background_opacity = 0.8,
 }
