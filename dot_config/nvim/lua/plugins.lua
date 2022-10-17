@@ -64,7 +64,8 @@ jetpack.startup(function(use)
 	use("phaazon/hop.nvim") --easymotionのlua版 ss
 	use("terryma/vim-expand-region") --visualmodeの範囲拡張 Jで縮小, Kで拡張
 	use("norcalli/nvim-colorizer.lua") -- 色コードをその色に変換
-	-- colorschemes
+  use("lambdalisue/suda.vim") -- sudo権限でのread/writeを追加(SudaRead/SudaWrite)
+  -- colorschemes
 	use({ "dracula/vim", as = "dracula" })
 	use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
 	use({ "cocopon/iceberg.vim", as = "iceberg" })
