@@ -9,6 +9,7 @@ abbr se="chezmoi edit $XDG_CONFIG_HOME/sheldon/plugins.toml"
 # ls is replaced by exa
 abbr la="ls -a"
 abbr ll="ls -alh --git"
+abbr lt="ls -a -T -L 3 -I '.git'"
 
 # grep set color
 abbr grep="grep --color=auto"
