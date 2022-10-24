@@ -7,4 +7,5 @@ return {
 	use_ime = true,
 	color_scheme = "tokyonight",
 	window_background_opacity = 0.8,
+	send_composed_key_when_left_alt_is_pressed = true,
 }
