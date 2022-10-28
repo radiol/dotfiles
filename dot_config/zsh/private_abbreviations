@@ -42,6 +42,20 @@ abbr gpu="git pull upstream"
 abbr gpum="git pull upstream main"
 abbr gs="git status"
 
+# Docker
+abbr dcl = "docker container ls"
+abbr dcp = "docker container prune"
+abbr ds = "docker stop"
+abbr dsall = "docker stop $(docker ps -q)"
+abbr drm = "docker rm"
+abbr drmall = "docker rm $(docker ps -a -q)"
+abbr di = "docker images"
+abbr dip = "docker images prune"
+abbr drmi = "docker rmi"
+abbr drmiall = "docker rmi $(docker images -q)"
+abbr dcu = "docker compose up"
+abbr dcud = "docker compose up -d"
+
 # poetry
 abbr pr = "poetry run"
 abbr paf = "poetry run autoflake -ri --remove-all-unused-imports --ignore-init-module-imports ."
