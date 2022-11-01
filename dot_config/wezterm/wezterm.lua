@@ -1,15 +1,28 @@
 local wezterm = require("wezterm")
+local action = wezterm.action
 
 ssh_domains = {
 	{
 		name = "node",
 		remote_address = "node",
 	},
+	{
+		name = "lan",
+		remote_address = "lan",
+	},
+	{
+		name = "wan",
+		remote_address = "wan",
+	},
 }
 
-unix_domains = {
+unix_domains = { { name = "unix" } }
+
+keys = {
 	{
-		name = "unix",
+		key = "w",
+		mods = "CMD",
+		action = action.CloseCurrentTab({ confirm = false }),
 	},
 }
 
@@ -24,4 +37,5 @@ return {
 	ssh_domains = ssh_domains,
 	unix_domains = unix_domains,
 	default_gui_startup_args = { "connect", "unix" },
+	keys = keys,
 }
