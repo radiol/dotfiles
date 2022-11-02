@@ -72,6 +72,9 @@ abbr accn="(){acc new $1 && cd $1}"
 # Neiovim
 abbr v="nvim"
 
+# Wezterm
+abbr wc="wezterm connect"
+
 # Option util
 # fuzzy cd
 abbr fcd="cd $(fd -H -t d | fzf)"
