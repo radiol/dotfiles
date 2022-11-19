@@ -23,16 +23,23 @@ sudo pacman -S --noconfirm \
   git \
   gtk2 \
   neovim \
+  npm \
   python-poetry \
   ripgrep \
   sheldon \
   ufw \
+  unzip \
   wezterm \
   yay
 
+# Install asdf
+git clone https://aur.archlinux.org/asdf-vm.git && \
+  cd asdf-vm && \
+  makepkg -si --noconfirm &&  \
+  cd
+
 # Install AUR applications
 yay -S --noconfirm \
-  asdf \
   visual-studio-code-bin
 
 # Install python by asdf
@@ -40,5 +47,18 @@ asdf plugin add python
 asdf install python latest
 asdf global python latest
 
+# Install poetry 
+if [ ! -e ~/.local/bin/poetry ]; then
+    curl -sSL https://install.python-poetry.org | python3 -
+fi
+~/.local/bin/poetry config virtualenvs.in-project true
+
+# Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Install dotfiles
+chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
+
 # Change default shell to zsh
 sudo chsh -s $(which zsh) $(whoami)
+
