@@ -14,7 +14,7 @@ vim.fn.execute("source " .. jetpack_vim)
 -----------------------------------------------------------
 -- Plugins
 -----------------------------------------------------------
-local status, jetpack = pcall(require, "jetpack")
+local status, jetpack = pcall(require, "jetpack.packer")
 if not status then
 	print("vim-jetpack is not installed")
 	return
