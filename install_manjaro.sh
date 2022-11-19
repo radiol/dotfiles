@@ -6,7 +6,7 @@ sudo pacman -Syyu  --noconfirm
 
 # Change dir names to English
 sudo pacman -Sy xdg-user-dirs-gtk --noconfirm
-LANG=C xdg-user-dirs-gtk-update
+LANG=C xdg-user-dirs-gtk-update --noconfirm
 
 # Change CapsLock to Ctrl
 /usr/bin/setxkbmap -option "ctrl:nocaps"
@@ -43,9 +43,9 @@ yay -S --noconfirm \
   visual-studio-code-bin
 
 # Install python by asdf
-asdf plugin add python
-asdf install python latest
-asdf global python latest
+# asdf plugin add python
+# asdf install python latest
+# asdf global python latest
 
 # Install poetry 
 if [ ! -e ~/.local/bin/poetry ]; then
@@ -55,6 +55,9 @@ fi
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Install cargo apps
+cargo install trashy cargo-update
 
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
