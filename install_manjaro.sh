@@ -55,6 +55,7 @@ fi
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
 
 # Install cargo apps
 cargo install trashy cargo-update
@@ -64,4 +65,7 @@ chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
 # Change default shell to zsh
 sudo chsh -s $(which zsh) $(whoami)
+
+# Install nvim plugins
+nvim --noplugin --headless +qa
 
