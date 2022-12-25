@@ -2,7 +2,6 @@
 -- Install Vim-Jetpack
 -----------------------------------------------------------
 local jetpack_url = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
--- local jetpack_root = vim.fn.expand("~/.cache") .. "/jetpack-vim"
 local jetpack_root = vim.fn.expand("<sfile>:p:h") .. "/pack/jetpack/opt/vim-jetpack/plugin/"
 local jetpack_vim = jetpack_root .. "/jetpack.vim"
 local do_sync = false
