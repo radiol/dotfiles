@@ -2,7 +2,8 @@
 -- Install Vim-Jetpack
 -----------------------------------------------------------
 local jetpack_url = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
-local jetpack_root = vim.fn.expand("~/.cache") .. "/jetpack-vim"
+-- local jetpack_root = vim.fn.expand("~/.cache") .. "/jetpack-vim"
+local jetpack_root = vim.fn.expand("<sfile>:p:h") .. "/pack/jetpack/opt/vim-jetpack/plugin/"
 local jetpack_vim = jetpack_root .. "/jetpack.vim"
 local do_sync = false
 if vim.fn.filereadable(jetpack_vim) == 0 then
@@ -64,8 +65,8 @@ jetpack.startup(function(use)
 	use("phaazon/hop.nvim") --easymotionのlua版 ss
 	use("terryma/vim-expand-region") --visualmodeの範囲拡張 Jで縮小, Kで拡張
 	use("norcalli/nvim-colorizer.lua") -- 色コードをその色に変換
-  use("lambdalisue/suda.vim") -- sudo権限でのread/writeを追加(SudaRead/SudaWrite)
-  -- colorschemes
+	use("lambdalisue/suda.vim") -- sudo権限でのread/writeを追加(SudaRead/SudaWrite)
+	-- colorschemes
 	use({ "dracula/vim", as = "dracula" })
 	use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
 	use({ "cocopon/iceberg.vim", as = "iceberg" })
