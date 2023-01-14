@@ -13,4 +13,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 # Path
 # ---------------------------------------------------------
 export PATH="/Users/yuji/.local/bin:$PATH"
-
+# Volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
