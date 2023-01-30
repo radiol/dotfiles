@@ -92,6 +92,10 @@ if [ ! -e ~/.local/bin/poetry ]; then
     curl -sSL https://install.python-poetry.org | python3 -
 fi
 ~/.local/bin/poetry config virtualenvs.in-project true
+
+# Install volta
+curl https://get.volta.sh | bash
+
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
