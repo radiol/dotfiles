@@ -16,6 +16,7 @@ sudo pacman -S --noconfirm \
   base-devel \
   bat \
   chezmoi \
+  cmake \
   curl \
   exa \
   fd \
@@ -29,8 +30,7 @@ sudo pacman -S --noconfirm \
   sheldon \
   ufw \
   unzip \
-  wezterm \
-  yay
+  wezterm
 
 # Install asdf
 git clone https://aur.archlinux.org/asdf-vm.git && \
@@ -39,8 +39,8 @@ git clone https://aur.archlinux.org/asdf-vm.git && \
   cd
 
 # Install AUR applications
-yay -S --noconfirm \
-  visual-studio-code-bin
+# yay -S --noconfirm \
+#  visual-studio-code-bin
 
 # Install python by asdf
 # asdf plugin add python
@@ -58,13 +58,13 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 
 # Install cargo apps
-cargo install trashy cargo-update
+cargo install trashy cargo-update starship
 
 # Install dotfiles
-chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
+# chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
 # Change default shell to zsh
 sudo chsh -s $(which zsh) $(whoami)
 
 # Neovim Onece
-nvim --noplugin --headless +qa
+# nvim --noplugin --headless +qa
