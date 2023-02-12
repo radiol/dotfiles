@@ -27,7 +27,7 @@ mason.set({
 
 mason_lspconfig.setup({
 	ensure_installed = {
-		"sumneko_lua",
+		"lua_ls",
 		"pyright",
 		"bashls",
 		"dockerls",
@@ -51,7 +51,7 @@ lsp.set_preferences({
 })
 
 -- lua language server config
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = { globals = { "vim" } },
