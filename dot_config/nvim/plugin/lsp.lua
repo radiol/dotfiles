@@ -34,6 +34,7 @@ mason_lspconfig.setup({
 		"jsonls",
 		"taplo",
 		"yamlls",
+		"rust_analyzer",
 	},
 })
 
