@@ -1,26 +1,22 @@
 -----------------------------------------------------------
 -- Install Vim-Jetpack
 -----------------------------------------------------------
-local jetpack_url = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
-local jetpack_root = vim.fn.expand("<sfile>:p:h") .. "/pack/jetpack/opt/vim-jetpack/plugin/"
-local jetpack_vim = jetpack_root .. "/jetpack.vim"
-local do_sync = false
-if vim.fn.filereadable(jetpack_vim) == 0 then
-	vim.fn.execute("!curl -fLo " .. jetpack_vim .. " --create-dirs " .. jetpack_url)
-	do_sync = true
+local jetpackfile = vim.fn.stdpath("data") .. "/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim"
+local jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
+if vim.fn.filereadable(jetpackfile) == 0 then
+	vim.fn.system(string.format("curl -fsSLo %s --create-dirs %s", jetpackfile, jetpackurl))
 end
-vim.fn.execute("source " .. jetpack_vim)
-
+vim.cmd("packadd vim-jetpack")
 -----------------------------------------------------------
 -- Plugins
 -----------------------------------------------------------
-local status, jetpack = pcall(require, "jetpack.packer")
+local status, jetpack = pcall(require, "jetpack")
 if not status then
 	print("vim-jetpack is not installed")
 	return
 end
 
-jetpack.startup(function(use)
+require("jetpack.packer").startup(function(use)
 	use({ "tani/vim-jetpack", opt = 1 })
 	use("vim-jp/vimdoc-ja") -- vim help 日本語化
 	use("junegunn/fzf.vim")
@@ -76,6 +72,9 @@ jetpack.startup(function(use)
 	use({ "sainnhe/everforest", as = "everforest" })
 end)
 
-if do_sync then
-	jetpack.sync()
+for _, name in ipairs(jetpack.names()) do
+	if not jetpack.tap(name) then
+		jetpack.sync()
+		break
+	end
 end
