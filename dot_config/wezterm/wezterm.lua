@@ -27,8 +27,8 @@ keys = {
 }
 
 return {
-	initial_cols = 100,
-	initial_rows = 30,
+	initial_cols = 125,
+	initial_rows = 35,
 	font = wezterm.font("JetBrains Mono"),
 	use_ime = true,
 	color_scheme = "tokyonight",
