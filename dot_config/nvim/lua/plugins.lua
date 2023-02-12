@@ -47,6 +47,7 @@ jetpack.startup(function(use)
 	use("folke/lsp-colors.nvim") --lspの色をカラフルに
 	use("onsails/lspkind.nvim") --補完にアイコンを表示
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
+	use("nvim-tree/nvim-web-devicons") --lspsaga用のnvim-web-devicons
 
 	use("jose-elias-alvarez/null-ls.nvim")
 
