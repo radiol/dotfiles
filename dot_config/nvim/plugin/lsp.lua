@@ -28,13 +28,13 @@ mason.set({
 mason_lspconfig.setup({
 	ensure_installed = {
 		"lua_ls",
-		"pyright",
-		"bashls",
-		"dockerls",
-		"jsonls",
-		"taplo",
-		"yamlls",
-		"rust_analyzer",
+		-- "pyright",
+		-- "bashls",
+		-- "dockerls",
+		-- "jsonls",
+		-- "taplo",
+		-- "yamlls",
+		-- "rust_analyzer",
 	},
 })
 
