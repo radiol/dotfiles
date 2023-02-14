@@ -1,4 +1,4 @@
-export HISTFILE=$XDG_STATE_HOME/zsh/.zsh_history
+export HISTFILE="$XDG_STATE_HOME"/zsh/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 setopt hist_reduce_blanks
