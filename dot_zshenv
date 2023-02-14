@@ -41,29 +41,9 @@ fi
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # ---------------------------------------------------------
-# Homebrew
-# ---------------------------------------------------------
-# Check OS and set brew path
-if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
- # Linux/WSL
-    HOMEBREW_HOME='/home/linuxbrew/.linuxbrew'
-elif [[ -d '/opt/homebrew' ]]; then
- # M1 Mac
-    HOMEBREW_HOME='/opt/homebrew'
-else
- # Intel Mac
-    HOMEBREW_HOME='/usr/local'
-fi
-
-if type $HOMEBREW_HOME/bin/brew > /dev/null;then
-    eval "$($HOMEBREW_HOME/bin/brew shellenv)"
-fi
-
-# ---------------------------------------------------------
 # Path
 # ---------------------------------------------------------
 path=($HOME/.local/bin(N-/) $path)
-
 # Volta
 export VOLTA_HOME="$HOME/.volta"
 path=($VOLTA_HOME/bin(N-/) $path)
