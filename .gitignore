@@ -3,6 +3,7 @@
 /.**
 
 # add white list
+!/dot_zshenv
 !/dot_zshrc
 !/dot_sheldon
 !/dot_sheldon/plugins.toml
