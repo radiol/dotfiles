@@ -85,3 +85,6 @@ abbr wc="wezterm connect"
 # Option util
 # fuzzy cd
 abbr fcd="cd $(fd -H -t d | fzf)"
+
+# asdf add plugin and install latest
+abbr asdl="(){asdf plugin add $1 && asdf install $1 latest && asdf global $1 latest}"
