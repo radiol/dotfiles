@@ -1,41 +1,18 @@
 -----------------------------------------------------------
--- null-ls setting
+-- null-ls setting with mason-null-ls
 -----------------------------------------------------------
 local status1, null_ls = pcall(require, "null-ls")
 if not status1 then
 	return
 end
-local status2, mason_package = pcall(require, "mason-core.package")
+local status2, mason = pcall(require, "mason")
 if not status2 then
 	return
 end
-local status3, mason_registry = pcall(require, "mason-registry")
+local status3, mason_null_ls = pcall(require, "mason-null-ls")
 if not status3 then
 	return
 end
-
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
-
-local null_sources = {}
-for _, package in ipairs(mason_registry.get_installed_packages()) do
-	local package_categories = package.spec.categories[1]
-	if package_categories == mason_package.Cat.Formatter then
-		table.insert(null_sources, formatting[package.name])
-	end
-	if package_categories == mason_package.Cat.Linter then
-		local linter = diagnostics[package.name]
-		if package.name == "flake8" then
-			linter = linter.with({
-				extra_args = { "--max-line-length", "119", "--ignore", "E203,E741" },
-			})
-		end
-		table.insert(null_sources, linter)
-	end
-end
-
--- Add rustfmt
-table.insert(null_sources, formatting.rustfmt)
 
 -- for Neovim 0.8
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
@@ -66,7 +43,13 @@ local on_attach = function(client, bufnr)
 	end
 end
 
+mason.setup()
+mason_null_ls.setup({
+	automatic_installation = false,
+	automatic_setup = true,
+})
 null_ls.setup({
-	sources = null_sources,
 	on_attach = on_attach,
 })
+
+mason_null_ls.setup_handlers()
