@@ -39,7 +39,6 @@ require("jetpack.packer").startup(function(use)
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
 	use("windwp/nvim-autopairs")
-	use("j-hui/fidget.nvim") --lspの進捗を表示
 	use("folke/lsp-colors.nvim") --lspの色をカラフルに
 	use("onsails/lspkind.nvim") --補完にアイコンを表示
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
@@ -48,6 +47,11 @@ require("jetpack.packer").startup(function(use)
 	-- Linter, Formatter
 	use("jose-elias-alvarez/null-ls.nvim") --LinterやFormatterの設定
 	use("jay-babu/mason-null-ls.nvim") --Masonとnull-lsを自動連携
+
+	-- 通知などをグラフィカルに
+	use("folke/noice.nvim")
+	use("MunifTanjim/nui.nvim")
+	use("rcarriga/nvim-notify")
 
 	use({ "lambdalisue/fern.vim", branch = "main" }) --ファイラー
 	use("lambdalisue/fern-git-status.vim") --fernでgit差分を表示
