@@ -45,7 +45,9 @@ require("jetpack.packer").startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
 	use("nvim-tree/nvim-web-devicons") --lspsaga用のnvim-web-devicons
 
-	use("jose-elias-alvarez/null-ls.nvim")
+	-- Linter, Formatter
+	use("jose-elias-alvarez/null-ls.nvim") --LinterやFormatterの設定
+	use("jay-babu/mason-null-ls.nvim") --Masonとnull-lsを自動連携
 
 	use({ "lambdalisue/fern.vim", branch = "main" }) --ファイラー
 	use("lambdalisue/fern-git-status.vim") --fernでgit差分を表示
