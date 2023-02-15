@@ -52,5 +52,4 @@ path=($HOME/.local/bin(N-/) $path)
 export VOLTA_HOME="$HOME/.volta"
 path=($VOLTA_HOME/bin(N-/) $path)
 # Cargo
-. "$HOME/.cargo/env"
-
+path=($HOME/.cargo/bin(N-/) $path)
