@@ -19,8 +19,7 @@ end
 require("jetpack.packer").startup(function(use)
 	use({ "tani/vim-jetpack", opt = 1 })
 	use("vim-jp/vimdoc-ja") -- vim help 日本語化
-	use("junegunn/fzf.vim")
-	use({ "junegunn/fzf", run = "call fzf#install()" })
+	use("ibhagwan/fzf-lua")
 	use("nvim-lua/plenary.nvim") --telescope, null-lsに必要
 	use("nvim-telescope/telescope.nvim") --fuzzy finder
 	use("nvim-telescope/telescope-file-browser.nvim") -- telescopeでファイルを開く
