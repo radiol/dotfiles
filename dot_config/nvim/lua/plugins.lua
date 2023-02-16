@@ -24,6 +24,7 @@ require("jetpack.packer").startup(function(use)
 	use("nvim-telescope/telescope.nvim") --fuzzy finder
 	use("nvim-telescope/telescope-file-browser.nvim") -- telescopeでファイルを開く
 	use("nvim-telescope/telescope-frecency.nvim") -- よく使うファイルを表示するtelescope拡張
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- telescopeの検索をfzfに
 	use("kkharji/sqlite.lua") -- telescope-frecencyに必要
 	use("nvim-lualine/lualine.nvim") --status lineのカスタマイズ
 	-- completion
