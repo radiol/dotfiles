@@ -46,11 +46,11 @@ end
 mason.setup()
 mason_null_ls.setup({
 	ensure_installed = {
-		"black",
-		"isort",
-		"pyproject-flake8",
-		"rustfmt",
-		"shellcheck",
+		-- "black",
+		-- "isort",
+		-- "pyproject-flake8",
+		-- "rustfmt",
+		-- "shellcheck",
 		"stylua",
 	},
 	automatic_installation = false,
