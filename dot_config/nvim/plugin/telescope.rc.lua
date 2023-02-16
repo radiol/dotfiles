@@ -45,8 +45,8 @@ telescope.setup({
 		},
 	},
 })
+-- File Browser
 telescope.load_extension("file_browser")
-
 vim.keymap.set("n", "<leader>fs", function()
 	telescope.extensions.file_browser.file_browser({
 		path = "%:p:h",
@@ -59,6 +59,15 @@ vim.keymap.set("n", "<leader>fs", function()
 		layout_config = { height = 40 },
 	})
 end)
+
+-- Open Frequent file
+telescope.load_extension("frecency")
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader><leader>",
+	"<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>",
+	{ noremap = true, silent = true }
+)
 
 -- set keymap
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})

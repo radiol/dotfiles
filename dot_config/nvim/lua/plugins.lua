@@ -23,6 +23,8 @@ require("jetpack.packer").startup(function(use)
 	use("nvim-lua/plenary.nvim") --telescope, null-lsに必要
 	use("nvim-telescope/telescope.nvim") --fuzzy finder
 	use("nvim-telescope/telescope-file-browser.nvim") -- telescopeでファイルを開く
+	use("nvim-telescope/telescope-frecency.nvim") -- よく使うファイルを表示するtelescope拡張
+	use("kkharji/sqlite.lua") -- telescope-frecencyに必要
 	use("nvim-lualine/lualine.nvim") --status lineのカスタマイズ
 	-- completion
 	use("williamboman/mason.nvim") --lsp-installerの後継
