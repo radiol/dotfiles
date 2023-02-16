@@ -15,7 +15,7 @@
 !.gitignore
 !.chezmoiignore
 !README.md
-!install.sh
+!install*.sh
 
 
 # add black list
