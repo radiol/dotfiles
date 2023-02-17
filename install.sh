@@ -100,7 +100,7 @@ curl https://get.volta.sh | bash
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
 # Install neovim plugins
-nvim --headless "+Lazy! sync" +qa
+# nvim --headless "+Lazy! sync" +qa
 
 # Change default shell to zsh
 sudo chsh -s $(which zsh) $(whoami)
