@@ -23,6 +23,8 @@ opt.wrapscan = true
 opt.incsearch = true
 opt.hlsearch = true
 
+opt.termguicolors = true
+
 vim.wo.signcolumn = "yes"
 -- 前回のカーソル位置を復元
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
