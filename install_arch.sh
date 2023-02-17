@@ -30,6 +30,7 @@ sudo pacman -S --noconfirm \
   python-poetry \
   ripgrep \
   sheldon \
+  ssh \
   ufw \
   unzip \
   wezterm
