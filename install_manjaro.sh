@@ -67,4 +67,4 @@ cargo install trashy cargo-update starship
 sudo chsh -s $(which zsh) $(whoami)
 
 # Neovim Onece
-# nvim --noplugin --headless +qa
+nvim --headless "+Lazy! sync" +qa

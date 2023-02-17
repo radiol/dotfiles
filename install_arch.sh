@@ -63,7 +63,7 @@ chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 sudo chsh -s $(which zsh) $(whoami)
 
 # Neovim Onece
-# nvim --noplugin --headless +qa
+nvim --headless "+Lazy! sync" +qa
 
 # Create XDG folder
 mkdir ~/.local/state
