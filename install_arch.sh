@@ -14,7 +14,7 @@ LANG=C xdg-user-dirs-gtk-update --noconfirm
 /usr/bin/setxkbmap -option "ctrl:nocaps"
 
 # Install applications
-sudo pacman -S --noconfirm \
+sudo pacman -Sy --noconfirm \
   base-devel \
   bat \
   chezmoi \
@@ -51,7 +51,8 @@ fi
 ~/.local/bin/poetry config virtualenvs.in-project true
 
 # Install Rust
-curl --proto '=https' --tlsv1.2 -sSfy https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs >> rustup.sh
+sh rustup.sh -y && rm rustup.sh
 source "$HOME/.cargo/env"
 
 # Install cargo apps
