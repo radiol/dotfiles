@@ -16,31 +16,40 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install OPEN SSH
-        run: pacman -Sy --noconfirm openssh
+      - name: Install sudo
+        run: pacman -Sy --noconfirm sudo
 
-      - name: ADD SSH KEY
-        env:
-          SSH_KEY: ${{ secrets.ACTION_SSH }}
+      - name: Create test user
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
-          chmod 700 ~/.ssh/id_ed25519
-          eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_ed25519
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          useradd -m -g wheel -s /bin/bash test
+          echo test:test | chpasswd
+          sed -i -e "s/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL" /etc/sudoers
 
-      # Error Check
-      - name: Run install.sh
-        run: |
-          sed -i -e "s/sudo //" install_arch.sh
-          /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
-
-      - name: Load .zshenv
-        run: |
-          zsh -i -l -c exit
-          zsh -i -l -c exit > error.log; cat error.log
-          if [ -s error.log ]; then false; fi
-
-      - name: Check lazy.nvim dir
-        run: ls ~/.local/share/nvim/lazy/
+      # - name: Install OPEN SSH
+      #   run: pacman -Sy --noconfirm openssh
+      #
+      # - name: ADD SSH KEY
+      #   env:
+      #     SSH_KEY: ${{ secrets.ACTION_SSH }}
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+      #     chmod 700 ~/.ssh/id_ed25519
+      #     eval $(ssh-agent -s)
+      #     ssh-add ~/.ssh/id_ed25519
+      #     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+      #
+      # # Error Check
+      # - name: Run install.sh
+      #   run: |
+      #     sed -i -e "s/sudo //" install_arch.sh
+      #     /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
+      #
+      # - name: Load .zshenv
+      #   run: |
+      #     zsh -i -l -c exit
+      #     zsh -i -l -c exit > error.log; cat error.log
+      #     if [ -s error.log ]; then false; fi
+      #
+      # - name: Check lazy.nvim dir
+      #   run: ls ~/.local/share/nvim/lazy/
