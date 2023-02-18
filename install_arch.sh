@@ -37,7 +37,8 @@ sudo pacman -Sy --noconfirm \
   openssh \
   ufw \
   unzip \
-  wezterm
+  wezterm \
+  zsh
 
 # Install asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
