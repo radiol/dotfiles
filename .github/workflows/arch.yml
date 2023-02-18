@@ -16,10 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.ACTION_SSH }}
-
       - name: Install sudo
         run: pacman -Sy --noconfirm sudo
 
@@ -36,20 +32,19 @@ jobs:
         run: sudo pacman -Sy --noconfirm openssh
 
       - name: ADD SSH KEY
-        run: ssh -t git@github.com
-        # env:
-        #   SSH_KEY: ${{ secrets.ACTION_SSH }}
-        # run: |
-        # mkdir -p ~/.ssh
-        # echo "$ssh_key" | tr -d '\r' > ~/.ssh/id_ed25519
-        # sudo chmod 700 ~/.ssh/id_ed25519
-        # eval $(ssh-agent -s)
-        # ssh-add ~/.ssh/id_ed25519
-        # ssh-keyscan -h github.com >> ~/.ssh/known_hosts
-        # chown -r test:wheel ~/.ssh/
-        # chmod 700 ~/.ssh
-        # cat ~/.ssh/known_hosts
-        # ssh -t git@github.com
+        env:
+          SSH_KEY: ${{ secrets.ACTION_SSH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$ssh_key" | tr -d '\r' > ~/.ssh/id_ed25519
+          sudo chmod 700 ~/.ssh/id_ed25519
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/id_ed25519
+          ssh-keyscan -H -t ed25519 github.com >> ~/.ssh/known_hosts
+          chown -r test:wheel ~/.ssh/
+          chmod 700 ~/.ssh
+          cat ~/.ssh/known_hosts
+          ssh -t git@github.com
 
       # # Error Check
       # - name: Run install.sh
