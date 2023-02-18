@@ -42,7 +42,11 @@ jobs:
           ssh-add ~/.ssh/id_ed25519
           ssh-keyscan -H -t ed25519 github.com >> ~/.ssh/known_hosts
           cat ~/.ssh/known_hosts
-          ssh -t git@github.com
+
+      - name: Check chezmoi
+        run: |
+          sudo pacman -Sy --noconfirm chezmoi
+          chezmoi init git@github.com:radiol/dotfiles.git
 
       # # Error Check
       # - name: Run install.sh
