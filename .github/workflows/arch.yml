@@ -36,7 +36,7 @@ jobs:
           SSH_KEY: ${{ secrets.ACTION_SSH }}
         run: |
           mkdir -p /home/test/.ssh
-          echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "$SSH_KEY" | tr -d '\r' > /home/test/.ssh/id_ed25519
           sudo chmod 700 /home/test/.ssh/id_ed25519
           eval $(ssh-agent -s)
           ssh-add /home/test/.ssh/id_ed25519
