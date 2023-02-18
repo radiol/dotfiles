@@ -1,0 +1,30 @@
+name: arch
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  arch-test:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Error Check
+      - name: Run install.sh
+        run: /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
+
+      - name: Load .zshenv
+        run: |
+          zsh -i -l -c exit 2> error.log; cat error.log
+          if [ -s error.log ]; then false; fi
+      
+      - name: Run Neovim
+        run: |
+        nvim --headless +qa 2> error.log; cat error.log
+        if [ -s error.log ]; then false; fi
