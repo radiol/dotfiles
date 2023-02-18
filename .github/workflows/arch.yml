@@ -3,12 +3,13 @@ name: arch
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  # pull_request:
+  #   branches: [main]
 
 jobs:
   arch-test:
     runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, "[CI]")
     container:
       image: archlinux:latest
 

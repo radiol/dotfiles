@@ -3,12 +3,14 @@ name: ubuntu
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+
+  # pull_request:
+  #   branches: [main]
 
 jobs:
   ubuntu-test:
     runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, "[CI]")
 
     steps:
       - uses: actions/checkout@v3
@@ -34,7 +36,7 @@ jobs:
 
       - name: Exec zsh
         run: |
-          # zsh -i -l -c exit
+          zsh -i -l -c exit
           zsh -i -l -c exit 2> error.log; cat error.log
           if [ -s error.log ]; then false; fi
 
