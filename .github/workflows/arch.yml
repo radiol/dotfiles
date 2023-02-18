@@ -18,7 +18,7 @@ jobs:
       # Error Check
       - name: Run install.sh
         run: |
-          sed "s/sudo //" install_arch.sh > install_arch.sh
+          sed -i -e "s/sudo //" install_arch.sh
           /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
 
       - name: Load .zshenv
