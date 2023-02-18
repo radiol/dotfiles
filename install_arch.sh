@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xeu
 # Change mirror server
 mkdir -p ~/.cache
 sudo pacman -Sy --noconfirm reflector
