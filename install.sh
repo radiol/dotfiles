@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xeu
 
 # Get operating system
 platform="unknown"
