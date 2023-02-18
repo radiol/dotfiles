@@ -1,6 +1,6 @@
 # ignore all
-/*
-/.**
+*
+*/
 
 # add white list
 !/dot_zshenv
@@ -13,8 +13,9 @@
 !/dot_config/zsh/**
 
 !.gitignore
-!/.github/
-!/.github/workflows/
+!.github/
+!.github/workflows/
+!.github/workflows/*
 !.chezmoiignore
 !README.md
 !install*.sh
