@@ -65,7 +65,7 @@ cargo install trashy cargo-update
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
 # Change default shell to zsh
-sudo chsh -s $(which zsh) $(whoami)
+sudo chsh -s /bin/zsh $(whoami)
 
 # Neovim Onece
 # nvim --headless "+Lazy! sync" +qa
