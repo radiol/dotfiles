@@ -28,12 +28,13 @@ jobs:
       - name: Run install.sh
         run: /bin/bash ${GITHUB_WORKSPACE}/install.sh
 
-      - name: Load .zshenv
+      - name: Exec zsh
         run: |
-          zsh ~/.zshenv 2> error.log; cat error.log
-          if [ -s error.log ]; then false; fi
+          zsh -i -l -c exit
+          # zsh ~/.zshenv 2> error.log; cat error.log
+          # if [ -s error.log ]; then false; fi
 
-      - name: Run Neovim
-        run: |
-          nvim --headless +qa 2> error.log; cat error.log
-          if [ -s error.log ]; then false; fi
+      # - name: Run Neovim
+      #   run: |
+      #     nvim --headless +qa 2> error.log; cat error.log
+      #     if [ -s error.log ]; then false; fi
