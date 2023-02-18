@@ -35,16 +35,13 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.ACTION_SSH }}
         run: |
-          mkdir -p ~/.ssh
+          mkdir -p /home/test/.ssh
           echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
-          sudo chmod 700 ~/.ssh/id_ed25519
+          sudo chmod 700 /home/test/.ssh/id_ed25519
           eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_ed25519
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-          ls ~/.ssh
-          ls -a /home/
-          ls -a /home/test/
-          cd && pwd
+          ssh-add /home/test/.ssh/id_ed25519
+          ssh-keyscan -H github.com >> /home/test/.ssh/known_hosts
+          ssh git@github.com
 
       # # Error Check
       # - name: Run install.sh
