@@ -16,7 +16,7 @@ jobs:
       - name: Install OPENSSH
         run: |
           sudo apt-get install update 
-          sudo apt-get  install -y -q openssh
+          sudo apt-get  install -y -q ssh
 
       - name: ADD SSH KEY
         env:
