@@ -1,4 +1,4 @@
-name: arch
+name: ubuntu
 
 on:
   push:
@@ -7,23 +7,19 @@ on:
     branches: [main]
 
 jobs:
-  arch-test:
+  macos-test:
     runs-on: ubuntu-latest
-    container:
-      image: archlinux:latest
-      options: --user root
+
     steps:
       - uses: actions/checkout@v3
 
       # Error Check
       - name: Run install.sh
-        run: |
-          sed "s/sudo //" install_arch.sh
-          /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
+        run: /bin/bash ${GITHUB_WORKSPACE}/install.sh
 
       - name: Load .zshenv
         run: |
-          zsh ~/.zshenv> error.log; cat error.log
+          zsh ~/.zshenv 2> error.log; cat error.log
           if [ -s error.log ]; then false; fi
 
       - name: Run Neovim
