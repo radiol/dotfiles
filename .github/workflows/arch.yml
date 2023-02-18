@@ -17,7 +17,9 @@ jobs:
 
       # Error Check
       - name: Run install.sh
-        run: /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
+        run: |
+          pacman -Syy --noconfirm sudo
+          /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
 
       - name: Load .zshenv
         run: |
