@@ -93,6 +93,11 @@ if [ ! -e ~/.local/bin/poetry ]; then
 fi
 ~/.local/bin/poetry config virtualenvs.in-project true
 
+# Install Rust
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
+sh rustup.sh -y && rm rustup.sh
+source "$HOME/.cargo/env"
+
 # Install volta
 curl https://get.volta.sh | bash
 

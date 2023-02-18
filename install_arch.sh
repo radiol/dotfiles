@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change mirror server
-[[ ! -d ".cache" ]] && mkdir .cache
+mkdir -p ~/.cache
 sudo pacman -Sy --noconfirm reflector
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sudo reflector --country "Japan" --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
@@ -62,6 +62,9 @@ source "$HOME/.cargo/env"
 # Install cargo apps
 cargo install trashy cargo-update
 
+# Install volta
+curl https://get.volta.sh | bash
+
 # Install dotfiles
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
@@ -72,4 +75,4 @@ sudo chsh -s /bin/zsh $(whoami)
 nvim --headless "+Lazy! sync" +qa
 
 # Create XDG folder
-[[ ! -d ~/.local/state ]] && mkdir -p ~/.local/state
+mkdir -p ~/.local/state

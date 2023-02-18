@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p ~/.cache
 # Change mirror server
 sudo pacman-mirrors --fasttrack
 
@@ -55,11 +56,15 @@ fi
 ~/.local/bin/poetry config virtualenvs.in-project true
 
 # Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
+sh rustup.sh -y && rm rustup.sh
 source "$HOME/.cargo/env"
 
 # Install cargo apps
-cargo install trashy cargo-update starship
+cargo install trashy cargo-update
+
+# Install volta
+curl https://get.volta.sh | bash
 
 # Install dotfiles
 # chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
@@ -69,3 +74,6 @@ sudo chsh -s $(which zsh) $(whoami)
 
 # Neovim Onece
 # nvim --headless "+Lazy! sync" +qa
+
+# Create XDG folder
+mkdir -p ~/.local/state
