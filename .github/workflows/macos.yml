@@ -13,6 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: ADD SSH KEY
+        env:
+          SSH_KEY: ${{ secrets.ACTION_SSH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+          chmod 700 ~/.ssh/id_ed25519
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/id_ed25519
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
       # Error Check
       - name: Run install.sh
         run: /bin/bash ${GITHUB_WORKSPACE}/install.sh
