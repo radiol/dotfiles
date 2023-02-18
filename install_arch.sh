@@ -1,3 +1,4 @@
+#!/bin/bash
 # Change mirror server
 sudo pacman -Sy --noconfirm reflector
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
@@ -23,14 +24,16 @@ sudo pacman -Sy --noconfirm \
   exa \
   fd \
   fzf \
+  gcc \
   git \
   gtk2 \
   neovim \
   npm \
+  openssl \
   python-poetry \
   ripgrep \
   sheldon \
-  ssh \
+  openssh \
   ufw \
   unzip \
   wezterm
