@@ -20,7 +20,6 @@
 !README.md
 !install*.sh
 
-
 # add black list
 .DS_Store
 .keep
