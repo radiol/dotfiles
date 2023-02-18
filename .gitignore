@@ -13,6 +13,8 @@
 !/dot_config/zsh/**
 
 !.gitignore
+!/.github/
+!/.github/workflows/
 !.chezmoiignore
 !README.md
 !install*.sh
