@@ -1,5 +1,6 @@
 #!/bin/bash
 # Change mirror server
+[[ ! -d ".cache" ]] && mkdir .cache
 sudo pacman -Sy --noconfirm reflector
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sudo reflector --country "Japan" --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
@@ -54,7 +55,7 @@ fi
 ~/.local/bin/poetry config virtualenvs.in-project true
 
 # Install Rust
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs >> rustup.sh
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
 sh rustup.sh -y && rm rustup.sh
 source "$HOME/.cargo/env"
 
@@ -68,7 +69,7 @@ chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 sudo chsh -s /bin/zsh $(whoami)
 
 # Neovim Onece
-# nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! sync" +qa
 
 # Create XDG folder
-mkdir ~/.local/state
+[[ ! -d ~/.local/state ]] && mkdir -p ~/.local/state
