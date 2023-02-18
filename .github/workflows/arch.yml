@@ -19,6 +19,7 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.ACTION_SSH }}
         run: |
+          pacman -Sy --noconfirm openssh
           mkdir -p ~/.ssh
           echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 700 ~/.ssh/id_rsa
