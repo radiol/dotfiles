@@ -1,22 +1,22 @@
 #!/bin/bash -xeu
 # Change mirror server
 mkdir -p ~/.cache
-pacman -Sy --noconfirm reflector
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-reflector --country "Japan" --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo pacman -Sy --noconfirm reflector
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo reflector --country "Japan" --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 # Update
-pacman -Syyu  --noconfirm
+sudo pacman -Syyu  --noconfirm
 
 # Change dir names to English
-pacman -Sy xdg-user-dirs-gtk --noconfirm
+sudo pacman -Sy xdg-user-dirs-gtk --noconfirm
 LANG=C xdg-user-dirs-gtk-update --noconfirm
 
 # Change CapsLock to Ctrl
 /usr/bin/setxkbmap -option "ctrl:nocaps"
 
 # Install applications
-pacman -Sy --noconfirm \
+sudo pacman -Sy --noconfirm \
   base-devel \
   bat \
   chezmoi \
@@ -70,7 +70,7 @@ curl https://get.volta.sh | bash
 chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply
 
 # Change default shell to zsh
-chsh -s /bin/zsh $(whoami)
+sudo chsh -s /bin/zsh $(whoami)
 
 # Neovim Onece
 nvim --headless "+Lazy! sync" +qa

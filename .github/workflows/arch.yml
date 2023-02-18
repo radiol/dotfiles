@@ -9,16 +9,16 @@ on:
 jobs:
   arch-test:
     runs-on: ubuntu-latest
-    container:
-      image: archlinux:latest
-      options: --user root
+    # container:
+    #   image: archlinux:latest
+    #   options: --user root
     steps:
       - uses: actions/checkout@v3
-
+      - name: Install Archlinux
+        run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
       # Error Check
       - name: Run install.sh
         run: |
-          pacman -Syy --noconfirm sudo
           /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
 
       - name: Load .zshenv
