@@ -15,7 +15,7 @@ jobs:
 
       # Error Check
       - name: Run install.sh
-        run: /bin/bash ${GITHUB_WORKSPACE}/init.sh
+        run: /bin/bash ${GITHUB_WORKSPACE}/install.sh
 
       - name: Load .zshenv
         run: |
