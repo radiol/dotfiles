@@ -14,7 +14,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install OPENSSH
-        run: sudo apt install -y -q openssh
+        run: |
+          sudo apt-get install update 
+          sudo apt-get  install -y -q openssh
 
       - name: ADD SSH KEY
         env:
