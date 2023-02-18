@@ -44,6 +44,7 @@ jobs:
           ls ~/.ssh
           ls -a /home/
           ls -a /home/test/
+          cd && pwd
 
       # # Error Check
       # - name: Run install.sh
