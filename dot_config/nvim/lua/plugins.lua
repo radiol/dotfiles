@@ -16,9 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 -----------------------------------------------------------
 -- Plugins
 -----------------------------------------------------------
--- lazyの設定のためにmapleader keyを事前に設定する
-vim.g.mapleader = " "
-
 require("lazy").setup({
 	"vim-jp/vimdoc-ja", -- vim help 日本語化
 	{ "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
