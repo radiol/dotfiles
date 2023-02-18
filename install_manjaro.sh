@@ -1,3 +1,4 @@
+#!/bin/bash
 # Change mirror server
 sudo pacman-mirrors --fasttrack
 
