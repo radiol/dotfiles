@@ -57,19 +57,19 @@ jobs:
           # sed -i -e "s/sudo //" install_arch.sh
           /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
 
-      - name: Copy dotfiles
-        run: |
-          mkdir -p ~/.local/share/
-          cp -r ${GITHUB_WORKSPACE}/* ~/.local/share/chezmoi
-          ls ~/.local/share/chezmoi
+      # - name: Copy dotfiles
+      #   run: |
+      #     mkdir -p ~/.local/share/
+      #     cp -r ${GITHUB_WORKSPACE}/* ~/.local/share/chezmoi
+      #     ls ~/.local/share/chezmoi
 
       - name: Run chezmoi
-        run: chezmoi apply
+        run: chezmoi apply -S ${GITHUB_WORKSPACE}
 
       - name: Load zsh
         run: |
-          zsh -c exit
-          zsh -c exit 2> error.log; cat error.log
+          zsh -i -l -c exit
+          zsh -i -l -c exit 2> error.log; cat error.log
           cat error.log
           # if [ -s error.log ]; then false; fi
 
