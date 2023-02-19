@@ -15,3 +15,7 @@ elif [[ $unamestr == "Darwin" ]]; then
     platform="darwin"
 fi
 echo $platform
+
+if [ $platform == "ubuntu"]; then
+    /bin/bash ./install_script/ubuntu_app.sh
+fi
