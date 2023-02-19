@@ -48,3 +48,7 @@ if [ $platform == "ubuntu" ] || [ $platform == "darwin" ]; then
     fi
 fi
 
+# ---------------------------------------------------------
+# Install asdf, cargo, volta
+# ---------------------------------------------------------
+/bin/bash ./install_script/asdf_poetry.sh
