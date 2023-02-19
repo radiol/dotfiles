@@ -60,7 +60,8 @@ jobs:
       - name: Copy dotfiles
         run: |
           mkdir -p ~/.local/share/
-          cp -r ${GITHUB_WORKSPACE}/ ~/.local/share/chezmoi
+          cp -r ${GITHUB_WORKSPACE}/* ~/.local/share/chezmoi
+          ls ~/.local/share/chezmoi
 
       - name: Run chezmoi
         run: chezmoi apply
