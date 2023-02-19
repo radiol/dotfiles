@@ -14,7 +14,7 @@ if [[ $unamestr == "Linux" ]]; then
 elif [[ $unamestr == "Darwin" ]]; then
     platform="darwin"
 fi
-echo $platform
+echo "Operation System is $platform"
 
 # Install apps for Ubuntu
 if [ $platform == "ubuntu" ]; then
