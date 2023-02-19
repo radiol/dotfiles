@@ -19,6 +19,7 @@
 !.chezmoiignore
 !README.md
 !install*.sh
+!run_once*.sh
 
 # add black list
 .DS_Store
