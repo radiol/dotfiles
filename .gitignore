@@ -20,6 +20,8 @@
 !README.md
 !install*.sh
 !run_once*.sh
+!install_script/
+!install_script/*.sh
 
 # add black list
 .DS_Store
