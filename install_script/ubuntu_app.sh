@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # If OS is Ubuntu, install require apps(for homebrew, asdf-python)
-sudo apt update && sudo apt upgrade -y && \
-sudo apt install -y \
+sudo apt update && sudo apt upgrade -y -qq && \
+sudo apt install -y -qq \
 build-essential \
 curl \
 file \
