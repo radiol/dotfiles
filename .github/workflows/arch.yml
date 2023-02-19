@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Update pacman
+        run: pacman -Syu --noconfirm
+
       # - name: Install sudo
       #   run: pacman -Sy --noconfirm sudo
       #
@@ -28,7 +31,7 @@ jobs:
       # - name: Login test user
       #   run: su - test
 
-      - name: Install openssh, git
+      - name: Install openssh, git, sudo
         run: pacman -Sy --noconfirm openssh git
 
       - name: ADD SSH KEY
