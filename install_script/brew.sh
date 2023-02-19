@@ -1,3 +1,4 @@
+#!/bin/bash -xeu
 # Check Homebrew
 if ! (type "brew" > /dev/null 2>&1); then
     # Install Homebrew

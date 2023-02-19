@@ -21,6 +21,6 @@ if [ $platform == "ubuntu" ]; then
     /bin/bash ./install_script/ubuntu_app.sh
 fi
 
-if [ $platform == "ubuntu" -o $platform == "darwin" ]; then
+if [ $platform == "ubuntu" ] || [ $platform == "darwin" ]; then
     /bin/bash ./install_script/brew.sh
 fi
