@@ -31,20 +31,20 @@ jobs:
       # - name: Login test user
       #   run: su - test
 
-      - name: Install openssh, git, sudo
-        run: pacman -Sy --noconfirm openssh git
+      - name: Install sudo
+        run: pacman -Sy --noconfirm sudo
 
-      - name: ADD SSH KEY
-        env:
-          SSH_KEY: ${{ secrets.ACTION_SSH }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$ssh_key" | tr -d '\r' > ~/.ssh/id_ed25519
-          chmod 700 ~/.ssh/id_ed25519
-          eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_ed25519
-          ssh-keyscan -H -t ed25519 github.com >> ~/.ssh/known_hosts
-          cat ~/.ssh/known_hosts
+      # - name: ADD SSH KEY
+      #   env:
+      #     SSH_KEY: ${{ secrets.ACTION_SSH }}
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "$ssh_key" | tr -d '\r' > ~/.ssh/id_ed25519
+      #     chmod 700 ~/.ssh/id_ed25519
+      #     eval $(ssh-agent -s)
+      #     ssh-add ~/.ssh/id_ed25519
+      #     ssh-keyscan -H -t ed25519 github.com >> ~/.ssh/known_hosts
+      #     cat ~/.ssh/known_hosts
 
       - name: Check chezmoi
         run: |
@@ -52,16 +52,24 @@ jobs:
           chezmoi init git@github.com:radiol/dotfiles.git
 
       # # Error Check
-      # - name: Run install.sh
-      #   run: |
-      #     # sed -i -e "s/sudo //" install_arch.sh
-      #     /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
-      #
-      # - name: Load zsh
-      #   run: |
-      #     zsh -i -l -c exit 2> error.log; cat error.log
-      #     cat error.log
-      #     if [ -s error.log ]; then false; fi
-      #
-      # - name: Check lazy.nvim dir
-      #   run: ls /home/test/.local/share/nvim/lazy/
+      - name: Run install.sh
+        run: |
+          # sed -i -e "s/sudo //" install_arch.sh
+          /bin/bash ${GITHUB_WORKSPACE}/install_arch.sh
+
+      - name: Copy dotfiles
+        run: |
+          mkdir -p ~/.local/share/
+          cp -r ${GITHUB_WORKSPACE}/ ~/.local/share/chezmoi
+
+      - name: Run chezmoi
+        run: chezmoi apply
+
+      - name: Load zsh
+        run: |
+          zsh -i -l -c exit 2> error.log; cat error.log
+          cat error.log
+          if [ -s error.log ]; then false; fi
+
+      - name: Check lazy.nvim dir
+        run: ls /home/test/.local/share/nvim/lazy/
