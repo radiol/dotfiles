@@ -37,7 +37,10 @@ jobs:
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
-      - name: Rune once script
+      # - name: Delete sudo from script
+      #   run: sed -i -e "s/sudo //" ~/.local/share/chezmoi/install_script/pacman_app.sh
+
+      - name: Run once script
         run: /bin/bash ~/.local/share/chezmoi/run_once_install.sh
       # - name: ADD SSH KEY
       #   env:
