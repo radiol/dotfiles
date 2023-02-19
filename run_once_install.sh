@@ -15,6 +15,7 @@ elif [[ $unamestr == "Darwin" ]]; then
     platform="darwin"
 fi
 echo "Operating System is $platform"
+cd ~/.local/share/chezmoi
 
 # ---------------------------------------------------------
 # Installation for ArchLinux and Manjaro
