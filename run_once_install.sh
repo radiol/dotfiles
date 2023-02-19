@@ -15,6 +15,9 @@ elif [[ $unamestr == "Darwin" ]]; then
     platform="darwin"
 fi
 echo "Operating System is $platform"
+
+/bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+
 cd ~/.local/share/chezmoi
 
 # ---------------------------------------------------------
@@ -52,4 +55,43 @@ fi
 # ---------------------------------------------------------
 # Install asdf, cargo, volta
 # ---------------------------------------------------------
-/bin/bash ./install_script/asdf_poetry.sh
+# Install asdf
+if ! (type "asdf" > /dev/null 2>&1); then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+    source "$HOME/.asdf/asdf.sh"
+fi
+
+# Install python by asdf
+asdf plugin add python && \
+asdf install python latest && \
+asdf global python latest
+
+# Install poetry
+if [ ! -e ~/.local/bin/poetry ]; then
+    curl -sSL https://install.python-poetry.org | python3 -
+fi
+~/.local/bin/poetry config virtualenvs.in-project true
+
+# Install Rust
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
+sh rustup.sh -y && rm rustup.sh
+source "$HOME/.cargo/env"
+
+# Install cargo apps
+if [ ! $platform == "darwin" ]; then
+    cargo install trashy cargo-update
+fi
+# Install volta
+curl https://get.volta.sh | bash
+
+# Change default shell to zsh
+if [ $platform == "arch" ]; then
+    sudo chsh -s /bin/zsh $(whoami)
+else
+    sudo chsh -s $(which zsh) $(whoami)
+fi
+# Neovim Onece
+nvim --headless "+Lazy! sync" +qa
+
+# Create XDG folder
+mkdir -p ~/.local/state
