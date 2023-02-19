@@ -74,4 +74,6 @@ jobs:
           # if [ -s error.log ]; then false; fi
 
       - name: Check lazy.nvim dir
-        run: ls ~/.local/share/
+        run: |
+          nvim --headless "+Lazy! sync" +qa
+          ls ~/.local/share/nvim/lazy/
