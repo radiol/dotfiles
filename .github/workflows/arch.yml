@@ -46,10 +46,10 @@ jobs:
       #     ssh-keyscan -H -t ed25519 github.com >> ~/.ssh/known_hosts
       #     cat ~/.ssh/known_hosts
 
-      - name: Check chezmoi
-        run: |
-          pacman -Sy --noconfirm chezmoi
-          chezmoi init git@github.com:radiol/dotfiles.git
+      # - name: Check chezmoi
+      #   run: |
+      #     pacman -Sy --noconfirm chezmoi
+      #     chezmoi init git@github.com:radiol/dotfiles.git
 
       # # Error Check
       - name: Run install.sh
