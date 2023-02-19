@@ -29,8 +29,13 @@ if [ $platform == "ubuntu" ]; then
     /bin/bash ./install_script/ubuntu_app.sh
 fi
 
-# Check and Install Homebrew
+# Check and Install Homebrew. Install Apps
 if [ $platform == "ubuntu" ] || [ $platform == "darwin" ]; then
     /bin/bash ./install_script/brew.sh
+    /bin/bash ./install_script/brew_app.sh
+    # Install apps for macOS
+    if [ $platform == "darwin" ]; then
+        /bin/bash ./install_script/mac_app.sh
+    fi
 fi
 
