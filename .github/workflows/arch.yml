@@ -16,20 +16,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install sudo
-        run: pacman -Sy --noconfirm sudo
+      # - name: Install sudo
+      #   run: pacman -Sy --noconfirm sudo
+      #
+      # - name: Create test user
+      #   run: |
+      #     useradd -m -g wheel -s /bin/bash test
+      #     echo test:test | chpasswd
+      #     sed -i -e "s/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/" /etc/sudoers
+      #
+      # - name: Login test user
+      #   run: su - test
 
-      - name: Create test user
-        run: |
-          useradd -m -g wheel -s /bin/bash test
-          echo test:test | chpasswd
-          sed -i -e "s/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/" /etc/sudoers
-
-      - name: Login test user
-        run: su - test
-
-      - name: Install OPEN SSH
-        run: sudo pacman -Sy --noconfirm openssh
+      - name: Install openssh, git
+        run: pacman -Sy --noconfirm openssh git
 
       - name: ADD SSH KEY
         env:
@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "$ssh_key" | tr -d '\r' > ~/.ssh/id_ed25519
-          sudo chmod 700 ~/.ssh/id_ed25519
+          chmod 700 ~/.ssh/id_ed25519
           eval $(ssh-agent -s)
           ssh-add ~/.ssh/id_ed25519
           ssh-keyscan -H -t ed25519 github.com >> ~/.ssh/known_hosts
@@ -45,7 +45,7 @@ jobs:
 
       - name: Check chezmoi
         run: |
-          sudo pacman -Sy --noconfirm chezmoi
+          pacman -Sy --noconfirm chezmoi
           chezmoi init git@github.com:radiol/dotfiles.git
 
       # # Error Check
