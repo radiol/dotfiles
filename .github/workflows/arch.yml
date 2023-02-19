@@ -37,6 +37,8 @@ jobs:
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
+      - name: Rune once script
+        run: /bin/bash ~/.local/share/chezmoi/run_once_install.sh
       # - name: ADD SSH KEY
       #   env:
       #     SSH_KEY: ${{ secrets.ACTION_SSH }}

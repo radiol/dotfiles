@@ -22,7 +22,7 @@ jobs:
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
       - name: Rune once script
-        run: /bin/bash ~/.local/share/run_once_install.sh
+        run: /bin/bash ~/.local/share/chezmoi/run_once_install.sh
       # - name: Install OPENSSH
       #   run: |
       #     sudo apt-get update
