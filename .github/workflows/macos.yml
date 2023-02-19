@@ -20,9 +20,6 @@ jobs:
 
       - name: Rune once script
         run: /bin/bash ~/.local/share/chezmoi/run_once_install.sh
-
-      - name: check brew
-        run: brew doctor
       #
       # - name: ADD SSH KEY
       #   env:
