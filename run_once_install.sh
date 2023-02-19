@@ -16,6 +16,9 @@ elif [[ $unamestr == "Darwin" ]]; then
 fi
 echo "Operating System is $platform"
 
+# ---------------------------------------------------------
+# Installation for ArchLinux and Manjaro
+# ---------------------------------------------------------
 # Set mirrors for ArchLinux and Manjaro
 if [ $platform == "arch" ]; then
     /bin/bash ./install_script/set_mirror_arch.sh
@@ -23,7 +26,13 @@ elif [ $platform == "manjaro" ]; then
     /bin/bash ./install_script/set_mirror_manjaro.sh
 fi
 
+if [ $platform == "arch" ] || [ $platform == "manjaro" ]; then
+    /bin/bash ./install_script/pacman_app.sh
+fi
 
+# ---------------------------------------------------------
+# Installation for MacOS and Ubuntu with Homebrew
+# ---------------------------------------------------------
 # Install apps for Ubuntu
 if [ $platform == "ubuntu" ]; then
     /bin/bash ./install_script/ubuntu_app.sh
