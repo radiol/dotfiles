@@ -1,57 +1,22 @@
 # dotfiles
-2022/07/07作成。
-Mac, Ubuntu共用のdotfile。chezmoi + sheldonで作成。
-homebrewを利用。
+
+2022/07/07 作成。
+Mac, Ubuntu 共用の dotfile。chezmoi + sheldon で作成。
+homebrew を利用。
 
 # Install
-```
-/bin/bash -c "$(curl -fsSL HEAD/install.sh)"
-```
-git@github.com:radiol/dotfiles.gitは各自のリポジトリに変更
-```
-chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
-```
-
-## install.shで行なっていること
-### Linuxでzshやhomebrewに必要なパッケージ、ja_JP.UTF-8が入っていない場合、インストールする
-```
-sudo apt install zsh build-essential procps curl file git language-pack-ja -y
-```
-### homebrewのインストール
 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### homebrewのパスを一時的に通す
-
-```
-if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
- HOMEBREW_HOME='/home/linuxbrew/.linuxbrew'
-elif [[ -d '/opt/homebrew' ]]; then
- HOMEBREW_HOME='/opt/homebrew'
-else
- HOMEBREW_HOME='/usr/local'
-fi
-eval "$($HOMEBREW_HOME/bin/brew shellenv)"
-```
-
-### chezmoi, sheldonなどのインストール
-
-```
-brew install chezmoi sheldon
-```
-
-### chezmoiを用いてdotfilesをcloneし適用
-
-```
-chezmoi init git@github.com:radiol/dotfiles.git && chezmoi apply -v
+/bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+/bin/bash ~/.local/share/chezmoi/run_once_install.sh
 ```
 
 # Update
-## dotfilesの設定変更
 
-### dotfilesの編集(.zshrcの場合)
+## dotfiles の設定変更
+
+### dotfiles の編集(.zshrc の場合)
+
 編集だけでは設定に反映されない
 
 ```
@@ -64,16 +29,17 @@ chezmoi edit .zshrc
 chezmoi apply -v
 ```
 
-## remote(GitHub)の変更をlocalに適用
+## remote(GitHub)の変更を local に適用
 
 ```
 chezmoi update -v
 ```
 
-## localの変更をGitHubへpush
+## local の変更を GitHub へ push
 
 ```
 chezmoi git -- add -A
 chezmoi git -- commit
 chezmoi git -- push origin main
 ``
+```
