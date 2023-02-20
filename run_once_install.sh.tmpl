@@ -163,7 +163,9 @@ cd ~/.local/share/chezmoi
 # ---------------------------------------------------------
 # Install asdf
 if ! (type "asdf" > /dev/null 2>&1); then
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+    if [ ! -d "$HOME/.asdf" ]; then
+      git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+    fi
     source "$HOME/.asdf/asdf.sh"
 fi
 
