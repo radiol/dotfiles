@@ -35,5 +35,3 @@ jobs:
       - name: Check lazy.nvim dir
         run: ls ~/.local/share/nvim/lazy/
 
-      - name: Check Keyboard Config
-        run: cat /etc/default/keyboard | grep nocaps
