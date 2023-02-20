@@ -16,9 +16,3 @@ if [[ $platform == mac ]]; then
   alias dircolors="gdircolors"
 fi
 
-# clipboard
-if [[ $platform == mac ]]; then
-  alias C="pbcopy"
-elif [[ $platform == linux ]]; then
-  alias C="xsel -b"
-fi
