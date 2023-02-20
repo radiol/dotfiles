@@ -185,16 +185,16 @@ fi
 # Install Rust
 if ! (type "cargo" > /dev/null 2>&1); then
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
-    sh rustup.sh -y && rm rustup.sh
+    sh rustup.sh -y -q --no-modify-path && rm rustup.sh
     source "$HOME/.cargo/env"
 fi
 
 # Install Rust Apps
-cargo install cargo-update
+cargo install -q cargo-update
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
-    cargo install trashy
+    cargo install -q trashy
 {{end -}}
 
 # Install volta
