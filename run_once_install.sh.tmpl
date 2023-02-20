@@ -205,7 +205,7 @@ sudo chsh -s $(which zsh) $(whoami)
 nvim --headless "+Lazy! sync" +qa
 
 # Install TreeSitter vim
-nvim --headless "+TSInstall vim" +qa
+nvim "+TSInstall vim" +qa
 
 # Create XDG folder
 mkdir -p ~/.local/state
