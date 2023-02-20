@@ -200,10 +200,6 @@ if ! (type "volta" > /dev/null 2>&1); then
     curl https://get.volta.sh | bash
 fi
 
-# Change default shell to zsh
-if [ "$(whoami)" != "runner" ]; then
-    chsh -s "$(which zsh)" "$(whoami)"
-fi
 # Neovim Sync Plugins
 nvim --headless "+Lazy! sync" +qa
 
