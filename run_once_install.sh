@@ -16,7 +16,7 @@ elif [[ $unamestr == "Darwin" ]]; then
 fi
 echo "Operating System is $platform"
 
-/bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+# /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
 cd ~/.local/share/chezmoi
 
