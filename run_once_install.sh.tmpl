@@ -5,11 +5,11 @@
 # ---------------------------------------------------------
 {{- $platform := "" -}}
 {{ if eq .chezmoi.os "linux" -}}
-    {{ if eq .chezmoi.osRelease "arch" -}}
-        {{- $platform = "arch" -}}
-    {{ else if eq .chezmoi.osRelease "ubuntu" -}}
+    {{- if eq (index .chezmoi.env "LSB_RELEASE_ID") "Ubuntu" -}}
         {{- $platform = "ubuntu" -}}
-    {{ else if eq .chezmoi.osRelease "manjaro" -}}
+    {{- else if eq (index .chezmoi.env "ID") "arch" -}}
+        {{- $platform = "arch" -}}
+    {{- else if eq (index .chezmoi.env "ID") "manjaro" -}}
         {{- $platform = "manjaro" -}}
     {{ end -}}
 {{ else if eq .chezmoi.os "darwin" -}}
