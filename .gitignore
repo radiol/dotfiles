@@ -20,6 +20,7 @@
 !README.md
 !install*.sh
 !run_once*.sh
+!run_onchange*.sh
 !install_script/
 !install_script/*.sh
 
