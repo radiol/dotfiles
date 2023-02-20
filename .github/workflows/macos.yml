@@ -18,8 +18,8 @@ jobs:
       - name: Run chezmoi
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
-      - name: Run once script
-        run: /bin/bash ~/.local/share/chezmoi/run_once_install.sh
+      # - name: Run once script
+      #   run: /bin/bash ~/.local/share/chezmoi/run_once_install.sh
 
       # Error Check
       - name: Exec zsh

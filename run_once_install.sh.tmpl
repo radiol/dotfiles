@@ -1,0 +1,215 @@
+#!/bin/bash -xeu
+
+# ---------------------------------------------------------
+# Get operating system
+# ---------------------------------------------------------
+{{- $platform := "" -}}
+{{ if eq .chezmoi.os "linux" -}}
+    {{ if eq .chezmoi.osRelease "arch" -}}
+        {{- $platform = "arch" -}}
+    {{ else if eq .chezmoi.osRelease "ubuntu" -}}
+        {{- $platform = "ubuntu" -}}
+    {{ else if eq .chezmoi.osRelease "manjaro" -}}
+        {{- $platform = "manjaro" -}}
+    {{ end -}}
+{{ else if eq .chezmoi.os "darwin" -}}
+    {{- $platform = "darwin" -}}
+{{- end -}}
+
+{{if eq $platform "" -}}
+    # if platform is empty, raise error.
+    echo "Operating System is UNKNOWN!"
+    return 1
+{{- end}}
+
+echo "Operating System is {{$platform}}"
+
+cd ~/.local/share/chezmoi
+
+{{if eq $platform "arch" -}}
+# ---------------------------------------------------------
+# Set Mirror Server for ArchLinux
+# ---------------------------------------------------------
+    echo "Setting arch mirror servers"
+    mkdir -p ~/.cache
+    sudo pacman -Sy --noconfirm reflector
+    sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+    sudo reflector --country "Japan,Australia" --age 24 --latest 5 --protocol https --sort score --save /etc/pacman.d/mirrorlist
+{{end -}}
+
+{{if eq $platform "manjaro" -}}
+# ---------------------------------------------------------
+# Set Mirror Server for Manjaro
+# ---------------------------------------------------------
+    mkdir -p ~/.cache
+    sudo pacman-mirrors --fasttrack
+{{end -}}
+
+{{if or (eq $platform "arch") (eq $platform "manjaro") -}}
+# ---------------------------------------------------------
+# Setup Pacman
+# ---------------------------------------------------------
+    # Update
+    sudo pacman -Syyu  --noconfirm
+
+    # Change dir names to English
+    sudo pacman -Sy xdg-user-dirs-gtk --noconfirm
+    LANG=C xdg-user-dirs-gtk-update --noconfirm
+
+    # Change CapsLock to Ctrl
+    /usr/bin/setxkbmap -option "ctrl:nocaps"
+
+    # Install applications
+    sudo pacman -Sy --noconfirm \
+        base-devel \
+        bat \
+        chezmoi \
+        cmake \
+        curl \
+        exa \
+        fd \
+        fzf \
+        gcc \
+        git \
+        gtk2 \
+        neovim \
+        npm \
+        openssl \
+        python-poetry \
+        ripgrep \
+        sheldon \
+        openssh \
+        ufw \
+        unzip \
+        wezterm \
+        zsh
+{{end -}}
+
+{{ if eq $platform "darwin" -}}
+    echo "Mac"
+{{end -}}
+
+{{ if eq $platform "ubuntu" -}}
+# ---------------------------------------------------------
+# Install apps for Ubuntu
+# ---------------------------------------------------------
+    sudo apt update && sudo apt upgrade -y -qq && \
+    sudo apt install -y -qq \
+    build-essential \
+    curl \
+    file \
+    git \
+    language-pack-ja \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    llvm \
+    make \
+    procps \
+    tk-dev \
+    wget \
+    xz-utils \
+    zlib1g-dev \
+    zsh && \
+    sudo apt autoclean
+    {{end -}}
+
+{{ if or (eq $platform "darwin") (eq $platform "ubuntu") -}}
+# ---------------------------------------------------------
+# Install Homebrew adn Apps
+# ---------------------------------------------------------
+# Check Homebrew
+    if ! (type "brew" > /dev/null 2>&1); then
+        # Install Homebrew
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+        # Activate Homebrew path
+        if [[ -d "/home/linuxbrew/.linuxbrew" ]]
+        then
+            HOMEBREW_HOME="/home/linuxbrew/.linuxbrew"
+        elif [[ -d "/opt/homebrew" ]]
+        then
+            HOMEBREW_HOME="/opt/homebrew"
+        else
+            HOMEBREW_HOME="/usr/local"
+        fi
+        eval "$($HOMEBREW_HOME/bin/brew shellenv)"
+    fi
+# Install Apps
+    brew install \
+        chezmoi \
+        sheldon \
+        asdf \
+        bat \
+        deno \
+        exa \
+        fd \
+        fzf \
+        nodejs \
+        ripgrep \
+        neovim
+{{end -}}
+
+{{ if eq $platform "darwin" -}}
+# ---------------------------------------------------------
+# Install Apps for Mac
+# ---------------------------------------------------------
+    brew tap homebrew/cask-fonts
+    brew install --cask font-hack-nerd-font
+    brew install openssl readline sqlite3 xz zlib tcl-tk
+{{end -}}
+
+# ---------------------------------------------------------
+# Install asdf, cargo, volta
+# ---------------------------------------------------------
+# Install asdf
+if ! (type "asdf" > /dev/null 2>&1); then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+    source "$HOME/.asdf/asdf.sh"
+fi
+
+# Install python by asdf
+asdf plugin add python && \
+asdf install python latest && \
+asdf global python latest
+
+# Install poetry
+if [ ! -e ~/.local/bin/poetry ]; then
+    curl -sSL https://install.python-poetry.org | python3 -
+fi
+~/.local/bin/poetry config virtualenvs.in-project true
+
+# Install Rust
+if ! (type "cargo" > /dev/null 2>&1); then
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
+    sh rustup.sh -y && rm rustup.sh
+    source "$HOME/.cargo/env"
+fi
+
+# Install Rust Apps
+cargo install cargo-update
+
+{{ if eq .chezmoi.os "linux" -}}
+# Install trashy (Linux only)
+    cargo install trashy
+{{end -}}
+
+# Install volta
+if ! (type "volta" > /dev/null 2>&1); then
+    curl https://get.volta.sh | bash
+fi
+
+# Change default shell to zsh
+sudo chsh -s $(which zsh) $(whoami)
+
+# Neovim Sync Plugins
+nvim --headless "+Lazy! sync" +qa
+
+# Create XDG folder
+mkdir -p ~/.local/state
