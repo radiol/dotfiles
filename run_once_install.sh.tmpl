@@ -211,10 +211,14 @@ nvim --headless "+Lazy! sync" +qa
 # Create XDG folder
 mkdir -p ~/.local/state
 
-{{ if eq .chezmoi.os "linux" -}}
-# ---------------------------------------------------------
-# Key config for linux
-# ---------------------------------------------------------
-# Change CapsLock to Ctrl
-    sudo sed -i -e "s/XKBOPTIONS=\"\"/XKBOPTIONS=\"ctrl:nocaps\"/" /etc/default/keyboard
-{{end -}}
+# Delete ~/bin/chezmoi
+if [ -f "$HOME/bin/chezmoi" ]; then
+    echo "Removing ~/bin/chezmoi"
+    rm "$HOME/bin/chezmoi"
+fi
+if [ -d "$HOME/bin" ]; then
+    if [ -z "$(ls -A $HOME/bin)" ]; then
+        echo "Removing ~/bin"
+        rmdir "$HOME/bin"
+    fi
+fi
