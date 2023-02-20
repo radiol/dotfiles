@@ -199,9 +199,7 @@ if ! (type "volta" > /dev/null 2>&1); then
 fi
 
 # Change default shell to zsh
-if [ "$(whoami)" = "root" ]; then
-    sudo chsh -s "$(which zsh)" "$(whoami)"
-else
+if [ "$(whoami)" != "runner" ]; then
     chsh -s "$(which zsh)" "$(whoami)"
 fi
 # Neovim Sync Plugins
