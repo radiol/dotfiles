@@ -32,7 +32,7 @@ cd ~/.local/share/chezmoi
 # ---------------------------------------------------------
     echo "Setting arch mirror servers"
     mkdir -p ~/.cache
-    sudo pacman -Sy --noconfirm reflector
+    sudo pacman -Sy -q --noconfirm reflector
     sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
     sudo reflector --country "Japan,Australia" --age 24 --latest 5 --protocol https --sort score --save /etc/pacman.d/mirrorlist
 {{end -}}
@@ -50,14 +50,14 @@ cd ~/.local/share/chezmoi
 # Setup Pacman
 # ---------------------------------------------------------
     # Update
-    sudo pacman -Syyu  --noconfirm
+    sudo pacman -Syyu -q --noconfirm
 
     # Change dir names to English
-    sudo pacman -Sy xdg-user-dirs-gtk --noconfirm
+    sudo pacman -Sy -q xdg-user-dirs-gtk --noconfirm
     LANG=C xdg-user-dirs-gtk-update --noconfirm
 
     # Install applications
-    sudo pacman -Sy --noconfirm \
+    sudo pacman -Sy -q --noconfirm \
         base-devel \
         bat \
         chezmoi \
@@ -82,15 +82,11 @@ cd ~/.local/share/chezmoi
         zsh
 {{end -}}
 
-{{ if eq $platform "darwin" -}}
-    echo "Mac"
-{{end -}}
-
 {{ if eq $platform "ubuntu" -}}
 # ---------------------------------------------------------
 # Install apps for Ubuntu
 # ---------------------------------------------------------
-    sudo apt update && sudo apt upgrade -y -qq && \
+    sudo apt update -qq && sudo apt upgrade -y -qq && \
     sudo apt install -y -qq \
     build-essential \
     curl \
@@ -114,8 +110,8 @@ cd ~/.local/share/chezmoi
     xz-utils \
     zlib1g-dev \
     zsh && \
-    sudo apt autoclean
-    {{end -}}
+    sudo apt autoclean -qq
+{{end -}}
 
 {{ if or (eq $platform "darwin") (eq $platform "ubuntu") -}}
 # ---------------------------------------------------------
@@ -139,7 +135,7 @@ cd ~/.local/share/chezmoi
         eval "$($HOMEBREW_HOME/bin/brew shellenv)"
     fi
 # Install Apps
-    brew install \
+    brew install -q \
         chezmoi \
         sheldon \
         asdf \
@@ -158,8 +154,8 @@ cd ~/.local/share/chezmoi
 # Install Apps for Mac
 # ---------------------------------------------------------
     brew tap homebrew/cask-fonts
-    brew install --cask font-hack-nerd-font
-    brew install openssl readline sqlite3 xz zlib tcl-tk
+    brew install -q --cask font-hack-nerd-font
+    brew install -q openssl readline sqlite3 xz zlib tcl-tk
 {{end -}}
 
 # ---------------------------------------------------------
