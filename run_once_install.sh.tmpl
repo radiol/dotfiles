@@ -199,7 +199,7 @@ if ! (type "volta" > /dev/null 2>&1); then
 fi
 
 # Change default shell to zsh
-sudo chsh -s $(which zsh) $(whoami)
+chsh -s $(which zsh) $(whoami)
 
 # Neovim Sync Plugins
 nvim --headless "+Lazy! sync" +qa
