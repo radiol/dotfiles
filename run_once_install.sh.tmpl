@@ -56,9 +56,6 @@ cd ~/.local/share/chezmoi
     sudo pacman -Sy xdg-user-dirs-gtk --noconfirm
     LANG=C xdg-user-dirs-gtk-update --noconfirm
 
-    # Change CapsLock to Ctrl
-    /usr/bin/setxkbmap -option "ctrl:nocaps"
-
     # Install applications
     sudo pacman -Sy --noconfirm \
         base-devel \
@@ -213,3 +210,11 @@ nvim --headless "+Lazy! sync" +qa
 
 # Create XDG folder
 mkdir -p ~/.local/state
+
+{{ if eq .chezmoi.os "linux" -}}
+# ---------------------------------------------------------
+# Key config for linux
+# ---------------------------------------------------------
+# Change CapsLock to Ctrl
+    sudo sed -i -e "s/XKBOPTIONS=\"\"/XKBOPTIONS=\"ctrl:nocaps\"/" /etc/default/keyboard
+{{end -}}
