@@ -46,6 +46,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Update pacman
+        run: pacman -Syu -q --noconfirm
+
+      - name: Install sudo
+        run: pacman -Sy -q --noconfirm sudo git curl
+
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
