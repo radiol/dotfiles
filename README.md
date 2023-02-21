@@ -15,6 +15,10 @@ ArchLinux, Manjaro -> pacman
 
 # Install
 
-```
+```sh
 /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+```
+OR
+```sh
+chezmoi init --apply radiol
 ```
