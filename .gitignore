@@ -1,22 +1,27 @@
-# ignore all
+# ignore all files
 *
+
+# add all dirs
 !*/
 
-# add white list
+# white list
 !/dot_zshenv
 !/dot_config/**
-#
+
+# github files
 !.gitignore
 !.github/workflows/*
+!README.md
+
+# chezmoi files
 !.chezmoiignore
 !.chezmoiexternal.toml
-!README.md
 !run_once*.sh
 !run_once*.sh.tmpl
 !run_onchange*.sh
 !run_onchange*.sh.tmpl
 
-# add black list
+# black list
 .DS_Store
 .keep
 .git/
