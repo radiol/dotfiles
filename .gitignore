@@ -1,14 +1,12 @@
 # ignore all
 *
-*/
+!*/
 
 # add white list
 !/dot_zshenv
-!/dot_config
-
+!/dot_config/**
+#
 !.gitignore
-!.github/
-!.github/workflows/
 !.github/workflows/*
 !.chezmoiignore
 !.chezmoiexternal.toml
