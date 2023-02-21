@@ -17,6 +17,7 @@
 !.github/workflows/
 !.github/workflows/*
 !.chezmoiignore
+!.chezmoiexternal.toml
 !README.md
 !install*.sh
 !run_once*.sh
