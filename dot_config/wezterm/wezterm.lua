@@ -29,7 +29,7 @@ keys = {
 return {
 	initial_cols = 125,
 	initial_rows = 35,
-	font = wezterm.font("JetBrains Mono"),
+	font = wezterm.font_with_fallback({ "JetBrains Mono", "Hack Nerd Font" }),
 	use_ime = true,
 	color_scheme = "tokyonight",
 	window_background_opacity = 0.8,
