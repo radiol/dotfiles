@@ -158,20 +158,14 @@ cd ~/.local/share/chezmoi
 {{end -}}
 
 # ---------------------------------------------------------
-# Install asdf, cargo, volta
+# Install cargo, volta
 # ---------------------------------------------------------
-# Install asdf
-## if ! (type "asdf" > /dev/null 2>&1); then
-##     if [ ! -d "$HOME/.asdf" ]; then
-##         git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
-##     fi
-source "$HOME/.asdf/asdf.sh"
-## fi
-
 # Install python by asdf
-asdf plugin add python && \
-asdf install python latest && \
+set +e
+asdf plugin add python ; \
+asdf install python latest ; \
 asdf global python latest
+set -e
 
 # Install poetry
 if [ ! -e ~/.local/bin/poetry ]; then
