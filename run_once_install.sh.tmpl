@@ -138,7 +138,6 @@ cd ~/.local/share/chezmoi
     brew install -q \
         chezmoi \
         sheldon \
-        asdf \
         bat \
         deno \
         exa \
@@ -162,12 +161,12 @@ cd ~/.local/share/chezmoi
 # Install asdf, cargo, volta
 # ---------------------------------------------------------
 # Install asdf
-if ! (type "asdf" > /dev/null 2>&1); then
-    if [ ! -d "$HOME/.asdf" ]; then
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
-    fi
-    source "$HOME/.asdf/asdf.sh"
-fi
+## if ! (type "asdf" > /dev/null 2>&1); then
+##     if [ ! -d "$HOME/.asdf" ]; then
+##         git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+##     fi
+source "$HOME/.asdf/asdf.sh"
+## fi
 
 # Install python by asdf
 asdf plugin add python && \
