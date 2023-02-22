@@ -1,4 +1,4 @@
-[".asdf"]
+["ghq/asdf"]
 type = "git-repo"
 url = "https://github.com/asdf-vm/asdf.git"
 refreshPeriod = "168h"
