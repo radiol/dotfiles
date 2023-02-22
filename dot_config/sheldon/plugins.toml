@@ -61,6 +61,9 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
 
+[plugins.asdf]
+github = "asdf-vm/asdf"
+
 [plugins.poetry]
 local = "~/.local/bin"
 apply = ["PATH"]
@@ -81,3 +84,4 @@ apply = ["source"]
 local = "~/.config/zsh/defe"
 use = ["*.zsh"]
 apply = ["defer"]
+
