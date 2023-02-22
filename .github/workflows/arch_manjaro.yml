@@ -36,3 +36,33 @@ jobs:
       - name: Check lazy.nvim dir
         run: |
           ls ~/.local/share/nvim/lazy/
+
+  manjaro-test:
+    runs-on: ubuntu-latest
+    # if: ${{ contains(github.event.head_commit.message, "[CI]") }}
+    container:
+      image: manjarolinux/base:latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Update pacman
+        run: pacman -Syu -q --noconfirm
+
+      - name: Install sudo
+        run: pacman -Sy -q --noconfirm sudo git curl
+
+      - name: Run chezmoi
+        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+
+      # # Error Check
+      - name: Load zsh
+        run: |
+          zsh -i -l -c exit
+          zsh -i -l -c exit 2> error.log; cat error.log
+          cat error.log
+          if [ -s error.log ]; then false; fi
+
+      - name: Check lazy.nvim dir
+        run: |
+          ls ~/.local/share/nvim/lazy/
