@@ -53,7 +53,7 @@ path=($HOME/.local/bin(N-/) $path)
 export GHQ_ROOT="$HOME/ghq/"
 
 # asdf
-source "$GHP_ROOT/asdf/asdf.sh"
+source "$GHQ_ROOT/asdf/asdf.sh"
 
 # Volta
 export VOLTA_HOME="$HOME/.volta"
