@@ -48,8 +48,10 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # Path
 # ---------------------------------------------------------
 path=($HOME/.local/bin(N-/) $path)
+
 # Volta
 export VOLTA_HOME="$HOME/.volta"
 path=($VOLTA_HOME/bin(N-/) $path)
+
 # Cargo
 path=($HOME/.cargo/bin(N-/) $path)
