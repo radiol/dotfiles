@@ -158,13 +158,6 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 # Install cargo, volta
 # ---------------------------------------------------------
-# Install python by asdf
-set +e
-asdf plugin add python ; \
-asdf install python latest ; \
-asdf global python latest
-set -e
-
 # Install poetry
 if [ ! -e ~/.local/bin/poetry ]; then
     curl -sSL https://install.python-poetry.org | python3 -
