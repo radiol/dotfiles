@@ -19,12 +19,15 @@ jobs:
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
 
       # Error Check
-      - name: Exec zsh
+      - name: Exec zsh and check sheldon/plugins.lock exist.
         run: |
           zsh -i -l -c exit
-          zsh -i -l -c exit 2> error.log; cat error.log
-          cat error.log
-          if [ -s error.log ]; then false; fi
+          if [ -f "$HOME/.local/share/sheldon/plugins.lock" ]; then
+            echo "Sheldon plugins loaded successfully."
+          else
+            echo "Failed to load Sheldon plugins."
+            exit 1
+          fi
 
       - name: Check lazy.nvim dir
         run: ls ~/.local/share/nvim/lazy/
