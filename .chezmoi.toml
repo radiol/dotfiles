@@ -1,0 +1,7 @@
+[data]
+[data.env_files]
+[data.env_files.im]
+target = "~/.config/enviroment.d/im.conf"
+source = "dot_config/enviroment.d/im.conf"
+mode = "0600"
+when = "chezmoi.os == 'linux' and chezmoi.os_release_id == 'arch'"

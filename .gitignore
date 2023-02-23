@@ -14,6 +14,7 @@
 !README.md
 
 # chezmoi files
+!.chezmoi.toml
 !.chezmoiignore
 !.chezmoiexternal.toml
 !run_once*.sh
