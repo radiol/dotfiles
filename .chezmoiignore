@@ -1,2 +1,5 @@
 /README.md
 /.github
+{{- if or (ne .chezmoi.os "linux") (ne .chezmoi.os_release_id "arch")}}
+  .config/environment.d/
+{{- end}}
