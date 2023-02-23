@@ -72,7 +72,7 @@ abbr brewu="brew update && brew upgrade && brew cleanup && brew doctor"
 # Atcoder-cli
 abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
 abbr acct="poetry run oj t -c 'python3 main.py' -d ./tests/"
-abbr acctf="poetry run autoflake -ri --remove-all-unused-imports --ignore-init-module-imports main.py && poetry run oj t -c 'python3 main.py' -d ./tests/"
+abbr accft="poetry run black main.py && poetry run autoflake -ri --remove-all-unused-imports --ignore-init-module-imports main.py && poetry run oj t -c 'python3 main.py' -d ./tests/"
 abbr accn="(){acc new $1 && cd $1}"
 
 # Cargo-compete
