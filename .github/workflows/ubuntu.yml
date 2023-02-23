@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: apt update & install git curl
-        run: sudo apt update -y && sudo apt install -y git curl 
+      - name: apt update & install git curl zsh
+        run: sudo apt update -y && sudo apt install -y git curl zsh
 
       - name: Run chezmoi
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
@@ -24,9 +24,7 @@ jobs:
       # Error Check
       - name: Exec zsh
         run: |
-          zsh -i -l -c exit
-          zsh -l -c exit 2> error.log; cat error.log
-          cat error.log
+          zsh -i -l -c exit 2> error.log; cat error.log
           if [ -s error.log ]; then false; fi
 
       - name: Check lazy.nvim dir

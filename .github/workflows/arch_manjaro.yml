@@ -48,9 +48,7 @@ jobs:
       # # Error Check
       - name: Load zsh
         run: |
-          zsh -i -l -c exit
           zsh -i -l -c exit 2> error.log; cat error.log
-          cat error.log
           if [ -s error.log ]; then false; fi
       - name: Check lazy.nvim dir
         run: |
