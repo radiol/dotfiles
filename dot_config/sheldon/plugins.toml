@@ -46,9 +46,9 @@ github = "wting/autojump"
 dir = "bin"
 apply = ["PATH", "source"]
 
-[plugins.history-search-multi-word]
-github = "zdharma/history-search-multi-word"
-
+# [plugins.history-search-multi-word]
+# github = "zdharma/history-search-multi-word"
+#
 [plugins.zsh-history-substring-search]
 github = "zsh-users/zsh-history-substring-search"
 
@@ -75,6 +75,9 @@ apply = ["fpath"]
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
 
+[plugins.fzf-zsh]
+github = "unixorn/fzf-zsh-plugin"
+
 [plugins.dotfiles-sync]
 local = "~/.config/zsh/sync"
 use = ["*.zsh"]
@@ -84,4 +87,3 @@ apply = ["source"]
 local = "~/.config/zsh/defe"
 use = ["*.zsh"]
 apply = ["defer"]
-
