@@ -29,7 +29,9 @@ jobs:
         run: |
           ls ~/.local/share/nvim/lazy/
       - name: Check IME config file(arch only)
-        run: ls ~/.config/environment.d/
+        run: cat ~/.config/environment.d/im.conf
+
+
   manjaro-test:
     runs-on: ubuntu-latest
     # if: ${{ contains(github.event.head_commit.message, "[CI]") }}
@@ -54,4 +56,8 @@ jobs:
         run: |
           ls ~/.local/share/nvim/lazy/
       - name: Check IME config file does NOT exist(arch only)
-        run: ls ~/.config/
+        run: |
+          if test -f "~/.config/environment/im.conf"; then
+            echo "Error: Ignored file exists"
+            exit 1
+          fi

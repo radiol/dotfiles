@@ -32,3 +32,9 @@ jobs:
       - name: Check lazy.nvim dir
         run: ls ~/.local/share/nvim/lazy/
 
+      - name: Check IME config file does NOT exist(arch only)
+        run: |
+          if test -f "~/.config/environment/im.conf"; then
+            echo "Error: Ignored file exists"
+            exit 1
+          fi
