@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: apt update & install git curl
-        run: sudo apt update -y && sudo apt install -y git curl 
+      - name: apt update & install git curl zsh
+        run: sudo apt update -y && sudo apt install -y git curl zsh
 
       - name: Run chezmoi
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
