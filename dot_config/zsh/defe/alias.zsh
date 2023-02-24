@@ -7,10 +7,10 @@ if type trash > /dev/null;then
 fi
 
 # clipboard
-if ! (type "pbcopy" > /dev/null 2>&1); then
+if (type "pbcopy" > /dev/null 2>&1); then
   alias C="pbcopy"
   alias V="pbpaste"
-elif ! (type "xsel" > /dev/null 2>&1); then
+elif (type "xsel" > /dev/null 2>&1); then
   alias C="xsel -bi"
   alias V="xsel -b"
 fi
