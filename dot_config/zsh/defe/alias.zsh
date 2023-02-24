@@ -10,9 +10,9 @@ fi
 if (type "pbcopy" > /dev/null 2>&1); then
   alias C="pbcopy"
   alias V="pbpaste"
-elif (type "xsel" > /dev/null 2>&1); then
-  alias C="xsel -bi"
-  alias V="xsel -b"
+elif (type "xclip" > /dev/null 2>&1); then
+  alias C="xclip -selection c"
+  alias V="xclip -selection c -o"
 fi
 
 
