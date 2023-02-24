@@ -102,6 +102,10 @@ require("lazy").setup({
 	"terryma/vim-expand-region", --visualmodeの範囲拡張 Jで縮小, Kで拡張
 	"norcalli/nvim-colorizer.lua", -- 色コードをその色に変換
 	"lambdalisue/suda.vim", -- sudo権限でのread/writeを追加(SudaRead/SudaWrite)
+	"windwp/nvim-autopairs", -- ()などを自動でpairにする
+	{ "akinsho/toggleterm.nvim", version = "*", config = true }, -- terminalを表示
+	"ntpeters/vim-better-whitespace", -- 末尾の空白を強調。:StripWhitespaceで空白削除
+	"jghauser/mkdir.nvim", -- 保存時にディレクトリが無い場合には自動で作成
 	-- colorschemes
 	{ "dracula/vim", name = "dracula" },
 	{ "sainnhe/gruvbox-material", name = "gruvbox-material" },

@@ -9,6 +9,10 @@ local status2, lspkind = pcall(require, "lspkind")
 if not status2 then
 	return
 end
+local status3, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not status3 then
+	return
+end
 
 cmp.setup({
 	formatting = {
@@ -84,3 +88,6 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
+
+-- Insert `(` after select function or method item
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
