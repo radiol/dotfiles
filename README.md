@@ -1,13 +1,12 @@
 # dotfiles
 
 For MacOS, Ubuntu, ArchLinux, Manjaro  
-Apps:  
-chezmoi  
-zsh: sheldon  
-neovim: lazy.nvim  
-Rust: cargo  
-Node: volta  
-Python: asdf, poetry  
+
+dotfiles manager -> chezmoi  
+zsh plugin manager ->  sheldon  
+neovim plugin manager -> lazy.nvim  
+Node, Yarn, pnpm -> volta  
+Python -> asdf, poetry  
 
 Package Manager  
 MaxOS, Ubuntu -> Homebrew  
