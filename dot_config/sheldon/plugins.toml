@@ -87,3 +87,8 @@ apply = ["source"]
 local = "~/.config/zsh/defe"
 use = ["*.zsh"]
 apply = ["defer"]
+
+[plugins.dotfiles-custom_command]
+local = "~/.config/zsh/custom_command"
+use = ["*.zsh"]
+apply = ["defer"]
