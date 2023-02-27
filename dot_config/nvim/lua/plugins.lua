@@ -28,11 +28,14 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- telescopeの検索をfzfに
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons", lazy = true } }, --status lineのカスタマイズ
 	-- completion
-	"williamboman/mason.nvim", --lsp-installerの後継
-	"williamboman/mason-lspconfig.nvim", --lspconfigとの差分を吸収
-	"neovim/nvim-lspconfig", --lsp設定
-	"L3MON4D3/LuaSnip", --nvim-cmp用
-	"saadparwaiz1/cmp_luasnip", --nvim-cmp用
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = { "Copilot" },
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup()
+		end,
+	},
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v1.x",
@@ -43,20 +46,31 @@ require("lazy").setup({
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" }, -- Required
-			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "hrsh7th/cmp-buffer" }, -- Optional
-			{ "hrsh7th/cmp-path" }, -- Optional
-			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
-			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
-			{ "hrsh7th/cmp-cmdline" },
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" }, -- Required
-			{ "rafamadriz/friendly-snippets" }, -- Optional
+			{
+				"hrsh7th/nvim-cmp",
+				dependencies = {
+					{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+					{ "hrsh7th/cmp-buffer" }, -- Optional
+					{ "hrsh7th/cmp-path" }, -- Optional
+					{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+					{ "hrsh7th/cmp-nvim-lua" }, -- Optional
+					{ "hrsh7th/cmp-cmdline" },
+					-- copilot
+					{
+						"zbirenbaum/copilot-cmp",
+						config = function()
+							require("copilot_cmp").setup()
+						end,
+					},
+					-- Snippets
+					{ "L3MON4D3/LuaSnip" }, -- Required
+					{ "rafamadriz/friendly-snippets" }, -- Optional
+					{ "onsails/lspkind.nvim" }, --補完にアイコンを表示
+				},
+			}, -- Required
 		},
 	}, --lspのall-in-one設定
-	"folke/lsp-colors.nvim", --lspの色をカラフルに
-	"onsails/lspkind.nvim", --補完にアイコンを表示
+	{ "folke/lsp-colors.nvim" }, --lspの色をカラフルに
 	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
