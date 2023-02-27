@@ -30,10 +30,19 @@ require("lazy").setup({
 	-- completion
 	{
 		"zbirenbaum/copilot.lua",
-		cmd = { "Copilot" },
-		event = "InsertEnter",
+		-- cmd = "Copilot",
+		event = "VimEnter",
 		config = function()
-			require("copilot").setup()
+			vim.defer_fn(function()
+				require("copilot").setup({
+					suggestion = {
+						auto_trigger = true,
+						keymap = {
+							accept = "<leader><CR><CR>",
+						},
+					},
+				})
+			end, 100)
 		end,
 	},
 	{
