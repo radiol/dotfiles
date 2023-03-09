@@ -29,7 +29,8 @@ keys = {
 return {
 	initial_cols = 125,
 	initial_rows = 35,
-	font = wezterm.font_with_fallback({ "JetBrains Mono", "Hack Nerd Font" }),
+	-- font = wezterm.font_with_fallback({ "JetBrains Mono", "Hack Nerd Font" }),
+	font = { family = "Hackgen Nerd Font", size = 12 },
 	use_ime = true,
 	color_scheme = "tokyonight",
 	window_background_opacity = 0.8,
