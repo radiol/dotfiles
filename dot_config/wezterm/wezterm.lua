@@ -3,7 +3,7 @@ local action = wezterm.action
 
 ssh_domains = {
 	{
-		name = "node",
+		name = "node202",
 		remote_address = "node",
 	},
 	{
