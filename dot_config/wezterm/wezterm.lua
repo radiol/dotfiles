@@ -36,6 +36,7 @@ return {
 	use_ime = true,
 	color_scheme = "tokyonight",
 	window_background_opacity = 0.8,
+	macos_window_background_blur = 10,
 	send_composed_key_when_left_alt_is_pressed = true,
 	ssh_domains = ssh_domains,
 	unix_domains = unix_domains,
