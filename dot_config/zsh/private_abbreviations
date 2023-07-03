@@ -61,6 +61,7 @@ abbr dcu="docker compose up"
 abbr dcud="docker compose up -d"
 abbr dcd="docker compose down"
 abbr dcr="docker compose restart"
+abbr dlog="docker compose logs"
 
 # poetry
 abbr pr = "poetry run"
