@@ -8,7 +8,12 @@
 lvim.format_on_save.enabled = true
 
 lvim.plugins = {
-  { "lambdalisue/suda.vim" },
+  {
+    "lambdalisue/suda.vim",
+    keys = { {
+      "<leader>W", "<cmd>:SudaWrite<cr>",
+    } }
+  },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -22,6 +27,20 @@ lvim.plugins = {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
+    },
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
+    config = true,
+    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    keys = { {
+      "<leader>lv", "<cmd>:VenvSelect<cr>",
+      -- key mapping for directly retrieve from cache. You may set autocmd if you prefer the no hand approach
+      -- "<leader>vc", "<cmd>:VenvSelectCached<cr>"
+    } },
+    opts = {
+      name = { "venv", ".venv" },
     },
   },
 }
