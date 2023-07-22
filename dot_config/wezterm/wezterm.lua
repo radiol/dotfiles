@@ -19,10 +19,23 @@ ssh_domains = {
 unix_domains = { { name = "unix" } }
 
 keys = {
+	-- CMD + w: Close tab.
 	{
 		key = "w",
 		mods = "CMD",
 		action = action.CloseCurrentTab({ confirm = false }),
+	},
+	-- Shift + Ctrl + h: Horizontal split(Left/Right).
+	{
+		key = "h",
+		mods = "SHIFT|CTRL",
+		action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	-- Shift + Ctrl + v: Vertical split(Top/Bottom).
+	{
+		key = "v",
+		mods = "SHIFT|CTRL",
+		action = action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 }
 
