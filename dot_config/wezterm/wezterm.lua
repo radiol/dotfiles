@@ -25,16 +25,16 @@ keys = {
 		mods = "CMD",
 		action = action.CloseCurrentTab({ confirm = false }),
 	},
-	-- Shift + Ctrl + h: Horizontal split(Left/Right).
+	-- Alt + h: Horizontal split(Left/Right).
 	{
 		key = "h",
-		mods = "SHIFT|CTRL",
+		mods = "ALT",
 		action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-	-- Shift + Ctrl + v: Vertical split(Top/Bottom).
+	-- Alt + v: Vertical split(Top/Bottom).
 	{
 		key = "v",
-		mods = "SHIFT|CTRL",
+		mods = "ALT",
 		action = action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 }
