@@ -158,12 +158,15 @@ echo "Operating System is {{$platform}}"
 {{end -}}
 
 # ---------------------------------------------------------
-# Install cargo, volta
+# Install rye, cargo, volta
 # ---------------------------------------------------------
 # Install poetry
-if [ ! -e ~/.local/bin/poetry ]; then
-    curl -sSL https://install.python-poetry.org | python3 -
-fi
+# if [ ! -e ~/.local/bin/poetry ]; then
+#     curl -sSL https://install.python-poetry.org | python3 -
+# fi
+
+# Install rye
+curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 
 # Install Rust
 if ! (type "cargo" > /dev/null 2>&1); then
