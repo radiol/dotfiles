@@ -70,7 +70,6 @@ echo "Operating System is {{$platform}}"
         neovim \
         npm \
         openssl \
-        python-poetry \
         ripgrep \
         sheldon \
         openssh \
@@ -160,10 +159,6 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 # Install rye, cargo, volta
 # ---------------------------------------------------------
-# Install poetry
-# if [ ! -e ~/.local/bin/poetry ]; then
-#     curl -sSL https://install.python-poetry.org | python3 -
-# fi
 
 # Install rye
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
