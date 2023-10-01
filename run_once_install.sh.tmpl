@@ -69,6 +69,7 @@ echo "Operating System is {{$platform}}"
         gtk2 \
         jq \
         neovim \
+        noto-fonts-emoji \
         npm \
         openssl \
         ripgrep \
@@ -91,6 +92,7 @@ echo "Operating System is {{$platform}}"
     curl \
     file \
     git \
+    jq \
     language-pack-ja \
     libbz2-dev \
     libffi-dev \
@@ -192,6 +194,30 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 cp -r ~/.local/share/chezmoi/dot_config/nvim/lua/user ~/.config/nvim/lua/
 nvim --headless +qa
+
+# ---------------------------------------------------------
+# Install UDEVGothic
+# ---------------------------------------------------------
+{{if or (eq $platform "arch") (eq $platform "manjaro") -}}
+# GitHub リポジトリのユーザー名、リポジトリ名、およびリリースタグを指定
+    USER_NAME="yuru7"
+    REPO_NAME="udev-gothic"
+    ZIP_FILE="font.zip"
+
+# リリース情報を取得
+    RELEASE_INFO=$(curl -s https://api.github.com/repos/$USER_NAME/$REPO_NAME/releases/latest)
+
+# 最新のリリースアセットのURL
+    ASSET_URL=$(echo $RELEASE_INFO | jq -r '.assets[0].browser_download_url')
+
+# curl を使用してリリースアセットをダウンロード
+    curl -LJ $ASSET_URL -o $ZIP_FILE
+
+# Extract to /usr/share/fonts/
+    unzip -o $ZIP_FILE -d /usr/share/fonts/
+# Delete zip file
+    rm $ZIP_FILE
+{{end -}}
 
 # Create XDG folder
 mkdir -p ~/.local/state
