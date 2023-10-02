@@ -4,6 +4,7 @@ return {
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
 
   -- Language Pack
+  { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python" },
   {
@@ -11,6 +12,8 @@ return {
     opts = { name = { "venv", ".venv" } },
   },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.yaml" },
 
   -- Editing Support
   -- <leader> + Shift + w: Sudo write
