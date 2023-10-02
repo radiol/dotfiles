@@ -214,7 +214,7 @@ nvim --headless +qa
     curl -LJ $ASSET_URL -o $ZIP_FILE
 
 # Extract to /usr/share/fonts/
-    unzip -o $ZIP_FILE -d /usr/share/fonts/
+    sudo unzip -o $ZIP_FILE -d /usr/share/fonts/
 # Delete zip file
     rm $ZIP_FILE
 {{end -}}
