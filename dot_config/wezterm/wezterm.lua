@@ -45,7 +45,7 @@ return {
   -- font = wezterm.font_with_fallback({ "JetBrains Mono", "Hack Nerd Font" }),
   font = wezterm.font("UDEV Gothic NF"),
   -- font = wezterm.font("HackGen Console NFJ"),
-  font_size = 12,
+  font_size = 14,
   use_ime = true,
   color_scheme = "tokyonight",
   window_background_opacity = 0.8,
