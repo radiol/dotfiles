@@ -47,7 +47,7 @@ return {
   -- font = wezterm.font("HackGen Console NFJ"),
   font_size = 14,
   use_ime = true,
-  color_scheme = "tokyonight",
+  color_scheme = "Everforest Dark (Gogh)",
   window_background_opacity = 0.8,
   macos_window_background_blur = 10,
   send_composed_key_when_left_alt_is_pressed = true,

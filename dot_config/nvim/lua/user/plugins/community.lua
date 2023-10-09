@@ -2,6 +2,7 @@ return {
   "AstroNvim/astrocommunity",
   -- colorscheme
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  { import = "astrocommunity.colorscheme.everforest" },
 
   -- Language Pack
   { import = "astrocommunity.pack.docker" },
