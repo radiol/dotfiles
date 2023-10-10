@@ -55,7 +55,7 @@ echo "Operating System is {{$platform}}"
 
     if ! grep -q "ILoveCandy" /etc/pacman.conf;
     then
-        sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+        sudo sed -i "/VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
     fi
 
     # Update
