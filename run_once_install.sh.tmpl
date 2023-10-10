@@ -48,7 +48,7 @@ echo "Operating System is {{$platform}}"
 # Setup Pacman
 # ---------------------------------------------------------
     # Edit /etc/pacman.conf
-    if grep -q "#Color" /etc/pacm.conf;
+    if grep -q "#Color" /etc/pacman.conf;
     then
         sudo sed -i "s/#Color/Color/" /etc/pacman.conf
     fi
