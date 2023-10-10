@@ -47,6 +47,10 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 # Setup Pacman
 # ---------------------------------------------------------
+    # Edit /etc/pacman.conf
+    sudo sed -i "s/#Color/Color/" /etc/pacman.conf
+    sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+
     # Update
     sudo pacman -Syyu -q --noconfirm
 
