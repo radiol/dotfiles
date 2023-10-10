@@ -61,7 +61,6 @@ echo "Operating System is {{$platform}}"
         chezmoi \
         cmake \
         curl \
-        exa \
         fd \
         fzf \
         gcc \
@@ -142,7 +141,6 @@ echo "Operating System is {{$platform}}"
         sheldon \
         bat \
         deno \
-        exa \
         fd \
         fzf \
         nodejs \
@@ -174,7 +172,7 @@ if ! (type "cargo" > /dev/null 2>&1); then
 fi
 
 # Install Rust Apps
-cargo install -q cargo-update
+cargo install -q cargo-update exa
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
