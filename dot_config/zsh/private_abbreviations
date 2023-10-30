@@ -67,7 +67,7 @@ abbr dlog="docker compose logs"
 abbr brewu="brew update && brew upgrade && brew cleanup && brew doctor"
 
 # Atcoder-cli
-abbr accs="acc s --skip-filename -- --guess-python-interpreter pypy"
+abbr accs="acc s main.py -- --guess-python-interpreter pypy"
 abbr acct="rye run oj t -c 'python3 main.py' -d ./tests/"
 abbr accft="rye run black main.py && rye run ruff --fix main.py && rye run oj t -c 'python3 main.py' -d ./tests/"
 abbr accn="(){acc new $1 && cd $1}"
