@@ -3,6 +3,10 @@ return {
 	-- colorscheme
 	{ import = "astrocommunity.colorscheme.tokyonight-nvim" },
 	{ import = "astrocommunity.colorscheme.everforest" },
+	{ import = "astrocommunity.colorscheme.catppuccin" },
+
+	-- Copilot
+	{ import = "astrocommunity.completion.copilot-lua-cmp" },
 
 	-- Language Pack
 	{ import = "astrocommunity.pack.docker" },
