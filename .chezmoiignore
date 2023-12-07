@@ -2,6 +2,8 @@
 /.github
 /.git
 /.gitignore
+.git
+.github
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "arch")}}
   .config/environment.d/
 {{- end}}
