@@ -11,7 +11,7 @@ return {
 	-- Language Pack
 	{ import = "astrocommunity.pack.docker" },
 	{ import = "astrocommunity.pack.lua" },
-	{ import = "astrocommunity.pack.python" },
+	{ import = "astrocommunity.pack.python-ruff" },
 	{
 		"linux-cultist/venv-selector.nvim",
 		opts = { name = { "venv", ".venv" } },
