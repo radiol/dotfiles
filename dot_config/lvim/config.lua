@@ -59,4 +59,12 @@ lvim.plugins = {
       name = { "venv", ".venv" },
     },
   },
+  {
+    -- s<char> -> search and jump
+    "ggandor/leap.nvim",
+    name = "leap",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
 }
