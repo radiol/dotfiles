@@ -6,8 +6,11 @@
 -- lvim.colorscheme = "tokyonight"
 
 lvim.format_on_save.enabled = true
+lvim.colorscheme = "catppuccin-frappe"
 
 lvim.plugins = {
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
   {
     "lambdalisue/suda.vim",
     keys = { {
