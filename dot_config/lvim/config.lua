@@ -7,6 +7,7 @@
 lvim.colorscheme = "catppuccin-frappe"
 
 lvim.format_on_save.enabled = true
+lvim.builtin.terminal.open_mapping = "<c-t>"
 
 -- WhichKey Mapping
 lvim.builtin.which_key.mappings["W"] = {
