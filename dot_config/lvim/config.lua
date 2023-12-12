@@ -3,20 +3,20 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
--- lvim.colorscheme = "tokyonight"
 
-lvim.format_on_save.enabled = true
 lvim.colorscheme = "catppuccin-frappe"
 
-lvim.plugins = {
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+lvim.format_on_save.enabled = true
 
-  {
-    "lambdalisue/suda.vim",
-    keys = { {
-      "<leader>W", "<cmd>:SudaWrite<cr>",
-    } }
-  },
+-- WhichKey Mapping
+lvim.builtin.which_key.mappings["W"] = {
+  "<cmd>:SudaWrite<cr>", "SudaWrite"
+}
+
+lvim.plugins = {
+  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
+
+  { "lambdalisue/suda.vim", },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
