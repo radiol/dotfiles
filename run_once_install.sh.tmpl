@@ -232,6 +232,9 @@ nvim --headless +qa
     rm $ZIP_FILE
 {{end -}}
 
+# Rebuild bat cache for activate catppuccine
+bat cache --build
+
 # Create XDG folder
 mkdir -p ~/.local/state
 
