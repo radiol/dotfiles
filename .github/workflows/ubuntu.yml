@@ -2,6 +2,9 @@ name: ubuntu
 
 on:
   push:
+    branches: [devel]
+  pull_request:
+    branches: [devel]
   workflow_dispatch:
   # pull_request:
   #   branches: [main]
@@ -20,7 +23,7 @@ jobs:
         run: sudo apt update -y && sudo apt install -y git curl zsh
 
       - name: Run chezmoi
-        run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+        run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch devel radiol
 
       # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
