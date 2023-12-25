@@ -24,6 +24,7 @@ jobs:
 
       - name: Run chezmoi
         run: |
+          cd
           sh -c "$(curl -fsLS chezmoi.io/get)" -- init radiol
           cd ~/.local/share/chezmoi
           git checkout devel
