@@ -23,7 +23,12 @@ jobs:
         run: pacman -Sy -q --noconfirm sudo git curl
 
       - name: Run chezmoi
-        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply radiol
+        run: |
+          sh -c "$(curl -fsLS chezmoi.io/get)" -- init radiol
+          cd ~/.local/share/chezmoi
+          git checkout devel
+          cd
+          ./bin/chezmoi apply
 
       # # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
