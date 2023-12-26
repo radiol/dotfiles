@@ -1,16 +1,13 @@
 name: macos
-
 on:
   push:
-    branches: [devel]
+    branches: [main, devel]
   pull_request:
     branches: [main]
   # pull_request:
   #   branches: [devel]
   workflow_dispatch:
-
 concurrency: dotfiles-test-macos
-
 jobs:
   macos-test:
     runs-on: macos-latest
@@ -18,10 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - name: Run chezmoi
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch devel radiol
-
       # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
         run: |
@@ -32,10 +27,8 @@ jobs:
             echo "Failed to load Sheldon plugins."
             exit 1
           fi
-
       - name: Check lazy.nvim dir
         run: ls ~/.local/share/nvim/lazy/
-
       - name: Check IME config file does NOT exist(arch only)
         run: |
           if test -f "~/.config/environment/im.conf"; then
