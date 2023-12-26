@@ -197,10 +197,9 @@ cargo install -q cargo-edit cargo-update exa topgrade
 # Install volta
 if ! (type "volta" > /dev/null 2>&1); then
     curl https://get.volta.sh | bash
+    export VOLTA_HOME="$HOME/.volta"
+    path=($VOLTA_HOME/bin(N-/) $path)
 fi
-
-# Neovim Sync Plugins
-# nvim --headless "+Lazy! sync" +qa
 
 # Install AstroNvim
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
