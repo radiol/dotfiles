@@ -3,10 +3,10 @@ on:
   push:
     branches: [devel]
   pull_request:
-    branches: [devel]
-  workflow_dispatch:
+    branches: [main]
   # pull_request:
-  #   branches: [main]
+  #   branches: [devel]
+  workflow_dispatch:
 
 concurrency: dotfiles-test-archlinux
 

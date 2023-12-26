@@ -4,6 +4,9 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
+--vim opt
+vim.opt.termguicolors = true
+
 lvim.colorscheme = "catppuccin-frappe"
 
 lvim.format_on_save.enabled = true
