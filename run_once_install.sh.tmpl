@@ -197,8 +197,6 @@ cargo install -q cargo-edit cargo-update exa topgrade
 # Install volta
 if ! (type "volta" > /dev/null 2>&1); then
     curl https://get.volta.sh | bash
-    export VOLTA_HOME="$HOME/.volta"
-    path=($VOLTA_HOME/bin(N-/) $path)
 fi
 
 # Install AstroNvim
@@ -208,11 +206,11 @@ cp -r ~/.local/share/chezmoi/dot_config/nvim/lua/user ~/.config/nvim/lua/
 nvim --headless +qa
 
 # Install LunarVim
-# ripgrep and fd-find are installed by Homebrew or Pacman
-npm install -g --silent --progress=false neovim tree-sitter-cli
-LV_BRANCH='release-1.3/neovim-0.9' \
-bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh) \
--y --no-install-dependencies
+if ! (command -v lvim &> /dev/null 2>&1); then
+    LV_BRANCH='release-1.3/neovim-0.9' \
+    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh) \
+    -y --no-install-dependencies
+fi
 
 # ---------------------------------------------------------
 # Install UDEVGothic
