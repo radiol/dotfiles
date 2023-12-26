@@ -175,4 +175,18 @@ lvim.plugins = {
 			vim.keymap.set("n", "<M-.>", "<Plug>(YankyCycleBackward)")
 		end,
 	},
+	-- ------------------------------------------------------------
+	-- rust-tools.nvim
+	-- A plugin to improve your rust experience in neovim.
+	-- (https://github.com/simrat39/rust-tools.nvim)
+	---------------------------------------------------------------
+	{
+		"simrat39/rust-tools.nvim",
+		dependencies = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
+		event = "BufRead",
+		ft = { "rust" },
+		config = function()
+			require("rust-tools").setup({})
+		end,
+	},
 }
