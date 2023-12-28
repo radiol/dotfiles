@@ -4,7 +4,7 @@ For MacOS, Ubuntu, ArchLinux, Manjaro
 
 dotfiles manager -> chezmoi  
 zsh plugin manager ->  sheldon  
-neovim -> AstroNvim  
+neovim -> LunarVim
 Node, Yarn, pnpm -> Volta  
 Python -> Rye 
 
