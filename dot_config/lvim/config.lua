@@ -7,7 +7,7 @@
 --vim opt
 vim.opt.termguicolors = true
 
-lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "tokyonight"
 
 lvim.format_on_save.enabled = true
 lvim.builtin.terminal.open_mapping = "<c-t>"
@@ -19,7 +19,16 @@ lvim.builtin.which_key.mappings["W"] = {
 }
 
 lvim.plugins = {
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "morhetz/gruvbox" },
+	{ "sainnhe/gruvbox-material" },
+	{ "sainnhe/sonokai" },
+	{ "sainnhe/edge" },
+	{ "sainnhe/everforest" },
+	{ "folke/tokyonight.nvim", priority = 1000 },
+	{ "navarasu/onedark.nvim" },
+	{ "EdenEast/nightfox.nvim" },
+	{ "nordtheme/vim", name = "nordtheme" },
 	{
 		-- Copilot
 		"zbirenbaum/copilot-cmp",
