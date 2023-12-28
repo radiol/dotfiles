@@ -1,7 +1,7 @@
 name: arch
 on:
   push:
-    branches: [main, devel]
+  # branches: [main, devel]
   pull_request:
     branches: [main]
   # pull_request:
@@ -16,12 +16,18 @@ jobs:
       image: archlinux:latest
     steps:
       - uses: actions/checkout@v3
+      - name: Extract branch name for push
+        if: github.event_name == 'push'
+        run: echo "CURRENT_BRANCH=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+      - name: Extract branch name for pull request
+        if: github.event_name == 'pull_request'
+        run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
       - name: Update pacman
         run: pacman -Syu -q --noconfirm
       - name: Install sudo
         run: pacman -Sy -q --noconfirm sudo git curl
       - name: Run chezmoi
-        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch devel radiol
+        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
         run: |
@@ -44,12 +50,18 @@ jobs:
       image: manjarolinux/base:latest
     steps:
       - uses: actions/checkout@v3
+      - name: Extract branch name for push
+        if: github.event_name == 'push'
+        run: echo "CURRENT_BRANCH=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+      - name: Extract branch name for pull request
+        if: github.event_name == 'pull_request'
+        run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
       - name: Update pacman
         run: pacman -Syu -q --noconfirm
       - name: Install sudo
         run: pacman -Sy -q --noconfirm sudo git curl
       - name: Run chezmoi
-        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch devel radiol
+        run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
         run: |
