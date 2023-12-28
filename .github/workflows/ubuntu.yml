@@ -1,7 +1,7 @@
 name: ubuntu
 on:
   push:
-    branches: [main, devel]
+  # branches: [main, devel]
   pull_request:
     branches: [main]
   # pull_request:
@@ -15,10 +15,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Extract branch name
+        id: extract_branch
+        run: echo "CURRENT_BRANCH=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
       - name: apt update & install git curl zsh
         run: sudo apt update -y && sudo apt install -y git curl zsh
       - name: Run chezmoi
-        run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch devel radiol
+        run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
         run: |
