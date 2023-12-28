@@ -15,9 +15,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Extract branch name
-        id: extract_branch
+      - name: Extract branch name for push
+        if: github.event_name == 'push'
         run: echo "CURRENT_BRANCH=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+      - name: Extract branch name for pull request
+        if: github.event_name == 'pull_request'
+        run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
       - name: Run chezmoi
         run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # Error Check
