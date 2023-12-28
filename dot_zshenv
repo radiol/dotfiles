@@ -3,9 +3,6 @@
 # ---------------------------------------------------------
 export LANG=ja_JP.UTF-8
 
-export EDITOR="nvim"
-export VIEWER="nvim"
-
 # autosuggetion color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
@@ -58,3 +55,14 @@ path=($HOME/.cargo/bin(N-/) $path)
 
 # LunarVim
 path=($HOME/.local/bin(N-/) $path)
+
+# ---------------------------------------------------------
+# Default editor
+# ---------------------------------------------------------
+if type lvim > /dev/null; then;
+        export EDITOR="lvim"
+        export VIEWER="lvim"
+else
+        export EDITOR="nvim"
+        export VIEWER="nvim"
+fi

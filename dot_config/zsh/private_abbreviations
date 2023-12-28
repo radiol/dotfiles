@@ -77,8 +77,9 @@ abbr ccn="(){cargo compete new $1 && cargo member i $1 && cd $1}"
 abbr cct="cargo compete test"
 abbr ccs="cargo compete submit"
 
-# Neiovim
+# Neovim
 abbr v="nvim"
+abbr l="lvim"
 
 # Wezterm
 abbr wc="wezterm connect"
