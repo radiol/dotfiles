@@ -2,6 +2,11 @@
 alias ls="exa -F --group-directories-first --icons --git"
 
 # Change rm -> trashy
+if type trash > /dev/null;then
+  alias rm=trash
+fi
+
+# clipboard
 # X11, Wayland, macOSの環境判定とそれぞれのalias設定
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
