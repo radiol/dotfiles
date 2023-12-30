@@ -198,4 +198,15 @@ lvim.plugins = {
 			require("rust-tools").setup({})
 		end,
 	},
+	-- ------------------------------------------------------------
+	-- hlchunk.nvim
+	-- https://github.com/shellRaining/hlchunk.nvim
+	-- ------------------------------------------------------------
+	{
+		"shellRaining/hlchunk.nvim",
+		event = { "UIEnter" },
+		config = function()
+			require("hlchunk").setup({})
+		end,
+	},
 }
