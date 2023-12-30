@@ -7,12 +7,20 @@ if type trash > /dev/null;then
 fi
 
 # clipboard
-if (type "pbcopy" > /dev/null 2>&1); then
-  alias C="pbcopy"
-  alias V="pbpaste"
-elif (type "xclip" > /dev/null 2>&1); then
-  alias C="xclip -selection c"
-  alias V="xclip -selection c -o"
+# X11, Wayland, macOSの環境判定とそれぞれのalias設定
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    alias C='pbcopy'
+    alias V='pbpaste'
+elif [[ -n $WAYLAND_DISPLAY ]]; then
+    # Wayland
+    alias C='wl-copy'
+    alias V='wl-paste'
+elif [[ -n $DISPLAY ]]; then
+    # X11
+    alias C='xclip -selection clipboard'
+    alias V='xclip -selection clipboard -o'
+else
+    echo "Unsupported clipboard environment."
 fi
-
 
