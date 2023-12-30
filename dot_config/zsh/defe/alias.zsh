@@ -2,17 +2,19 @@
 alias ls="exa -F --group-directories-first --icons --git"
 
 # Change rm -> trashy
-if type trash > /dev/null;then
-  alias rm=trash
+# X11, Wayland, macOSの環境判定とそれぞれのalias設定
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    alias C='pbcopy'
+    alias C_paste='pbpaste'
+elif [[ -n $WAYLAND_DISPLAY ]]; then
+    # Wayland
+    alias C='wl-copy'
+    alias C_paste='wl-paste'
+elif [[ -n $DISPLAY ]]; then
+    # X11
+    alias C='xclip -selection clipboard'
+    alias C_paste='xclip -selection clipboard -o'
+else
+    echo "Unsupported clipboard environment."
 fi
-
-# clipboard
-if (type "pbcopy" > /dev/null 2>&1); then
-  alias C="pbcopy"
-  alias V="pbpaste"
-elif (type "xclip" > /dev/null 2>&1); then
-  alias C="xclip -selection c"
-  alias V="xclip -selection c -o"
-fi
-
-
