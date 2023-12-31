@@ -180,4 +180,8 @@ lvim.plugins = {
 			require("rust-tools").setup({})
 		end,
 	},
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+	},
 }
