@@ -1,11 +1,9 @@
 name: arch
 on:
   push:
-  # branches: [main, devel]
+    branches-ignore: [main]
   pull_request:
     branches: [main]
-  # pull_request:
-  #   branches: [devel]
   workflow_dispatch:
 concurrency: dotfiles-test-archlinux
 jobs:
