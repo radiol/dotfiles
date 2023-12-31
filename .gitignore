@@ -22,9 +22,6 @@
 !run_onchange*.sh
 !run_onchange*.sh.tmpl
 
-# luacheckrc
-!.luacheckrc
-
 # black list
 .DS_Store
 .keep
