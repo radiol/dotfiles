@@ -46,6 +46,11 @@ end
 
 -- color_scheme
 config.color_scheme = "Catppuccin Frappe"
+if wezterm.target_triple == "aarch64-apple-darwin" then
+	config.color_scheme = "Catppuccin Frappe"
+elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+	config.color_scheme = "Dracula (base16)"
+end
 -- window size
 config.initial_cols = 125
 config.initial_rows = 35
