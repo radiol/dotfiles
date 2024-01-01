@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local action = wezterm.action
 
-ssh_domains = {
+local ssh_domains = {
 	{
 		name = "node202",
 		remote_address = "node",
@@ -16,9 +16,9 @@ ssh_domains = {
 	},
 }
 
-unix_domains = { { name = "unix" } }
+local unix_domains = { { name = "unix" } }
 
-keys = {
+local keys = {
 	-- CMD + w: Close tab.
 	{
 		key = "w",
@@ -39,21 +39,29 @@ keys = {
 	},
 }
 
-return {
-	initial_cols = 125,
-	initial_rows = 35,
-	-- font = wezterm.font_with_fallback({ "JetBrains Mono", "Hack Nerd Font" }),
-	font = wezterm.font("UDEV Gothic NF"),
-	-- font = wezterm.font("HackGen Console NFJ"),
-	font_size = 14,
-	use_ime = true,
-	-- color_scheme = "Everforest Dark (Gogh)",
-	color_scheme = "Catppuccin Frappe",
-	window_background_opacity = 0.8,
-	macos_window_background_blur = 10,
-	send_composed_key_when_left_alt_is_pressed = true,
-	ssh_domains = ssh_domains,
-	unix_domains = unix_domains,
-	default_gui_startup_args = { "connect", "unix" },
-	keys = keys,
-}
+local config = {}
+if wezterm.config_builder then
+	config = wezterm.config_builder()
+end
+
+-- color_scheme
+config.color_scheme = "Catppuccin Frappe"
+-- window size
+config.initial_cols = 125
+config.initial_rows = 35
+-- font
+config.font = wezterm.font("UDEV Gothic NF")
+config.font_size = 14
+config.use_ime = true
+-- window background
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 10
+config.send_composed_key_when_left_alt_is_pressed = true
+-- ssh, unix domain
+config.ssh_domains = ssh_domains
+config.unix_domains = unix_domains
+config.default_gui_startup_args = { "connect", "unix" }
+-- keys
+config.keys = keys
+
+return config
