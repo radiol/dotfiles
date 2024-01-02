@@ -3,6 +3,10 @@ lvim.builtin.which_key.mappings["W"] = {
 	"<cmd>:SudaWrite<cr>",
 	"SudaWrite",
 }
+lvim.builtin.which_key.mappings["e"] = {
+	"<cmd>:NeoTreeRevealToggle<cr>",
+	"NeoTree",
+}
 lvim.builtin.which_key.mappings["t"] = {
 	name = "Diagnostics",
 	t = { "<cmd>TroubleToggle<cr>", "trouble" },
