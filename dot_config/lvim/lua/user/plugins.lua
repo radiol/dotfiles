@@ -230,4 +230,15 @@ lvim.plugins = {
 			vim.g.mkdp_auto_start = 1
 		end,
 	},
+	---------------------------------------------------------------
+	-- nvim-ts-autotag
+	-- Use treesitter to autoclose and autorename html tag
+	-- https://github.com/windwp/nvim-ts-autotag
+	---------------------------------------------------------------
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
 }
