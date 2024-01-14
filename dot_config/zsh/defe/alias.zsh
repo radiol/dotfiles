@@ -1,5 +1,5 @@
 # Change ls -> exa
-alias ls="exa -F --group-directories-first --icons --git"
+alias ls="eza -F --group-directories-first --icons --git --time-style relative"
 
 # Change rm -> trashy
 if type trash > /dev/null;then

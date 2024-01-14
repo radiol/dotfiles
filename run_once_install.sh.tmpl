@@ -188,7 +188,7 @@ if ! (type "cargo" > /dev/null 2>&1); then
 fi
 
 # Install Rust Apps
-cargo install -q cargo-edit cargo-update exa topgrade
+cargo install -q cargo-edit cargo-update eza topgrade
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
