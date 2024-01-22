@@ -1,0 +1,1 @@
+-- lvim.keys.normal_mode["<leader>e"] = ":NeoTreeRevealToggle<CR>"
