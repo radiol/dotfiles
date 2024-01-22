@@ -196,9 +196,15 @@ lvim.plugins = {
 				},
 				server = {
 					on_attach = function(client, bufnr)
-						require("lvim.lsp").common_on_attach(client, bufnr)
 						require("lsp-inlayhints").on_attach(client, bufnr)
 					end,
+					settings = {
+						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					},
 				},
 			}
 		end,
