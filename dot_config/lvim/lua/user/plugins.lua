@@ -167,17 +167,40 @@ lvim.plugins = {
 		end,
 	},
 	-- ------------------------------------------------------------
-	-- rust-tools.nvim
-	-- A plugin to improve your rust experience in neovim.
-	-- (https://github.com/simrat39/rust-tools.nvim)
+	-- rustaceanvim
+	-- Supercharge your Rust experience in Neovim
+	-- A heavily modified fork of rust-tools.nvim
+	-- (https://github.com/mrcjkb/rustaceanvim)
 	---------------------------------------------------------------
 	{
-		"simrat39/rust-tools.nvim",
-		dependencies = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
-		event = "BufRead",
+		"mrcjkb/rustaceanvim",
+		version = "^3",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"mfussenegger/nvim-dap",
+			{
+				"lvimuser/lsp-inlayhints.nvim",
+				opts = { enabled_at_startup = true },
+			},
+		},
 		ft = { "rust" },
 		config = function()
-			require("rust-tools").setup({})
+			vim.g.rustaceanvim = {
+				inlay_hints = {
+					highlight = "NonText",
+				},
+				tools = {
+					hover_actions = {
+						auto_focus = true,
+					},
+				},
+				server = {
+					on_attach = function(client, bufnr)
+						require("lvim.lsp").common_on_attach(client, bufnr)
+						require("lsp-inlayhints").on_attach(client, bufnr)
+					end,
+				},
+			}
 		end,
 	},
 	{
