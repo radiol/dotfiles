@@ -192,6 +192,7 @@ lvim.plugins = {
 					highlight = "NonText",
 				},
 				tools = {
+					executor = "toggleterm",
 					hover_actions = {
 						auto_focus = true,
 					},
