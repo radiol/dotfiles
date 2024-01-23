@@ -171,6 +171,8 @@ lvim.plugins = {
 	-- Supercharge your Rust experience in Neovim
 	-- A heavily modified fork of rust-tools.nvim
 	-- (https://github.com/mrcjkb/rustaceanvim)
+	-- nvim0.9ではinlay hintsの表示にlsp_inlayhints.nvimが必要
+	-- nvim0.10ではinlay hintsが組み込みになるので不要になる予定
 	---------------------------------------------------------------
 	{
 		"mrcjkb/rustaceanvim",
@@ -179,7 +181,7 @@ lvim.plugins = {
 			"nvim-lua/plenary.nvim",
 			"mfussenegger/nvim-dap",
 			{
-				"lvimuser/lsp-inlayhints.nvim",
+				"lvimuser/lsp-inlayhints.nvim", -- <- nvim0.10から不要
 				opts = { enabled_at_startup = true },
 			},
 		},
@@ -196,9 +198,15 @@ lvim.plugins = {
 				},
 				server = {
 					on_attach = function(client, bufnr)
-						require("lvim.lsp").common_on_attach(client, bufnr)
-						require("lsp-inlayhints").on_attach(client, bufnr)
+						require("lsp-inlayhints").on_attach(client, bufnr) -- <- nvim0.10から不要
 					end,
+					settings = {
+						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					},
 				},
 			}
 		end,
