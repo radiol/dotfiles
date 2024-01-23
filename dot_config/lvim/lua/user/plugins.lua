@@ -184,6 +184,7 @@ lvim.plugins = {
 				"lvimuser/lsp-inlayhints.nvim", -- <- nvim0.10から不要
 				opts = { enabled_at_startup = true },
 			},
+			"akinsho/toggleterm.nvim",
 		},
 		ft = { "rust" },
 		config = function()
@@ -192,6 +193,7 @@ lvim.plugins = {
 					highlight = "NonText",
 				},
 				tools = {
+					executor = "toggleterm",
 					hover_actions = {
 						auto_focus = true,
 					},
