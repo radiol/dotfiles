@@ -108,7 +108,7 @@ lvim.plugins = {
 	{
 		-- :<row number> -> jump row
 		"nacro90/numb.nvim",
-		event = "BufRead",
+		key = { { ":", mode = "n" } },
 		config = function()
 			require("numb").setup({
 				show_numbers = true, -- Enable 'number' for the window while peeking
@@ -176,7 +176,7 @@ lvim.plugins = {
 	---------------------------------------------------------------
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^3",
+		version = "^4",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"mfussenegger/nvim-dap",
@@ -221,6 +221,7 @@ lvim.plugins = {
 	---------------------------------------------------------------
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		cmd = "NeoTreeRevealToggle",
 		branch = "v2.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -259,17 +260,6 @@ lvim.plugins = {
 		ft = "markdown",
 		config = function()
 			vim.g.mkdp_auto_start = 1
-		end,
-	},
-	---------------------------------------------------------------
-	-- nvim-ts-autotag
-	-- Use treesitter to autoclose and autorename html tag
-	-- https://github.com/windwp/nvim-ts-autotag
-	---------------------------------------------------------------
-	{
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
 		end,
 	},
 }
