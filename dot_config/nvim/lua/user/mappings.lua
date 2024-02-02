@@ -32,8 +32,16 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    -- toggle terminal
+    ["<C-t>"] = { "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
+  },
+  i = {
+    -- toggle terminal
+    ["<C-t>"] = { "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
   },
   t = {
+    -- toggle terminal
+    ["<C-t>"] = { "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
