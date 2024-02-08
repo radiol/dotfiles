@@ -262,4 +262,11 @@ lvim.plugins = {
 			vim.g.mkdp_auto_start = 1
 		end,
 	},
+	---------------------------------------------------------------
+	-- https://github.com/stevearc/dressing.nvim
+	---------------------------------------------------------------
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
 }
