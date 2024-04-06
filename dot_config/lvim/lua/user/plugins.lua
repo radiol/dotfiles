@@ -269,4 +269,13 @@ lvim.plugins = {
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
+	---------------------------------------------------------------
+	-- https://github.com/stevearc/oil.nvim
+	---------------------------------------------------------------
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }
