@@ -66,6 +66,4 @@ return {
 
   -- Diagnostic
   { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
-  -- LSP
-  { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
 }

@@ -40,7 +40,7 @@ return {
           -- toggle terminal
           ["<C-t>"] = { "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
           -- RustRunnable
-          ["<leader>rr"] = { "<cmd>RustRunnable<CR>", desc = "RustRunnable" },
+          ["<leader>rr"] = { "<cmd>RustLsp runnables<CR>", desc = "RustRunnable" },
         },
         i = {
           -- toggle terminal
