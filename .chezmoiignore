@@ -4,7 +4,7 @@
 /.gitignore
 .git
 .github
-lazy-lock.json
+.config/nvim/lazy-lock.json
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "arch")}}
   .config/environment.d/
 {{- end}}
