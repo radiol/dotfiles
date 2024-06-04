@@ -165,7 +165,6 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 # Install Apps for Mac
 # ---------------------------------------------------------
-    brew tap homebrew/cask-fonts
     brew install -q --cask font-hack-nerd-font
     brew install -q openssl readline sqlite3 xz zlib tcl-tk trash-cli luarocks
 {{end -}}
@@ -175,7 +174,7 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 
 # Install rye
-curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+curl -sSf https://rye.astral.sh/get | RYE_INSTALL_OPTION="--yes" bash
 
 # Install Rust
 if ! (type "cargo" > /dev/null 2>&1); then
