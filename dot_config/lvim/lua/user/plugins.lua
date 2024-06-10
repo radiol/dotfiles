@@ -41,19 +41,27 @@ lvim.plugins = {
 	},
 	{
 		"linux-cultist/venv-selector.nvim",
-		dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-		config = true,
-		event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-		keys = {
-			{
-				"<leader>lv",
-				"<cmd>:VenvSelect<cr>",
-				-- key mapping for directly retrieve from cache. You may set autocmd if you prefer the no hand approach
-				-- "<leader>vc", "<cmd>:VenvSelectCached<cr>"
-			},
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"mfussenegger/nvim-dap",
+			"mfussenegger/nvim-dap-python", --optional
+			{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
 		},
 		opts = {
+			-- Your options go here
 			name = { "venv", ".venv" },
+			-- auto_refresh = false
+		},
+		lazy = false,
+		branch = "regexp", -- This is the regexp branch, use this for the new version
+		config = function()
+			require("venv-selector").setup()
+		end,
+		keys = {
+			-- Keymap to open VenvSelector to pick a venv.
+			{ "<leader>lv", "<cmd>VenvSelect<cr>" },
+			-- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+			-- { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
 		},
 	},
 	{
