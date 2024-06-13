@@ -6,5 +6,10 @@ if type trash > /dev/null;then
   alias rm=trash
 fi
 
+# Change cp -> xcp
+if type xcp > /dev/null;then
+  alias cp=xcp
+fi
+
 # clipboard
 alias C=bp
