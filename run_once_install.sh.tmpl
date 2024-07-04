@@ -100,6 +100,7 @@ echo "Operating System is {{$platform}}"
     sudo apt update -qq && sudo apt upgrade -y -qq && \
     sudo apt install -y -qq \
     build-essential \
+    cmake \
     curl \
     file \
     git \
@@ -166,7 +167,7 @@ echo "Operating System is {{$platform}}"
 # Install Apps for Mac
 # ---------------------------------------------------------
     brew install -q --cask font-hack-nerd-font
-    brew install -q openssl readline sqlite3 xz zlib tcl-tk trash-cli luarocks
+    brew install -q cmake openssl readline sqlite3 xz zlib tcl-tk trash-cli luarocks
 {{end -}}
 
 # ---------------------------------------------------------
@@ -184,7 +185,7 @@ if ! (type "cargo" > /dev/null 2>&1); then
 fi
 
 # Install Rust Apps
-cargo install -q bp cargo-edit cargo-update eza topgrade xcp
+cargo install -q bp cargo-edit cargo-update eza starship topgrade xcp
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
