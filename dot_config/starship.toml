@@ -7,6 +7,7 @@ $git_branch\
 $git_state\
 $git_status\
 $docker_context\
+$golang\
 $lua\
 $nodejs\
 $rust\
@@ -50,7 +51,12 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [docker_context]
+format = "[$symbol$context]($style) "
 symbol = " "
+
+[golang]
+format = "via [$symbol($version )]($style)"
+symbol = " "
 
 [lua]
 symbol = " "
