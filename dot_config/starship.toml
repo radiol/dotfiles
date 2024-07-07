@@ -6,7 +6,12 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$all\
+$docker_context\
+$golang\
+$lua\
+$nodejs\
+$python\
+$rust\
 $line_break\
 $character"""
 
