@@ -10,6 +10,13 @@ $all\
 $line_break\
 $character"""
 
+[username]
+format = "[$user]($style)"
+
+[hostname]
+format = "[($ssh_symbol$hostname)]($style)"
+ssh_symbol = " "
+
 [directory]
 style = "blue"
 read_only = " 󰌾"
@@ -52,13 +59,15 @@ format = "[$symbol$context]($style) "
 symbol = " "
 
 [golang]
-format = "via [$symbol($version )]($style)"
+format = "[$symbol($version )]($style)"
 symbol = " "
 
 [lua]
+format = "[$symbol($version )]($style)"
 symbol = " "
 
 [nodejs]
+format = "[$symbol($version )]($style)"
 symbol = " "
 
 [python]
