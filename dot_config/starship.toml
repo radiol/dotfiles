@@ -6,13 +6,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$docker_context\
-$golang\
-$lua\
-$nodejs\
-$rust\
-$python\
-$cmd_duration\
+$all\
 $line_break\
 $character"""
 
@@ -49,6 +43,9 @@ style = "bright-black"
 disabled = true
 format = "[$duration]($style) "
 style = "yellow"
+
+[package]
+disabled = true
 
 [docker_context]
 format = "[$symbol$context]($style) "
