@@ -19,7 +19,7 @@ $character"""
 format = "[$user]($style)"
 
 [hostname]
-format = "[($ssh_symbol$hostname)]($style)"
+format = "[ ($ssh_symbol$hostname)]($style)"
 ssh_symbol = " "
 
 [directory]
