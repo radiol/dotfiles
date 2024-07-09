@@ -19,7 +19,7 @@ $character"""
 format = "[$user]($style)"
 
 [hostname]
-format = "[($ssh_symbol$hostname)]($style)"
+format = "[ ($ssh_symbol$hostname)]($style)"
 ssh_symbol = " "
 
 [directory]
@@ -59,6 +59,8 @@ style = "yellow"
 [package]
 disabled = true
 
+# Nerd Font Icons
+# https://starship.rs/presets/nerd-font
 [docker_context]
 format = "[$symbol$context]($style) "
 symbol = " "
