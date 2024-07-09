@@ -59,6 +59,8 @@ style = "yellow"
 [package]
 disabled = true
 
+# Nerd Font Icons
+# https://starship.rs/presets/nerd-font
 [docker_context]
 format = "[$symbol$context]($style) "
 symbol = " "
