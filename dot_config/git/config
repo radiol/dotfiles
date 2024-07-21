@@ -3,3 +3,5 @@
 	email = radiol@github.com
 [init]
 	defaultBranch = main
+[alias]
+	ac = !git add -A && aicommits -a
