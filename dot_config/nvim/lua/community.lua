@@ -16,6 +16,9 @@ return {
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
 
+  -- Completion
+  { import = "astrocommunity.completion.cmp-cmdline" },
+
   -- Editing Support
   -- <leader> + Shift + w: Sudo write
   { import = "astrocommunity.editing-support.suda-vim" },
@@ -42,7 +45,7 @@ return {
   { import = "astrocommunity.utility.noice-nvim" },
 
   -- Diagnostic
-  { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
 
   -- File Explorer
   { import = "astrocommunity.file-explorer.oil-nvim" },
