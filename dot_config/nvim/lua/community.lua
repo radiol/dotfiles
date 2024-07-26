@@ -29,6 +29,7 @@ return {
 
   -- LSP
   { import = "astrocommunity.lsp.lspsaga-nvim" },
+  { import = "astrocommunity.lsp.nvim-lint" },
 
   -- Motion
   -- "/"検索での検索結果にアルファベットのインデックスが追加
