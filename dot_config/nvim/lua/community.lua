@@ -25,6 +25,9 @@ return {
   -- Ctrl + a or x: Increment/Decrement
   { import = "astrocommunity.editing-support.dial-nvim" },
 
+  -- LSP
+  { import = "astrocommunity.lsp.lspsaga-nvim" },
+
   -- Motion
   -- "/"検索での検索結果にアルファベットのインデックスが追加
   -- 検索途中でそのアルファベットのキーを押すことでそこに飛ぶ
