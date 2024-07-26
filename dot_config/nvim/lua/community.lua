@@ -13,10 +13,6 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python-ruff" },
   {
-    "linux-cultist/venv-selector.nvim",
-    opts = { name = { "venv", ".venv" } },
-  },
-  {
     import = "astrocommunity.pack.rust",
     lsp = {
       config = {
