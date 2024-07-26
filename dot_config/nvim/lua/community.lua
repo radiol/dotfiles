@@ -24,6 +24,8 @@ return {
   { import = "astrocommunity.editing-support.suda-vim" },
   -- Ctrl + a or x: Increment/Decrement
   { import = "astrocommunity.editing-support.dial-nvim" },
+  -- Replace nvim-autopairs
+  { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
 
   -- LSP
   { import = "astrocommunity.lsp.lspsaga-nvim" },
