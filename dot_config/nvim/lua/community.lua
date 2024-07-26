@@ -12,30 +12,7 @@ return {
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python-ruff" },
-  {
-    "linux-cultist/venv-selector.nvim",
-    opts = { name = { "venv", ".venv" } },
-  },
-  {
-    import = "astrocommunity.pack.rust",
-    lsp = {
-      config = {
-        rust_analyzer = {
-          settings = {
-            ["rust-analyzer"] = {
-              cargo = {
-                loadOutDirsFromCheck = true,
-                features = "all",
-              },
-              checkOnSave = {
-                command = "clippy",
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+  { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
 
