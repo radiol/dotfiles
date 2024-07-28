@@ -48,9 +48,9 @@ apply = ["PATH", "source"]
 
 # [plugins.history-search-multi-word]
 # github = "zdharma/history-search-multi-word"
-#
-[plugins.zsh-history-substring-search]
-github = "zsh-users/zsh-history-substring-search"
+
+# [plugins.zsh-history-substring-search]
+# github = "zsh-users/zsh-history-substring-search"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
@@ -87,4 +87,4 @@ apply = ["defer"]
 [plugins.dotfiles-custom_command]
 local = "~/.config/zsh/custom_command"
 use = ["*.zsh"]
-apply = ["defer"]
+apply = ["source"]
