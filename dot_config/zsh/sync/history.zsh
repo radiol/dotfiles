@@ -10,5 +10,5 @@ zshaddhistory() {
     [[ ! "$line" =~ "^(cd|jj?|la|ll|ls|rmdir|exit)($| )" ]]
 }
 # enable substring search(up, down)
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
