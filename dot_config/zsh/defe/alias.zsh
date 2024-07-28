@@ -1,4 +1,4 @@
-# Change ls -> exa
+# Change ls -> eza
 alias ls="eza -F --group-directories-first --icons --git --time-style relative"
 
 # Change rm -> trashy
