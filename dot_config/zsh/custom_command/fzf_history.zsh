@@ -1,4 +1,6 @@
-# fzf history
+# ---------------------------------------------------------
+# search zsh history with fzf
+# ---------------------------------------------------------
 function fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
     CURSOR=$#BUFFER

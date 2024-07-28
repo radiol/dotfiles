@@ -6,7 +6,7 @@ abbr abe="chezmoi edit $XDG_CONFIG_HOME/zsh/abbreviations"
 abbr se="chezmoi edit $XDG_CONFIG_HOME/sheldon/plugins.toml"
 
 # base command
-# ls is replaced by exa
+# ls is replaced by eza
 abbr la="ls -a"
 abbr ll="ls -alh"
 abbr lt="ls -a -T -L 3 -I '.git'"
