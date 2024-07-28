@@ -3,4 +3,10 @@
 # ---------------------------------------------------------
 eval "$(zoxide init zsh)"
 
-bindkey'^z' zi
+function zoxide-widget() {
+  zi
+  zle reset-prompt
+}
+
+zle -N zoxide-widget
+bindkey '^z' zoxide-widget
