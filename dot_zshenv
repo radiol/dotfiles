@@ -59,10 +59,5 @@ path=($HOME/.local/bin(N-/) $path)
 # ---------------------------------------------------------
 # Default editor
 # ---------------------------------------------------------
-if type lvim > /dev/null; then;
-        export EDITOR="lvim"
-        export VIEWER="lvim"
-else
-        export EDITOR="nvim"
-        export VIEWER="nvim"
-fi
+export EDITOR="nvim"
+export VIEWER="nvim"
