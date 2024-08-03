@@ -12,6 +12,7 @@
 	show = delta
 
 [delta]
+	side-by-side = true
 	line-numbers = true
 	keep-plus-minus-markers = true
 	plus-color = "#012800"
