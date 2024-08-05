@@ -1,3 +1,6 @@
+-----------------------------------------------------------
+-- venv-selector.nvim configuration by Radiol
+-----------------------------------------------------------
 return {
   {
     "linux-cultist/venv-selector.nvim",
