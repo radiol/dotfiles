@@ -132,10 +132,6 @@ echo "Operating System is {{$platform}}"
     sudo apt update -qq && sudo apt install -y -qq wezterm
 {{end -}}
 
-{{ if or (eq $platform "arch
-
-{{end -}}
-
 {{ if or (eq $platform "darwin") (eq $platform "ubuntu") -}}
 # ---------------------------------------------------------
 # Install Homebrew adn Apps
