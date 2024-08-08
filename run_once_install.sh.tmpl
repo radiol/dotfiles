@@ -130,10 +130,9 @@ echo "Operating System is {{$platform}}"
     zsh && \
     sudo apt autoclean -qq
     # Install apps by snap
-    sudo snap install --classic \
-        chezmoi \
-        nvim \
-        ripgrep
+    sudo snap install --classic chezmoi
+    sudo snap install --classic nvim
+    sudo snap install --classic ripgrep
     sudo snap install \
         deno \
         lazygit 
