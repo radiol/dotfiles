@@ -147,9 +147,9 @@ echo "Operating System is {{$platform}}"
     sudo apt update -qq && sudo apt install -y -qq wezterm
 {{end -}}
 
-{{ if or (eq $platform "darwin") (eq $platform "ubuntu") -}}
+{{ if eq $platform "darwin" -}}
 # ---------------------------------------------------------
-# Install Homebrew adn Apps
+# Install Homebrew
 # ---------------------------------------------------------
 # Check Homebrew
     if ! (type "brew" > /dev/null 2>&1); then
@@ -157,10 +157,7 @@ echo "Operating System is {{$platform}}"
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
         # Activate Homebrew path
-        if [[ -d "/home/linuxbrew/.linuxbrew" ]]
-        then
-            HOMEBREW_HOME="/home/linuxbrew/.linuxbrew"
-        elif [[ -d "/opt/homebrew" ]]
+        if [[ -d "/opt/homebrew" ]]
         then
             HOMEBREW_HOME="/opt/homebrew"
         else
@@ -168,24 +165,31 @@ echo "Operating System is {{$platform}}"
         fi
         eval "$($HOMEBREW_HOME/bin/brew shellenv)"
     fi
-{{end -}}
 
-{{ if eq $platform "darwin" -}}
 # ---------------------------------------------------------
 # Install Apps for Mac
 # ---------------------------------------------------------
-    ## brew install -q \
-    ##     bat \
-    ##     chezmoi \
-    ##     deno \
-    ##     fd \
-    ##     fzf \
-    ##     lazygit \
-    ##     neovim \
-    ##     nodejs \ 
-    ##     ripgrep \
     brew install -q --cask font-hack-nerd-font
-    brew install -q bat chezmoi cmake deno fd fzf lazygit neovim nodejs openssl readline ripgrep sqlite3 xz zlib tcl-tk trash-cli luarocks wezterm
+    brew install -q \
+        bat \
+        chezmoi \
+        cmake \
+        deno \
+        fd \
+        fzf \
+        lazygit \
+        neovim \
+        nodejs \
+        openssl \
+        readline \
+        ripgrep \
+        sqlite3 \
+        xz \
+        zlib \
+        tcl-tk \
+        trash-cli \
+        luarocks \
+        wezterm
 {{end -}}
 
 # ---------------------------------------------------------
@@ -203,7 +207,8 @@ if ! (type "cargo" > /dev/null 2>&1); then
 fi
 
 # Install Rust Apps
-cargo install -q \
+cargo install -q cargo-binstall
+cargo binstall \
     bp \
     cargo-edit \
     cargo-update \
@@ -217,7 +222,7 @@ cargo install -q \
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
-    cargo install -q trashy
+    cargo binstall trashy
 {{end -}}
 
 # Install volta
