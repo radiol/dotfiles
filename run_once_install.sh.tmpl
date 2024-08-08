@@ -121,7 +121,6 @@ echo "Operating System is {{$platform}}"
     llvm \
     luarocks \
     make \
-    neovim \
     procps \
     tk-dev \
     wget \
@@ -131,7 +130,7 @@ echo "Operating System is {{$platform}}"
     sudo apt autoclean -qq
     # Install apps by snap
     sudo snap install --classic chezmoi
-    ## sudo snap install --classic nvim
+    sudo snap install --classic nvim
     sudo snap install --classic ripgrep
     sudo snap install \
         deno \
@@ -228,13 +227,6 @@ fi
 
 # Install AstroNvim
 nvim --headless +qa
-
-# Install LunarVim
-if ! (command -v lvim &> /dev/null 2>&1); then
-    LV_BRANCH='release-1.4/neovim-0.9' \
-    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh) \
-    -y --no-install-dependencies
-fi
 
 # ---------------------------------------------------------
 # Install UDEVGothic
