@@ -222,7 +222,7 @@ cargo binstall -y -q \
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
-    cargo binstall trashy
+    cargo binstall -y -q trashy
 {{end -}}
 
 # Install volta
