@@ -86,7 +86,6 @@ echo "Operating System is {{$platform}}"
         npm \
         openssl \
         ripgrep \
-        sheldon \
         openssh \
         ufw \
         unzip \
@@ -100,10 +99,13 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
     sudo apt update -qq && sudo apt upgrade -y -qq && \
     sudo apt install -y -qq \
+    bat \
     build-essential \
     cmake \
     curl \
+    fd-find \
     file \
+    fzf \
     git \
     jq \
     language-pack-ja \
@@ -126,15 +128,28 @@ echo "Operating System is {{$platform}}"
     zlib1g-dev \
     zsh && \
     sudo apt autoclean -qq
+    # Install apps by snap
+    sudo snap install --classic chezmoi
+    sudo snap install --classic nvim
+    sudo snap install --classic ripgrep
+    sudo snap install \
+        deno \
+        lazygit 
+
+    # Create symbolic link
+    mkdir -p ~/.local/bin
+    ln -s $(which batcat) ~/.local/bin/bat
+    ln -s $(which fdfind) ~/.local/bin/fd
+
     # Install wezterm for ubuntu
     curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
     echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
     sudo apt update -qq && sudo apt install -y -qq wezterm
 {{end -}}
 
-{{ if or (eq $platform "darwin") (eq $platform "ubuntu") -}}
+{{ if eq $platform "darwin" -}}
 # ---------------------------------------------------------
-# Install Homebrew adn Apps
+# Install Homebrew
 # ---------------------------------------------------------
 # Check Homebrew
     if ! (type "brew" > /dev/null 2>&1); then
@@ -142,10 +157,7 @@ echo "Operating System is {{$platform}}"
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
         # Activate Homebrew path
-        if [[ -d "/home/linuxbrew/.linuxbrew" ]]
-        then
-            HOMEBREW_HOME="/home/linuxbrew/.linuxbrew"
-        elif [[ -d "/opt/homebrew" ]]
+        if [[ -d "/opt/homebrew" ]]
         then
             HOMEBREW_HOME="/opt/homebrew"
         else
@@ -153,26 +165,31 @@ echo "Operating System is {{$platform}}"
         fi
         eval "$($HOMEBREW_HOME/bin/brew shellenv)"
     fi
-# Install Apps
-    brew install -q \
-        chezmoi \
-        sheldon \
-        bat \
-        deno \
-        fd \
-        fzf \
-        lazygit \
-        nodejs \
-        ripgrep \
-        neovim
-{{end -}}
 
-{{ if eq $platform "darwin" -}}
 # ---------------------------------------------------------
 # Install Apps for Mac
 # ---------------------------------------------------------
     brew install -q --cask font-hack-nerd-font
-    brew install -q cmake openssl readline sqlite3 xz zlib tcl-tk trash-cli luarocks wezterm
+    brew install -q \
+        bat \
+        chezmoi \
+        cmake \
+        deno \
+        fd \
+        fzf \
+        lazygit \
+        neovim \
+        nodejs \
+        openssl@3 \
+        readline \
+        ripgrep \
+        sqlite3 \
+        xz \
+        zlib \
+        tcl-tk \
+        trash-cli \
+        luarocks \
+        wezterm
 {{end -}}
 
 # ---------------------------------------------------------
@@ -190,12 +207,14 @@ if ! (type "cargo" > /dev/null 2>&1); then
 fi
 
 # Install Rust Apps
-cargo install -q \
+cargo install -q cargo-binstall
+cargo binstall -y -q \
     bp \
     cargo-edit \
     cargo-update \
     eza \
     git-delta \
+    sheldon \
     starship \
     topgrade \
     xcp \
@@ -203,7 +222,7 @@ cargo install -q \
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
-    cargo install -q trashy
+    cargo binstall -y -q trashy
 {{end -}}
 
 # Install volta
@@ -213,13 +232,6 @@ fi
 
 # Install AstroNvim
 nvim --headless +qa
-
-# Install LunarVim
-if ! (command -v lvim &> /dev/null 2>&1); then
-    LV_BRANCH='release-1.4/neovim-0.9' \
-    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh) \
-    -y --no-install-dependencies
-fi
 
 # ---------------------------------------------------------
 # Install UDEVGothic
