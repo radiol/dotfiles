@@ -121,6 +121,7 @@ echo "Operating System is {{$platform}}"
     llvm \
     luarocks \
     make \
+    neovim \
     procps \
     tk-dev \
     wget \
@@ -229,11 +230,11 @@ fi
 nvim --headless +qa
 
 # Install LunarVim
-## if ! (command -v lvim &> /dev/null 2>&1); then
+if ! (command -v lvim &> /dev/null 2>&1); then
     LV_BRANCH='release-1.4/neovim-0.9' \
-    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh) #\
-    ## -y --no-install-dependencies
-## fi
+    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh) \
+    -y --no-install-dependencies
+fi
 
 # ---------------------------------------------------------
 # Install UDEVGothic
