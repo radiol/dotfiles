@@ -207,7 +207,6 @@ if ! (type "cargo" > /dev/null 2>&1); then
 fi
 
 # Install Rust Apps
-## cargo install -q cargo-binstall
 cargo install -q  \
     bp \
     cargo-edit \
@@ -222,7 +221,7 @@ cargo install -q  \
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install trashy (Linux only)
-    cargo binstall -y -q trashy
+    cargo install -q trashy
 {{end -}}
 
 # Install volta
