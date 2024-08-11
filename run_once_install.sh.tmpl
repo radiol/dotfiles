@@ -29,7 +29,7 @@ echo "Operating System is {{$platform}}"
 {{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
 
 # ---------------------------------------------------------
-# Install Pacman Packages
+# Install Pacman Packages for Arch Linux and Manjaro
 # ---------------------------------------------------------
 {{ if or (eq $platform "arch") (eq $platform "manjaro") -}}
 {{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
@@ -80,7 +80,7 @@ nvim --headless +qa
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
-{{if or (eq $platform "arch") (eq $platform "manjaro") -}}
+{{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
 # GitHub リポジトリのユーザー名、リポジトリ名、およびリリースタグを指定
     USER_NAME="yuru7"
     REPO_NAME="udev-gothic"
