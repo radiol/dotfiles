@@ -11,250 +11,54 @@
         {{- $platform = "arch" -}}
     {{ else if eq .chezmoi.osRelease.id "manjaro" -}}
         {{- $platform = "manjaro" -}}
-    {{ end -}}
+    {{ end}}
 {{ else if eq .chezmoi.os "darwin" -}}
     {{- $platform = "darwin" -}}
-{{- end -}}
+{{- end}}
 
 {{if eq $platform "" -}}
     # if platform is empty, raise error.
     echo "Operating System is UNKNOWN!"
     return 1
 {{- end}}
-
 echo "Operating System is {{$platform}}"
 
-{{if eq $platform "arch" -}}
 # ---------------------------------------------------------
-# Set Mirror Server for ArchLinux
+# Install packages for each platform
 # ---------------------------------------------------------
-    echo "Setting arch mirror servers"
-    mkdir -p ~/.cache
-    sudo pacman -Sy -q --noconfirm reflector
-    sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-    sudo reflector --country "Japan" --latest 5 --completion-percent 95 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-{{end -}}
-
-{{if eq $platform "manjaro" -}}
-# ---------------------------------------------------------
-# Set Mirror Server for Manjaro
-# ---------------------------------------------------------
-    mkdir -p ~/.cache
-    sudo pacman-mirrors -c Japan
-    sudo pacman-mirrors --fasttrack
-{{end -}}
-
-{{if or (eq $platform "arch") (eq $platform "manjaro") -}}
-# ---------------------------------------------------------
-# Setup Pacman
-# ---------------------------------------------------------
-    # Edit /etc/pacman.conf
-    if grep -q "#Color" /etc/pacman.conf;
-    then
-        sudo sed -i "s/#Color/Color/" /etc/pacman.conf
-    fi
-
-    if ! grep -q "ILoveCandy" /etc/pacman.conf;
-    then
-        sudo sed -i "/VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
-    fi
-
-    # Update
-    sudo pacman -Syyu -q --noconfirm
-
-    # Change dir names to English
-    sudo pacman -Sy -q xdg-user-dirs-gtk --noconfirm
-    LANG=C xdg-user-dirs-gtk-update --noconfirm
-
-    # Install applications
-    sudo pacman -Sy -q --noconfirm \
-        base-devel \
-        bat \
-        chezmoi \
-        cmake \
-        curl \
-        fd \
-        fzf \
-        gcc \
-        git \
-        gtk2 \
-        jq \
-        lazygit \
-        luarocks \
-        neovim \
-        noto-fonts-emoji \
-        npm \
-        openssl \
-        ripgrep \
-        openssh \
-        ufw \
-        unzip \
-        wezterm \
-        zsh
-{{end -}}
-
-{{ if eq $platform "ubuntu" -}}
-# ---------------------------------------------------------
-# Install apps for Ubuntu
-# ---------------------------------------------------------
-    sudo apt update -qq && sudo apt upgrade -y -qq && \
-    sudo apt install -y -qq \
-    bat \
-    build-essential \
-    cmake \
-    curl \
-    fd-find \
-    file \
-    fzf \
-    git \
-    jq \
-    language-pack-ja \
-    libbz2-dev \
-    libffi-dev \
-    liblzma-dev \
-    libncursesw5-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    llvm \
-    luarocks \
-    make \
-    procps \
-    tk-dev \
-    wget \
-    xz-utils \
-    zlib1g-dev \
-    zsh && \
-    sudo apt autoclean -qq
-    # Install apps by snap
-    sudo snap install --classic chezmoi
-    sudo snap install --classic nvim
-    sudo snap install --classic ripgrep
-    sudo snap install deno
-    sudo snap install lazygit
-
-    # Create symbolic link
-    mkdir -p ~/.local/bin
-    ln -s $(which batcat) ~/.local/bin/bat
-    ln -s $(which fdfind) ~/.local/bin/fd
-
-    # Install wezterm for ubuntu
-    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-    sudo apt update -qq && sudo apt install -y -qq wezterm
-{{end -}}
-
-{{ if eq $platform "darwin" -}}
-# ---------------------------------------------------------
-# Install Homebrew
-# ---------------------------------------------------------
-# Check Homebrew
-    if ! (type "brew" > /dev/null 2>&1); then
-        # Install Homebrew
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-        # Activate Homebrew path
-        if [[ -d "/opt/homebrew" ]]
-        then
-            HOMEBREW_HOME="/opt/homebrew"
-        else
-            HOMEBREW_HOME="/usr/local"
-        fi
-        eval "$($HOMEBREW_HOME/bin/brew shellenv)"
-    fi
+{{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
 
 # ---------------------------------------------------------
-# Install Apps for Mac
+# Install Pacman Packages for Arch Linux and Manjaro
 # ---------------------------------------------------------
-    brew install -q --cask font-hack-nerd-font
-    brew install -q \
-        bat \
-        chezmoi \
-        cmake \
-        deno \
-        fd \
-        fzf \
-        lazygit \
-        neovim \
-        nodejs \
-        openssl@3 \
-        readline \
-        ripgrep \
-        sqlite3 \
-        xz \
-        zlib \
-        tcl-tk \
-        trash-cli \
-        luarocks \
-        wezterm
-{{end -}}
-
-# ---------------------------------------------------------
-# Install rye, cargo, volta
-# ---------------------------------------------------------
-
-# Install rye
-curl -sSf https://rye.astral.sh/get | RYE_INSTALL_OPTION="--yes" bash
-
-# Install Rust
-if ! (type "cargo" > /dev/null 2>&1); then
-    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
-    sh rustup.sh -y -q --no-modify-path && rm rustup.sh
-    source "$HOME/.cargo/env"
-fi
-
-# Install Rust Apps
-cargo install -q cargo-binstall
-cargo binstall -q  -y --only-signed\
-    bp \
-    cargo-edit \
-    cargo-update \
-    eza \
-    git-delta \
-    sheldon \
-    starship \
-    topgrade \
-    xcp \
-    zoxide
-
-{{ if eq .chezmoi.os "linux" -}}
-# Install trashy (Linux only)
-    cargo binstall -q -y --only-signed trashy
-{{end -}}
-
-# Install volta
-if ! (type "volta" > /dev/null 2>&1); then
-    curl https://get.volta.sh | bash
-fi
-
-# Install AstroNvim
-nvim --headless +qa
+{{ if or (eq $platform "arch") (eq $platform "manjaro") -}}
+{{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
+{{- end}}
 
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
-{{if or (eq $platform "arch") (eq $platform "manjaro") -}}
-# GitHub リポジトリのユーザー名、リポジトリ名、およびリリースタグを指定
-    USER_NAME="yuru7"
-    REPO_NAME="udev-gothic"
-    ZIP_FILE="font.zip"
+{{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
+{{ .chezmoi.sourceDir }}/scripts/install-udevgothic.sh
+{{- end}}
 
-# リリース情報を取得
-    RELEASE_INFO=$(curl -s https://api.github.com/repos/$USER_NAME/$REPO_NAME/releases/latest)
+# ---------------------------------------------------------
+# Install rye
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir }}/scripts/install-rye.sh
 
-# 最新のリリースアセットのURL
-    ASSET_URL=$(echo $RELEASE_INFO | jq -r '.assets[0].browser_download_url')
+# ---------------------------------------------------------
+# Install rust
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir }}/scripts/install-rust.sh
 
-# curl を使用してリリースアセットをダウンロード
-    curl -LJ $ASSET_URL -o $ZIP_FILE
+# ---------------------------------------------------------
+# Install volta
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir }}/scripts/install-volta.sh
 
-# Extract to /usr/share/fonts/
-    sudo unzip -o $ZIP_FILE -d /usr/share/fonts/
-# Delete zip file
-    rm $ZIP_FILE
-{{end -}}
+# Install AstroNvim
+nvim --headless +qa
 
 # Rebuild bat cache for activate catppuccine
 bat cache --build
@@ -262,14 +66,7 @@ bat cache --build
 # Create XDG folder
 mkdir -p ~/.local/state
 
-# Delete ~/bin/chezmoi
-if [ -f "$HOME/bin/chezmoi" ]; then
-    echo "Removing ~/bin/chezmoi"
-    rm "$HOME/bin/chezmoi"
-fi
-if [ -d "$HOME/bin" ]; then
-    if [ -z "$(ls -A $HOME/bin)" ]; then
-        echo "Removing ~/bin"
-        rmdir "$HOME/bin"
-    fi
-fi
+# ---------------------------------------------------------
+# Remove chezmoi
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir }}/scripts/delete-chezmoi.sh

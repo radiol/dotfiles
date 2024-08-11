@@ -2,6 +2,7 @@
 /.github
 /.git
 /.gitignore
+/scripts
 .git
 .github
 .config/nvim/lazy-lock.json
