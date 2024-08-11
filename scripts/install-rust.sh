@@ -1,4 +1,8 @@
-# This script installs Rust and some Rust apps
+#!/bin/bash -xeu
+
+# ---------------------------------------------------------
+# Install Rust
+# ---------------------------------------------------------
 if ! (type "cargo" > /dev/null 2>&1); then
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs > rustup.sh
     sh rustup.sh -y -q --no-modify-path && rm rustup.sh

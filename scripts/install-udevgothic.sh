@@ -1,3 +1,5 @@
+#!/bin/bash -xeu
+
 # GitHub リポジトリのユーザー名、リポジトリ名、およびリリースタグを指定
 USER_NAME="yuru7"
 REPO_NAME="udev-gothic"
