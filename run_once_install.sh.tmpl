@@ -11,16 +11,16 @@
         {{- $platform = "arch" -}}
     {{ else if eq .chezmoi.osRelease.id "manjaro" -}}
         {{- $platform = "manjaro" -}}
-    {{ end -}}
+    {{ end}}
 {{ else if eq .chezmoi.os "darwin" -}}
     {{- $platform = "darwin" -}}
-{{- end -}}
+{{- end}}
 
 {{if eq $platform "" -}}
     # if platform is empty, raise error.
     echo "Operating System is UNKNOWN!"
     return 1
-{{- end -}}
+{{- end}}
 
 # ---------------------------------------------------------
 # Install packages for each platform
@@ -33,14 +33,14 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 {{ if or (eq $platform "arch") (eq $platform "manjaro") -}}
 {{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
-{{- end -}}
+{{- end}}
 
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
 {{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
 {{ .chezmoi.sourceDir }}/scripts/install-udevgothic.sh
-{{- end -}}
+{{- end}}
 
 # ---------------------------------------------------------
 # Install rye
