@@ -26,7 +26,7 @@
 # Install packages for each platform
 # ---------------------------------------------------------
 echo "Operating System is {{$platform}}"
-{{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
+{{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh.tmpl
 
 # ---------------------------------------------------------
 # Install rye, cargo, volta
