@@ -21,11 +21,11 @@
     echo "Operating System is UNKNOWN!"
     return 1
 {{- end}}
+echo "Operating System is {{$platform}}"
 
 # ---------------------------------------------------------
 # Install packages for each platform
 # ---------------------------------------------------------
-echo "Operating System is {{$platform}}"
 {{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
 
 # ---------------------------------------------------------
