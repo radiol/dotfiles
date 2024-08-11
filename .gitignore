@@ -21,6 +21,7 @@
 !run_once*.sh.tmpl
 !run_onchange*.sh
 !run_onchange*.sh.tmpl
+!scripts/**
 
 # black list
 .DS_Store
