@@ -4,7 +4,3 @@
     mkdir -p ~/.cache
     sudo pacman-mirrors -c Japan
     sudo pacman-mirrors --fasttrack
-# ---------------------------------------------------------
-# Install Pacman Packages
-# ---------------------------------------------------------
-chezmoi execute-template {{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
