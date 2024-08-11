@@ -4,37 +4,37 @@
 # Install apps for Ubuntu
 # ---------------------------------------------------------
 echo "Installing apps for Ubuntu"
-sudo apt update -qq && sudo apt upgrade -y -qq && \
-sudo apt install -y -qq \
-bat \
-build-essential \
-cmake \
-curl \
-fd-find \
-file \
-fzf \
-git \
-jq \
-language-pack-ja \
-libbz2-dev \
-libffi-dev \
-liblzma-dev \
-libncursesw5-dev \
-libreadline-dev \
-libsqlite3-dev \
-libssl-dev \
-libxml2-dev \
-libxmlsec1-dev \
-llvm \
-luarocks \
-make \
-procps \
-tk-dev \
-wget \
-xz-utils \
-zlib1g-dev \
-zsh && \
-sudo apt autoclean -qq
+sudo apt update -qq && sudo apt upgrade -y -qq &&
+	sudo apt install -y -qq \
+		bat \
+		build-essential \
+		cmake \
+		curl \
+		fd-find \
+		file \
+		fzf \
+		git \
+		jq \
+		language-pack-ja \
+		libbz2-dev \
+		libffi-dev \
+		liblzma-dev \
+		libncursesw5-dev \
+		libreadline-dev \
+		libsqlite3-dev \
+		libssl-dev \
+		libxml2-dev \
+		libxmlsec1-dev \
+		llvm \
+		luarocks \
+		make \
+		procps \
+		tk-dev \
+		wget \
+		xz-utils \
+		zlib1g-dev \
+		zsh &&
+	sudo apt autoclean -qq
 # Install apps by snap
 echo "Installing apps by snap"
 sudo snap install --classic chezmoi
