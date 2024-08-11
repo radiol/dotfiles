@@ -20,7 +20,7 @@
     # if platform is empty, raise error.
     echo "Operating System is UNKNOWN!"
     return 1
-{{- end}}
+{{- end -}}
 
 # ---------------------------------------------------------
 # Install packages for each platform
@@ -33,33 +33,32 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 {{ if or (eq $platform "arch") (eq $platform "manjaro") -}}
 {{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
-{{- end}}
+{{- end -}}
 
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
 {{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
 {{ .chezmoi.sourceDir }}/scripts/install-udevgothic.sh
-{{end -}}
+{{- end -}}
 
 # ---------------------------------------------------------
 # Install rye
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir  }}/scripts/install-rye.sh
+{{ .chezmoi.sourceDir }}/scripts/install-rye.sh
 
 # ---------------------------------------------------------
 # Install cargo
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir  }}/scripts/install-rust.sh
+{{ .chezmoi.sourceDir }}/scripts/install-rust.sh
 
 # ---------------------------------------------------------
 # Install volta
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir  }}/scripts/install-volta.sh
+{{ .chezmoi.sourceDir }}/scripts/install-volta.sh
 
 # Install AstroNvim
 nvim --headless +qa
-
 
 # Rebuild bat cache for activate catppuccine
 bat cache --build
