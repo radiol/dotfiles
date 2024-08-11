@@ -43,19 +43,19 @@ echo "Operating System is {{$platform}}"
 {{end -}}
 
 # ---------------------------------------------------------
-# Install rye, cargo, volta
-# ---------------------------------------------------------
-
 # Install rye
+# ---------------------------------------------------------
 {{ .chezmoi.sourceDir  }}/scripts/install-rye.sh
 
-# Install Rust
+# ---------------------------------------------------------
+# Install cargo
+# ---------------------------------------------------------
 {{ .chezmoi.sourceDir  }}/scripts/install-rust.sh
 
+# ---------------------------------------------------------
 # Install volta
-if ! (type "volta" > /dev/null 2>&1); then
-    curl https://get.volta.sh | bash
-fi
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir  }}/scripts/install-volta.sh
 
 # Install AstroNvim
 nvim --headless +qa
