@@ -10,4 +10,4 @@ sudo reflector --country "Japan" --latest 5 --completion-percent 95 --protocol h
 # ---------------------------------------------------------
 # Install Pacman Packages
 # ---------------------------------------------------------
-source ./install-pacman.sh
+chezmoi execute-template {{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
