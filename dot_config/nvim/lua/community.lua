@@ -9,6 +9,7 @@ return {
   { import = "astrocommunity.completion.copilot-lua-cmp" },
 
   -- Language Pack
+  { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python-ruff" },
