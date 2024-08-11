@@ -3,7 +3,7 @@
 # ---------------------------------------------------------
 # Set Mirror Server for ArchLinux
 # ---------------------------------------------------------
-echo "Setting arch mirror servers"
+echo "Setting ArchLinux mirror servers"
 mkdir -p ~/.cache
 sudo pacman -Sy -q --noconfirm reflector
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak

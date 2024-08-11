@@ -1,5 +1,9 @@
 #!/bin/bash -xeu
 
+# ---------------------------------------------------------
+# Install Udev Gothic Font
+# ---------------------------------------------------------
+echo "Installing Udev Gothic Font"
 # GitHub リポジトリのユーザー名、リポジトリ名、およびリリースタグを指定
 USER_NAME="yuru7"
 REPO_NAME="udev-gothic"

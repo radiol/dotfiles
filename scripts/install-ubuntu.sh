@@ -3,6 +3,7 @@
 # ---------------------------------------------------------
 # Install apps for Ubuntu
 # ---------------------------------------------------------
+echo "Installing apps for Ubuntu"
 sudo apt update -qq && sudo apt upgrade -y -qq && \
 sudo apt install -y -qq \
 bat \
@@ -35,6 +36,7 @@ zlib1g-dev \
 zsh && \
 sudo apt autoclean -qq
 # Install apps by snap
+echo "Installing apps by snap"
 sudo snap install --classic chezmoi
 sudo snap install --classic nvim
 sudo snap install --classic ripgrep
@@ -47,6 +49,7 @@ ln -s "$(which batcat)" ~/.local/bin/bat
 ln -s "$(which fdfind)" ~/.local/bin/fd
 
 # Install wezterm for ubuntu
+echo "Installing wezterm for Ubuntu"
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
 echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
 sudo apt update -qq && sudo apt install -y -qq wezterm

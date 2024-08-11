@@ -6,6 +6,7 @@
 # Check Homebrew
 if ! (type "brew" > /dev/null 2>&1); then
     # Install Homebrew
+    echo "Installing Homebrew"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # Activate Homebrew path
@@ -21,6 +22,7 @@ fi
 # ---------------------------------------------------------
 # Install Apps for Mac
 # ---------------------------------------------------------
+echo "Installing Apps for Mac"
 brew install -q --cask font-hack-nerd-font
 brew install -q \
     bat \
