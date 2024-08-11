@@ -45,8 +45,8 @@ sudo snap install lazygit
 
 # Create symbolic link
 mkdir -p ~/.local/bin
-ln -s "$(which batcat)" ~/.local/bin/bat
-ln -s "$(which fdfind)" ~/.local/bin/fd
+ln -nfs "$(which batcat)" ~/.local/bin/bat
+ln -nfs "$(which fdfind)" ~/.local/bin/fd
 
 # Install wezterm for ubuntu
 echo "Installing wezterm for Ubuntu"
