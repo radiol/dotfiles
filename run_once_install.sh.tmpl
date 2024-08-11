@@ -22,26 +22,11 @@
     return 1
 {{- end}}
 
+# ---------------------------------------------------------
+# Install packages for each platform
+# ---------------------------------------------------------
 echo "Operating System is {{$platform}}"
-
-{{if eq $platform "arch" -}}
-{{ .chezmoi.sourceDir }}/scripts/install-arch.sh
-{{end -}}
-
-{{if eq $platform "manjaro" -}}
-{{ .chezmoi.sourceDir }}/scripts/install-manjaro.sh
-{{end -}}
-
-{{ if eq $platform "ubuntu" -}}
-{{ .chezmoi.sourceDir }}/scripts/install-ubuntu.sh
-{{end -}}
-
-{{if or (eq $platform "arch") (eq $platform "manjaro") -}}
-{{end -}}
-
-{{ if eq $platform "darwin" -}}
-{{ .chezmoi.sourceDir  }}/scripts/install-darwin.sh
-{{end -}}
+{{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
 
 # ---------------------------------------------------------
 # Install rye, cargo, volta
