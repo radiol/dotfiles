@@ -11,5 +11,10 @@ if type xcp > /dev/null;then
   alias cp=xcp
 fi
 
+# Chage cd -> z
+if type zoxide > /dev/null;then
+  alias cd=z
+fi
+
 # clipboard
 alias C=bp
