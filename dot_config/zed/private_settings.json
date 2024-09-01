@@ -18,8 +18,8 @@
   "buffer_font_size": 14,
   "buffer_font_family": "UDEV Gothic 35NF",
   "theme": {
-    "mode": "dark",
-    "light": "Github Light",
-    "dark": "Tokyo Night"
+    "mode": "system",
+    "light": "Everforest Light",
+    "dark": "Everforest Dark"
   }
 }
