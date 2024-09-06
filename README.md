@@ -6,17 +6,18 @@ This repository contains my dotfiles for various operating systems, including Ma
 
 [![chezmoi](https://img.shields.io/badge/dotfiles%20manager-chezmoi-blue)](https://github.com/twpayne/chezmoi)
 [![sheldon](https://img.shields.io/badge/zsh%20plugin%20manager-sheldon-green)](https://github.com/rossmacarthur/sheldon)
-[![LunarVim](https://img.shields.io/badge/Neovim%20configuration-LunarVim-brightgreen)](https://github.com/LunarVim/LunarVim)
+[![AstroNvim](https://img.shields.io/badge/Neovim%20configuration-AstroNvim-brightgreen)](https://github.com/AstroNvim/AstroNvim)
 [![Volta](https://img.shields.io/badge/Node.js%2C%20Yarn%2C%20pnpm%20version%20manager-Volta-blueviolet)](https://github.com/volta-cli/volta)
-[![Rye](https://img.shields.io/badge/Python%20version%20manager-Rye-red)](https://github.com/davidhalter/rye)
+[![uv](https://img.shields.io/badge/Python%20version%20manager-uv-red)](https://astral.sh/blog/uv)
 
 - **Dotfiles Manager:** [Chezmoi](https://github.com/twpayne/chezmoi)
 - **Zsh Plugin Manager:** [Sheldon](https://github.com/rossmacarthur/sheldon)
-- **Neovim Configuration:** [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
+- **Neovim Configuration:** [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 - **Node Version Manager:** [Volta](https://github.com/volta-cli/volta)
-- **Python Version Manager:** [Rye](https://github.com/delfick/python-rye)
+- **Python Version Manager:** [uv](https://astral.sh/blog/uv)
 - **Package Managers:**
-  - MacOS, Ubuntu: [Homebrew](https://brew.sh/)
+  - MacOS: [Homebrew](https://brew.sh/)
+  - Ubuntu: [apt](https://wiki.debian.org/Apt)
   - ArchLinux, Manjaro: [Pacman](https://archlinux.org/pacman/)
 
 ## Installation
