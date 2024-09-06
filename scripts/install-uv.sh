@@ -6,7 +6,7 @@
 # Check if uv is already installed
 if type uv >/dev/null 2>&1; then
   echo "uv is already installed"
-  return
+  exit 0
 fi
 
 # Install uv
