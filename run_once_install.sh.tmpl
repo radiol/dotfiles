@@ -24,14 +24,6 @@
 echo "Operating System is {{$platform}}"
 
 # ---------------------------------------------------------
-# Create ~/.local/share/sheldon/repo/
-# sheldonでgitリポジトリがcloneできない問題に対する対症療法
-# Permissionの問題？先にディレクトリを作成しておく
-# 解決したら削除する
-# ---------------------------------------------------------
-mkdir -p ~/.local/share/sheldon/repo/
-
-# ---------------------------------------------------------
 # Install packages for each platform
 # ---------------------------------------------------------
 {{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
