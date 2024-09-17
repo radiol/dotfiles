@@ -19,11 +19,12 @@ cargo binstall -q -y --only-signed bp \
 	cargo-update \
 	eza \
 	git-delta \
-	sheldon \
 	starship \
 	topgrade \
 	xcp \
 	zoxide
+
+cargo install -q --locked sheldon --version 0.7.4
 
 # Install Trashy (Linux only)
 if [ "$(uname)" == "Linux" ]; then
