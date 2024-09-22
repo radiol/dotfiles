@@ -30,6 +30,7 @@ brew install -q \
 	deno \
 	fd \
 	fzf \
+	ghq \
 	lazygit \
 	neovim \
 	nodejs \

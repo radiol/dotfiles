@@ -32,6 +32,7 @@ sudo pacman -Sy -q --noconfirm \
 	fd \
 	fzf \
 	gcc \
+	ghq \
 	git \
 	gtk2 \
 	jq \
