@@ -26,36 +26,36 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 # Install packages for each platform
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/install-{{$platform}}.sh
+{{ .chezmoi.sourceDir }}/scripts/{{$platform}}.sh
 
 # ---------------------------------------------------------
 # Install Pacman Packages for Arch Linux and Manjaro
 # ---------------------------------------------------------
 {{ if or (eq $platform "arch") (eq $platform "manjaro") -}}
-{{ .chezmoi.sourceDir }}/scripts/install-pacman.sh
+{{ .chezmoi.sourceDir }}/scripts/pacman.sh
 {{- end}}
 
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
 {{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
-{{ .chezmoi.sourceDir }}/scripts/install-udevgothic.sh
+{{ .chezmoi.sourceDir }}/scripts/udevgothic.sh
 {{- end}}
 
 # ---------------------------------------------------------
 # Install uv
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/install-uv.sh
+{{ .chezmoi.sourceDir }}/scripts/uv.sh
 
 # ---------------------------------------------------------
 # Install rust
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/install-rust.sh
+{{ .chezmoi.sourceDir }}/scripts/rust.sh
 
 # ---------------------------------------------------------
 # Install volta
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/install-volta.sh
+{{ .chezmoi.sourceDir }}/scripts/volta.sh
 
 # Install AstroNvim
 nvim --headless +qa
