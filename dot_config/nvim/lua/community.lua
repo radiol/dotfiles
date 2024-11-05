@@ -53,7 +53,4 @@ return {
 
   -- Diagnostic
   -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
-
-  -- File Explorer
-  { import = "astrocommunity.file-explorer.oil-nvim" },
 }
