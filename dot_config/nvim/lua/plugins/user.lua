@@ -14,6 +14,28 @@ return {
   --   event = "BufRead",
   --   config = function() require("lsp_signature").setup() end,
   -- },
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("hlchunk").setup {
+        chunk = {
+          enable = true,
+          style = {
+            "#00ffff",
+            "#f35336",
+          },
+        },
+        indent = { enable = true },
+        line_num = {
+          enable = true,
+          style = {
+            "#00ffff",
+          },
+        },
+      }
+    end,
+  },
 
   -- == Examples of Overriding Plugins ==
 
@@ -41,6 +63,7 @@ return {
 
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enable = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   -- {
