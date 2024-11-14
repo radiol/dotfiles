@@ -52,5 +52,5 @@ return {
   { import = "astrocommunity.utility.noice-nvim" },
 
   -- Diagnostic
-  -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
 }
