@@ -53,6 +53,9 @@ path=($VOLTA_HOME/bin(N-/) $path)
 # Cargo
 path=($HOME/.cargo/bin(N-/) $path)
 
+# Go
+path=($HOME/go/bin(N-/) $path)
+
 # LunarVim
 path=($HOME/.local/bin(N-/) $path)
 
