@@ -49,9 +49,6 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
 
-[plugins.asdf]
-github = "asdf-vm/asdf"
-
 [plugins.completions]
 local = "~/.config/zsh/completions"
 apply = ["fpath"]
