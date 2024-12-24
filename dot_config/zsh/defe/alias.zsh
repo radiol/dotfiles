@@ -19,7 +19,7 @@ fi
 # clipboard
 alias C=bp
 
-# abbreviations for warp
+# Aliases for warp
 # edit alias
 alias ae="chezmoi edit $XDG_CONFIG_HOME/zsh/defe/alias.zsh"
 # edit abbr
