@@ -79,10 +79,7 @@ abbr ccs="cargo compete submit"
 
 # Neovim
 abbr v="nvim"
-abbr l="lvim"
 
 # Wezterm
 abbr wc="wezterm connect"
 
-# asdf add plugin and install latest
-abbr asdl="(){asdf plugin add $1 ; asdf install $1 latest ; asdf global $1 latest}"
