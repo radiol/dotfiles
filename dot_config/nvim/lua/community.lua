@@ -11,6 +11,7 @@ return {
   -- Language Pack
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.rust" },
