@@ -28,9 +28,9 @@
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   }
-  //  {
-  //    "context": "ProjectPanel && not_editing",
-  //    "bindings": {
+    {
+      "context": "ProjectPanel && not_editing",
+      "bindings": {
   //      "o": "project_panel::NewDirectory",
   //      "a": "project_panel::NewFile",
   //      "r": "project_panel::Rename",
@@ -44,6 +44,6 @@
   //      // Move up and down
   //      "j": "menu::SelectNext",
   //      "k": "menu::SelectPrev"
-  //    }
-  //  }
+      }
+    }
 ]
