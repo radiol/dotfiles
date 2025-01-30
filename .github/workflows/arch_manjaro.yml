@@ -39,6 +39,9 @@ jobs:
       - name: Check lazy.nvim dir
         run: |
           ls ~/.local/share/nvim/lazy/
+      - name: Check go app(gomi) is available
+        run: |
+          ls ~/go/bin/gomi
       - name: Check IME config file(arch only)
         run: cat ~/.config/environment.d/im.conf
   manjaro-test:
@@ -73,6 +76,9 @@ jobs:
       - name: Check lazy.nvim dir
         run: |
           ls ~/.local/share/nvim/lazy/
+      - name: Check go app(gomi) is available
+        run: |
+          ls ~/go/bin/gomi
       - name: Check IME config file does NOT exist(arch only)
         run: |
           if test -f "~/.config/environment/im.conf"; then
