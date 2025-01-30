@@ -42,6 +42,5 @@ brew install -q \
 	xz \
 	zlib \
 	tcl-tk \
-	trash-cli \
 	luarocks \
 	wezterm
