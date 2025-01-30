@@ -14,6 +14,7 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		file \
 		fzf \
 		git \
+		golang \
 		jq \
 		language-pack-ja \
 		libbz2-dev \

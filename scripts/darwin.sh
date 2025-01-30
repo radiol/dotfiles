@@ -31,6 +31,7 @@ brew install -q \
 	fd \
 	fzf \
 	ghq \
+	go \
 	lazygit \
 	neovim \
 	nodejs \
