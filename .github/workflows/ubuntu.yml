@@ -38,6 +38,7 @@ jobs:
       - name: Check go app(gomi) is available
         run: |
           ls ~/go/bin/gomi
+          gomi --version
       - name: Check IME config file does NOT exist(arch only)
         run: |
           if test -f "~/.config/environment/im.conf"; then
