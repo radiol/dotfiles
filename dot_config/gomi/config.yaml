@@ -29,7 +29,7 @@ ui:
   exit_message: bye!
   preview:
     syntax_highlight: true
-    colorscheme: nord
+    colorscheme: dracula
     directory_command: ls -GF -1 -A --color=always
   paginator_type: dots
 history:
