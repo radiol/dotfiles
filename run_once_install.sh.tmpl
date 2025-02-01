@@ -57,6 +57,11 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 {{ .chezmoi.sourceDir }}/scripts/volta.sh
 
+# ---------------------------------------------------------
+# Install go apps
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir }}/scripts/go.sh
+
 # Install AstroNvim
 nvim --headless +qa
 

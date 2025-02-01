@@ -31,6 +31,7 @@ brew install -q \
 	fd \
 	fzf \
 	ghq \
+	go \
 	lazygit \
 	neovim \
 	nodejs \
@@ -41,6 +42,5 @@ brew install -q \
 	xz \
 	zlib \
 	tcl-tk \
-	trash-cli \
 	luarocks \
 	wezterm

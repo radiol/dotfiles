@@ -25,9 +25,3 @@ cargo binstall -q -y --only-signed bp \
 	zoxide
 
 cargo install -q --locked sheldon --version 0.7.4
-
-# Install Trashy (Linux only)
-if [ "$(uname)" == "Linux" ]; then
-	echo "Installing Trashy"
-	cargo binstall -q -y --only-signed trashy
-fi

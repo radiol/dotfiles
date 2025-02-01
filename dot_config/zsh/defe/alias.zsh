@@ -1,9 +1,9 @@
 # Change ls -> eza
 alias ls="eza -F --group-directories-first --icons --git --time-style relative"
 
-# Change rm -> trashy
-if type trash > /dev/null;then
-  alias rm=trash
+# Change rm -> gomi
+if type gomi > /dev/null;then
+  alias rm=gomi
 fi
 
 # Change cp -> xcp
