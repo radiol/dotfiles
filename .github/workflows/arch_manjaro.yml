@@ -78,7 +78,7 @@ jobs:
           ls ~/.local/share/nvim/lazy/
       - name: Check go app(gomi) is available
         run: |
-          gomi --version
+          ls ~/go/bin/gomi
       - name: Check IME config file does NOT exist(arch only)
         run: |
           if test -f "~/.config/environment/im.conf"; then
