@@ -33,14 +33,15 @@ brew install -q \
 	ghq \
 	go \
 	lazygit \
+	luarocks \
 	neovim \
 	nodejs \
 	openssl@3 \
 	readline \
 	ripgrep \
 	sqlite3 \
-	xz \
-	zlib \
 	tcl-tk \
-	luarocks \
-	wezterm
+	wezterm \
+	xclip \
+	xz \
+	zlib
