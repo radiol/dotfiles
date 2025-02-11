@@ -32,6 +32,7 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		procps \
 		tk-dev \
 		wget \
+		xclip \
 		xz-utils \
 		zlib1g-dev \
 		zsh &&

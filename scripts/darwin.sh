@@ -39,6 +39,7 @@ brew install -q \
 	readline \
 	ripgrep \
 	sqlite3 \
+	xclip \
 	xz \
 	zlib \
 	tcl-tk \

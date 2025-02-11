@@ -48,4 +48,5 @@ sudo pacman -Sy -q --noconfirm \
 	ufw \
 	unzip \
 	wezterm \
+	xclip \
 	zsh
