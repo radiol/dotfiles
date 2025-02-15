@@ -4,7 +4,7 @@
 [init]
 	defaultBranch = main
 [alias]
-	ac = !git add -A && aicommits -a
+	ac = !git add -A && aicommits -a --type conventional --generate 3
 [pager]
 	diff = delta
 	log = delta
