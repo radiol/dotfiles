@@ -65,7 +65,7 @@ path=($HOME/.local/bin(N-/) $path)
 export EDITOR="nvim"
 export VIEWER="nvim"
 
-{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") -}}
+{{ if eq .chezmoi.os "linux" -}}
 # ---------------------------------------------------------
 # Environment variable for manjaro and arch linux
 # ---------------------------------------------------------
