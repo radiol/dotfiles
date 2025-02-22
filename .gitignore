@@ -5,7 +5,7 @@
 !*/
 
 # white list
-!/dot_zshenv
+!/dot_zshenv.tmpl
 !/dot_config/**
 
 # github files

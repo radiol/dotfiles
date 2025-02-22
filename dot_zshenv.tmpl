@@ -64,3 +64,13 @@ path=($HOME/.local/bin(N-/) $path)
 # ---------------------------------------------------------
 export EDITOR="nvim"
 export VIEWER="nvim"
+
+{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "manjaro") -}}
+# ---------------------------------------------------------
+# Environment variable for manjaro and arch linux
+# ---------------------------------------------------------
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+{{- end}}
+
