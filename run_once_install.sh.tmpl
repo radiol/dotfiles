@@ -62,6 +62,11 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 {{ .chezmoi.sourceDir }}/scripts/go.sh
 
+# ---------------------------------------------------------
+# Install gh extensions
+# ---------------------------------------------------------
+{{ .chezmoi.sourceDir }}/scripts/gh-extension.sh
+
 # Install AstroNvim
 nvim --headless +qa
 
