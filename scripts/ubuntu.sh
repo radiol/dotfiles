@@ -14,6 +14,7 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		file \
 		fzf \
 		git \
+		gh \
 		golang \
 		jq \
 		language-pack-ja \

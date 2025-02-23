@@ -30,6 +30,7 @@ brew install -q \
 	deno \
 	fd \
 	fzf \
+	gh \
 	ghq \
 	go \
 	lazygit \
