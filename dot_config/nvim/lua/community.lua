@@ -18,6 +18,7 @@ return {
 
   -- Completion
   { import = "astrocommunity.completion.copilot-cmp" },
+  { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.completion.cmp-cmdline" },
 
   -- Editing Support
