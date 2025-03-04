@@ -58,7 +58,9 @@ jobs:
         if: github.event_name == 'pull_request'
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
       - name: Update pacman
-        run: pacman -Syu -q --noconfirm
+        run: |
+          pacman-mirrors --fasttrack
+          pacman -Syu -q --noconfirm
       - name: Install sudo
         run: pacman -Sy -q --noconfirm sudo git curl
       - name: Run chezmoi
