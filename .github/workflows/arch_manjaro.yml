@@ -57,10 +57,10 @@ jobs:
       - name: Extract branch name for pull request
         if: github.event_name == 'pull_request'
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+      - name: Remove community repo from pacman.conf
+        run: sed -i '/\[community\]/,/Include/d' /etc/pacman.conf
       - name: Update pacman
-        run: |
-          pacman-mirrors --fasttrack
-          pacman -Syu -q --noconfirm
+        run: pacman -Syu -q --noconfirm
       - name: Install sudo
         run: pacman -Sy -q --noconfirm sudo git curl
       - name: Run chezmoi
