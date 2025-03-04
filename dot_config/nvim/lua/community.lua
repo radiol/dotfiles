@@ -5,9 +5,6 @@ return {
   { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.colorscheme.catppuccin" },
 
-  -- Copilot
-  { import = "astrocommunity.completion.copilot-cmp" },
-
   -- Language Pack
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.docker" },
@@ -20,6 +17,8 @@ return {
   { import = "astrocommunity.pack.yaml" },
 
   -- Completion
+  { import = "astrocommunity.completion.copilot-cmp" },
+  { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.completion.cmp-cmdline" },
 
   -- Editing Support
