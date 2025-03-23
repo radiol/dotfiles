@@ -49,6 +49,9 @@ return {
   -- delete(functi*on calls)     dsf             function calls
   { import = "astrocommunity.motion.nvim-surround" },
 
+  -- Search
+  { import = "astrocommunity.search.grug-far-nvim" },
+
   -- Utility
   { import = "astrocommunity.utility.noice-nvim" },
 
