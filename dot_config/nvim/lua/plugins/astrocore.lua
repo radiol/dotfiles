@@ -13,13 +13,13 @@ return {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = false, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = false,
+      virtual_text = true,
       underline = true,
     },
     -- vim options can be configured here
@@ -64,6 +64,21 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+        -- toggle terminal
+        ["<C-t>"] = { "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" },
+        -- RustRunnable
+        ["<leader>rr"] = { "<cmd>RustLsp run<CR>i", desc = "RustRun" },
+        ["<leader>rn"] = { "<cmd>RustLsp runnables<CR>", desc = "RustRunnable" },
+      },
+      i = {
+        -- toggle terminal
+        ["<C-t>"] = { "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" },
+      },
+      t = {
+        -- toggle terminal
+        ["<C-t>"] = { "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" },
+        -- setting a mapping to false will disable it
+        -- ["<esc>"] = false,
       },
     },
   },

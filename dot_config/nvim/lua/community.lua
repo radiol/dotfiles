@@ -1,8 +1,11 @@
+-- AstroCommunity: import any community modules here
+-- We import this file in `lazy_setup.lua` before the `plugins/` folder.
+-- This guarantees that the specs are processed before any user plugins.
+
+---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
   -- colorscheme
-  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.colorscheme.catppuccin" },
 
   -- Language Pack
@@ -17,9 +20,7 @@ return {
   { import = "astrocommunity.pack.yaml" },
 
   -- Completion
-  { import = "astrocommunity.completion.copilot-cmp" },
   { import = "astrocommunity.completion.avante-nvim" },
-  { import = "astrocommunity.completion.cmp-cmdline" },
 
   -- Editing Support
   -- <leader> + Shift + w: Sudo write
@@ -34,8 +35,6 @@ return {
   { import = "astrocommunity.lsp.nvim-lint" },
 
   -- Motion
-  -- "/"検索での検索結果にアルファベットのインデックスが追加
-  -- 検索途中でそのアルファベットのキーを押すことでそこに飛ぶ
   { import = "astrocommunity.motion.flash-nvim" },
   -- surround.nvim
   --     Old text                    Command         New text
@@ -57,4 +56,6 @@ return {
 
   -- Diagnostic
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
+  -- Markdown
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
 }
