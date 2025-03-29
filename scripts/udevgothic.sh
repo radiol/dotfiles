@@ -3,6 +3,8 @@
 # ---------------------------------------------------------
 # Install Udev Gothic Font
 # ---------------------------------------------------------
+echo "::group::UDEV Gothic Font"
+
 echo "Installing Udev Gothic Fonts"
 USER_NAME="yuru7"
 REPO_NAME="udev-gothic"
@@ -25,3 +27,5 @@ echo "Downloading UDEV Gothic NF"
 curl -LJ "$ASSET_URL_NF" -o "UDEV_Gothic_NF.zip"
 sudo unzip -o "UDEV_Gothic_NF.zip" -d /usr/share/fonts/
 rm "UDEV_Gothic_NF.zip"
+
+echo "::endgroup::"

@@ -3,6 +3,8 @@
 # ---------------------------------------------------------
 # Setup Pacman
 # ---------------------------------------------------------
+echo "::group:: Pacman Install Apps"
+
 # Edit /etc/pacman.conf
 if grep -q "#Color" /etc/pacman.conf; then
 	echo "Setting pacman color"
@@ -51,3 +53,5 @@ sudo pacman -Sy -q --noconfirm \
 	wezterm \
 	xclip \
 	zsh
+
+echo "::endgroup::"

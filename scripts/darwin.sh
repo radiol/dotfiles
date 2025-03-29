@@ -3,6 +3,8 @@
 # ---------------------------------------------------------
 # Install Homebrew
 # ---------------------------------------------------------
+echo "::group::Homebrew"
+
 # Check Homebrew
 if ! (type "brew" >/dev/null 2>&1); then
 	# Install Homebrew
@@ -46,3 +48,5 @@ brew install -q \
 	xclip \
 	xz \
 	zlib
+
+echo "::endgroup::"
