@@ -3,6 +3,8 @@
 # ---------------------------------------------------------
 # Install apps for Ubuntu
 # ---------------------------------------------------------
+echo "::group::Ubuntu Install Apps"
+
 echo "Installing apps for Ubuntu"
 sudo apt update -qq && sudo apt upgrade -y -qq &&
 	sudo apt install -y -qq \
@@ -56,3 +58,5 @@ echo "Installing wezterm for Ubuntu"
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
 echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
 sudo apt update -qq && sudo apt install -y -qq wezterm
+
+echo "::endgroup::"

@@ -3,6 +3,8 @@
 # ---------------------------------------------------------
 # Install Rust
 # ---------------------------------------------------------
+echo "::group::Install Rust"
+
 if ! (type "cargo" >/dev/null 2>&1); then
 	echo "Installing Rust"
 	curl --proto '=https' --tlsv1.2 https://sh.rustup.rs >rustup.sh
@@ -25,3 +27,5 @@ cargo binstall -q -y --only-signed bp \
 	zoxide
 
 cargo install -q --locked sheldon --version 0.7.4
+
+echo "::endgroup::"

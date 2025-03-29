@@ -63,7 +63,9 @@ echo "Operating System is {{$platform}}"
 {{ .chezmoi.sourceDir }}/scripts/go.sh
 
 # Install AstroNvim
-nvim --headless +qa
+echo "::group::AstroNvim sync"
+nvim --headless "+MasonToolsInstall" +qa
+echo "::endgroup::"
 
 # Rebuild bat cache for activate catppuccine
 bat cache --build
@@ -75,3 +77,5 @@ mkdir -p ~/.local/state
 # Remove chezmoi
 # ---------------------------------------------------------
 {{ .chezmoi.sourceDir }}/scripts/delete-chezmoi.sh
+
+echo "Complete run_once_install.sh"
