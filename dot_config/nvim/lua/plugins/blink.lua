@@ -4,17 +4,6 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    sources = {
-      default = { "copilot", "lsp", "path", "snippets", "buffer" },
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          score_offset = 100,
-          async = true,
-        },
-      },
-    },
     cmdline = {
       enabled = true,
       completion = {
