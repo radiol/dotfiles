@@ -5,34 +5,32 @@ core:
 ui:
   density: spacious
   style:
+    # Change color with Catpuccin Frappe palette(https://github.com/catppuccin/catppuccin#-palette)
     list_view:
       indent_on_select: true
-      # Change color with Catpuccin Frappe palette(https://github.com/catppuccin/catppuccin#-palette)
-      # cursor: "#AD58B4"
-      cursor: "#ca9ee6"
-      # selected: "#5FB458"
-      selected: "#a6d189"
+      cursor: "#ca9ee6" # Mauve
+      selected: "#a6d189" # Green
     detail_view:
-      border: "#EEEEDD"
+      border: "#85c1dc" # Sapphire
       info_pane:
         deleted_from:
-          fg: "#EEEEEE"
-          bg: "#1C1C1C"
+          fg: "#c6d0f5" # Text
+          bg: "#303446" # Base
         deleted_at:
-          fg: "#EEEEEE"
-          bg: "#1C1C1C"
+          fg: "#a5adce" # Subtext0
+          bg: "#303446" # Base
       preview_pane:
-        border: "#3C3C3C"
+        border: "#85c1dc" # Sapphire
         size:
-          fg: "#EEEEDD"
-          bg: "#3C3C3C"
+          fg: "#81c8be" # Teal
+          bg: "#303446" # Base
         scroll:
-          fg: "#EEEEDD"
-          bg: "#3C3C3C"
+          fg: "#81c8be" # Teal
+          bg: "#292c3c" # Mantle
   exit_message: bye!
   preview:
     syntax_highlight: true
-    colorscheme: dracula
+    colorscheme: catppuccin-frappe
     directory_command: ls -GF -1 -A --color=always
   paginator_type: dots
 history:
