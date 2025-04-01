@@ -7,6 +7,8 @@ return {
   "AstroNvim/astrocommunity",
   -- colorscheme
   { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  { import = "astrocommunity.colorscheme.everforest" },
 
   -- Language Pack
   { import = "astrocommunity.pack.bash" },
@@ -47,6 +49,9 @@ return {
   -- <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
   -- delete(functi*on calls)     dsf             function calls
   { import = "astrocommunity.motion.nvim-surround" },
+
+  -- Recipe
+  { import = "astrocommunity.recipes.cache-colorscheme" },
 
   -- Search
   { import = "astrocommunity.search.grug-far-nvim" },
