@@ -34,7 +34,9 @@ jobs:
             exit 1
           fi
       - name: Check lazy.nvim dir
-        run: ls ~/.local/share/nvim/lazy/
+        run: |
+          nvim --headless "+MasonToolsInstall" +qa
+          ls ~/.local/share/nvim/lazy/
       - name: Check go app(gomi) is available
         run: |
           ls ~/go/bin/gomi

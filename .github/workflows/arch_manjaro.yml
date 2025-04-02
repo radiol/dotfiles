@@ -38,6 +38,7 @@ jobs:
           fi
       - name: Check lazy.nvim dir
         run: |
+          nvim --headless "+MasonToolsInstall" +qa
           ls ~/.local/share/nvim/lazy/
       - name: Check go app(gomi) is available
         run: |
@@ -77,6 +78,7 @@ jobs:
           fi
       - name: Check lazy.nvim dir
         run: |
+          nvim --headless "+MasonToolsInstall" +qa
           ls ~/.local/share/nvim/lazy/
       - name: Check go app(gomi) is available
         run: |
