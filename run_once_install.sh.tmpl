@@ -63,9 +63,9 @@ echo "Operating System is {{$platform}}"
 {{ .chezmoi.sourceDir }}/scripts/go.sh
 
 # Install AstroNvim
-echo "::group::AstroNvim sync"
-nvim --headless "+MasonToolsInstall" +qa
-echo "::endgroup::"
+# echo "::group::AstroNvim sync"
+# nvim --headless "+MasonToolsInstall" +qa
+# echo "::endgroup::"
 
 # Rebuild bat cache for activate catppuccine
 bat cache --build
