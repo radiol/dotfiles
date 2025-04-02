@@ -26,6 +26,6 @@ cargo binstall -q -y --only-signed bp \
 	xcp \
 	zoxide
 
-cargo install -q --locked sheldon --version 0.7.4
+cargo install -q --locked sheldon
 
 echo "::endgroup::"
