@@ -32,6 +32,9 @@ return {
   -- Replace nvim-autopairs
   { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
 
+  -- Indent
+  { import = "astrocommunity.indent.snacks-indent-hlchunk" },
+
   -- LSP
   { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.lsp.nvim-lint" },
