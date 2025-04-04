@@ -66,9 +66,6 @@ return {
         -- ["<C-S>"] = false,
         -- toggle terminal
         ["<C-t>"] = { "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Terminal" },
-        -- RustRunnable
-        ["<leader>rr"] = { "<cmd>RustLsp run<CR>i", desc = "RustRun" },
-        ["<leader>rn"] = { "<cmd>RustLsp runnables<CR>", desc = "RustRunnable" },
       },
       i = {
         -- toggle terminal
