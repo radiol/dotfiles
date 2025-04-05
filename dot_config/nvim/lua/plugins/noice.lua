@@ -1,7 +1,9 @@
 return {
-  "noice.nvim",
-  ---@type NoicePresets
-  presets = {
-    bottom_search = false,
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    presets = {
+      -- bottom_search = false,
+    },
   },
 }

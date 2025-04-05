@@ -1,6 +1,6 @@
 return {
   "fang2hou/blink-copilot",
-  lazy = true,
+  event = "InsertEnter",
   specs = {
     {
       "Saghen/blink.cmp",
