@@ -101,6 +101,7 @@ alias ccs="cargo compete submit"
 
 # Neovim
 alias v="nvim"
+alias lv="NVIM_APPNAME=lazyvim nvim"
 
 # Wezterm
 alias wc="wezterm connect"
