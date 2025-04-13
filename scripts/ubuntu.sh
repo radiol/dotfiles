@@ -45,9 +45,9 @@ echo "Installing apps by snap"
 sudo snap install --classic chezmoi
 sudo snap install --classic nvim
 sudo snap install --classic ripgrep
+sudo snap install --classic yazi
 sudo snap install deno
 sudo snap install lazygit
-sudo snap install yazi
 
 # Create symbolic link
 mkdir -p ~/.local/bin
