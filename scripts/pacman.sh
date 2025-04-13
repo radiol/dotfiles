@@ -52,6 +52,7 @@ sudo pacman -Sy -q --noconfirm \
 	unzip \
 	wezterm \
 	xclip \
+	yazi \
 	zsh
 
 echo "::endgroup::"

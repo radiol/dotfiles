@@ -37,6 +37,7 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		wget \
 		xclip \
 		xz-utils \
+		yazi \
 		zlib1g-dev \
 		zsh &&
 	sudo apt autoclean -qq

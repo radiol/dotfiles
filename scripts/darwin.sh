@@ -47,6 +47,7 @@ brew install -q \
 	wezterm \
 	xclip \
 	xz \
+	yazi \
 	zlib
 
 echo "::endgroup::"
