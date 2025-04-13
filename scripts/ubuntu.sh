@@ -37,7 +37,6 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		wget \
 		xclip \
 		xz-utils \
-		yazi \
 		zlib1g-dev \
 		zsh &&
 	sudo apt autoclean -qq
@@ -48,6 +47,7 @@ sudo snap install --classic nvim
 sudo snap install --classic ripgrep
 sudo snap install deno
 sudo snap install lazygit
+sudo snap install yazi
 
 # Create symbolic link
 mkdir -p ~/.local/bin
