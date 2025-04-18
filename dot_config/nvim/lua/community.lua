@@ -55,6 +55,7 @@ return {
 
   -- Recipe
   { import = "astrocommunity.recipes.cache-colorscheme" },
+  { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
 
   -- Search
   { import = "astrocommunity.search.grug-far-nvim" },
