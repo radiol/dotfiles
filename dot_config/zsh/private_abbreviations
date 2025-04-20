@@ -73,9 +73,9 @@ abbr accft="uv run black main.py && uv run ruff --fix main.py && uv run oj t -c 
 abbr accn="(){acc new $1 && cd $1}"
 
 # Cargo-compete
-abbr ccn="(){cargo compete new $1 && cargo member i $1 && cd $1}"
+abbr ccn='(){cargo compete new $1 && cargo member i $1 && git add -A && git commit -m "Add $1" && cd $1}'
 abbr cct="cargo compete test"
-abbr ccs="cargo compete submit"
+abbr ccs='(){cargo compete test $1 && cat src/bin/$1.rs | C && echo "Copied $1.rs to clipboard"}'
 
 # Neovim
 abbr v="nvim"
