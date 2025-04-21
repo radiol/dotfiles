@@ -92,12 +92,28 @@ alias brewu="brew update && brew upgrade && brew cleanup && brew doctor"
 alias accs="acc s main.py -- --guess-python-interpreter pypy"
 alias acct="uv run oj t -c 'python3 main.py' -d ./tests/"
 alias accft="uv run black main.py && uv run ruff --fix main.py && uv run oj t -c 'python3 main.py' -d ./tests/"
-alias accn="(){acc new $1 && cd $1}"
+# alias accn="(){acc new $1 && cd $1}"
+accn() {
+  acc new "$1" &&
+  cd "$1"
+}
 
 # Cargo-compete
-alias ccn="(){cargo compete new $1 && cargo member i $1 && cd $1}"
+# alias ccn="(){cargo compete new $1 && cargo member i $1 && cd $1}"
+ccn() {
+  cargo compete new "$1" &&
+  cargo member i "$1" &&
+  git add -A &&
+  git commit -m "Add $1" &&
+  cd "$1"
+}
 alias cct="cargo compete test"
-alias ccs="cargo compete submit"
+# alias ccs="cargo compete submit"
+ccs() {
+  cargo compete test "$1" &&
+  cat "src/bin/$1.rs" | C &&
+  echo "Copied $1.rs to clipboard"
+}
 
 # Neovim
 alias v="nvim"
