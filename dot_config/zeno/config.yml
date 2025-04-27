@@ -31,7 +31,7 @@ snippets:
   # github-cli
   - name: gh repo create & clone
     keyword: ghcr
-    snippet: (){gh repo create $argv && gh q get $argv[1] && cd (ghq list --full-path -e $argv[1])}
+    snippet: (){gh repo create $argv && gh q get $argv[1] && cd $(ghq list --full-path -e $argv[1])}
   - name: gh pr create & merge
     keyword: gpcm
     snippet: gh pr create && sleep 3 && gh pr checks --watch && gh pr merge -m -d && git fetch -p
