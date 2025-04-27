@@ -25,6 +25,13 @@ snippets:
     context:
       lbuffer: '^git\s+checkout\s+'
     evaluate: true # eval snippet
+  # github-cli
+  - name: gh repo create & clone
+    keyword: ghcr
+    snippet: (){gh repo create $argv && gh q get $argv[1] && cd ~/ghq/github.com/$argv[1]}
+  - name: gh pr create & merge
+    keyword: gpcm
+    snippet: gh pr create && sleep 3 && gh pr checks --watch && gh pr merge -m -d && git fetch -p
   # chezmoi
   - name: chezmoi update
     keyword: cup
