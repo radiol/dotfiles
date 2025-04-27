@@ -97,6 +97,10 @@ snippets:
   - name: neovim
     keyword: v
     snippet: nvim
+  # pueue
+  - name: pueue
+    keyword: p
+    snippet: pueue
   # Cargo-compete
   - name: compete new
     keyword: ccn
