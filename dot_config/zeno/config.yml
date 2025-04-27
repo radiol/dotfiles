@@ -25,6 +25,9 @@ snippets:
     context:
       lbuffer: '^git\s+checkout\s+'
     evaluate: true # eval snippet
+  - name: git checkout
+    keyword: gco
+    snippet: git switch $(git branch | fzf | sed 's/^..//')
   # github-cli
   - name: gh repo create & clone
     keyword: ghcr
