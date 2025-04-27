@@ -51,6 +51,9 @@ inline = "autoload -Uz compinit && zsh-defer compinit"
 [plugins.fzf-zsh]
 github = "unixorn/fzf-zsh-plugin"
 
+[plugins.zeno-zsh]
+github = "yuki-yano/zeno.zsh"
+
 [plugins.dotfiles-sync]
 local = "~/.config/zsh/sync"
 use = ["*.zsh"]
