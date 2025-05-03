@@ -36,6 +36,7 @@ brew install -q \
   ghq \
   git \
   go \
+  jq \
   lazygit \
   luarocks \
   neovim \

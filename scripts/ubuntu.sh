@@ -11,7 +11,6 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		build-essential \
 		curl \
 		file \
-		jq \
 		language-pack-ja \
 		libbz2-dev \
 		libffi-dev \
