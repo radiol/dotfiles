@@ -34,6 +34,7 @@ brew install -q \
   fzf \
   gh \
   ghq \
+  git \
   go \
   lazygit \
   luarocks \
@@ -47,4 +48,5 @@ brew install -q \
   xclip \
   xz \
   yazi \
-  zlib
+  zlib \
+  zsh
