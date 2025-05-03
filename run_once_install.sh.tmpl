@@ -26,41 +26,48 @@ echo "Operating System is {{$platform}}"
 # ---------------------------------------------------------
 # Install packages for each platform
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/{{$platform}}.sh
+source {{ .chezmoi.sourceDir }}/scripts/{{$platform}}.sh
+
+# ---------------------------------------------------------
+# Install Homebrew Apps for macOS and Ubuntu
+# -----------------------------------------
+{{ if or (eq $platform "darwin") (eq $platform "ubuntu") -}}
+source {{ .chezmoi.sourceDir }}/scripts/brew.sh
+{{- end}}
 
 # ---------------------------------------------------------
 # Install Pacman Packages for Arch Linux and Manjaro
 # ---------------------------------------------------------
 {{ if or (eq $platform "arch") (eq $platform "manjaro") -}}
-{{ .chezmoi.sourceDir }}/scripts/pacman.sh
+source {{ .chezmoi.sourceDir }}/scripts/pacman.sh
 {{- end}}
 
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
 {{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
-{{ .chezmoi.sourceDir }}/scripts/udevgothic.sh
+source {{ .chezmoi.sourceDir }}/scripts/udevgothic.sh
 {{- end}}
 
 # ---------------------------------------------------------
 # Install uv
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/uv.sh
+source {{ .chezmoi.sourceDir }}/scripts/uv.sh
 
 # ---------------------------------------------------------
 # Install rust
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/rust.sh
+source {{ .chezmoi.sourceDir }}/scripts/rust.sh
 
 # ---------------------------------------------------------
 # Install volta
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/volta.sh
+source {{ .chezmoi.sourceDir }}/scripts/volta.sh
 
 # ---------------------------------------------------------
 # Install go apps
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/go.sh
+source {{ .chezmoi.sourceDir }}/scripts/go.sh
 
 # Rebuild bat cache for activate catppuccine
 bat cache --build
@@ -71,6 +78,6 @@ mkdir -p ~/.local/state
 # ---------------------------------------------------------
 # Remove chezmoi
 # ---------------------------------------------------------
-{{ .chezmoi.sourceDir }}/scripts/delete-chezmoi.sh
+source {{ .chezmoi.sourceDir }}/scripts/delete-chezmoi.sh
 
 echo "Complete run_once_install.sh"

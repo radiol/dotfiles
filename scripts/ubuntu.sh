@@ -8,17 +8,9 @@ echo "::group::Ubuntu Install Apps"
 echo "Installing apps for Ubuntu"
 sudo apt update -qq && sudo apt upgrade -y -qq &&
 	sudo apt install -y -qq \
-		bat \
 		build-essential \
-		cmake \
 		curl \
-		fd-find \
 		file \
-		fzf \
-		git \
-		gh \
-		golang \
-		jq \
 		language-pack-ja \
 		libbz2-dev \
 		libffi-dev \
@@ -30,29 +22,12 @@ sudo apt update -qq && sudo apt upgrade -y -qq &&
 		libxml2-dev \
 		libxmlsec1-dev \
 		llvm \
-		luarocks \
 		make \
 		procps \
 		tk-dev \
 		wget \
-		xclip \
-		xz-utils \
-		zlib1g-dev \
-		zsh &&
+		zlib1g-dev &&
 	sudo apt autoclean -qq
-# Install apps by snap
-echo "Installing apps by snap"
-sudo snap install --classic chezmoi
-sudo snap install --classic nvim
-sudo snap install --classic ripgrep
-sudo snap install --classic yazi
-sudo snap install deno
-sudo snap install lazygit
-
-# Create symbolic link
-mkdir -p ~/.local/bin
-ln -nfs "$(which batcat)" ~/.local/bin/bat
-ln -nfs "$(which fdfind)" ~/.local/bin/fd
 
 # Install wezterm for ubuntu
 echo "Installing wezterm for Ubuntu"

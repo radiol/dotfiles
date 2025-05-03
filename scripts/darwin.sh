@@ -20,34 +20,10 @@ if ! (type "brew" >/dev/null 2>&1); then
 	eval "$("$HOMEBREW_HOME"/bin/brew shellenv)"
 fi
 
-# ---------------------------------------------------------
-# Install Apps for Mac
-# ---------------------------------------------------------
-echo "Installing Apps for Mac"
-brew install -q --cask font-hack-nerd-font
-brew install -q \
-	bat \
-	chezmoi \
-	cmake \
-	deno \
-	fd \
-	fzf \
-	gh \
-	ghq \
-	go \
-	lazygit \
-	luarocks \
-	neovim \
-	nodejs \
-	openssl@3 \
-	readline \
-	ripgrep \
-	sqlite3 \
-	tcl-tk \
-	wezterm \
-	xclip \
-	xz \
-	yazi \
-	zlib
+# ----------------------------------------------------------
+# Install Brew Cask
+# -----------------------------------------------------------
+brew install --cask -q \
+	wezterm
 
 echo "::endgroup::"
