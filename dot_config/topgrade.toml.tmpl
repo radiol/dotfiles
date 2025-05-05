@@ -5,7 +5,7 @@
 # Disable specific steps - same options as the command line flag
 # disable = []
 {{ if eq .chezmoi.os "darwin" }}
-disable = ["system"]
+disable = ["system", "pnpm"]
 {{- end}}
 
 # Ignore failures for these steps
