@@ -5,6 +5,9 @@
 /scripts
 .git
 .github
+~/.config/nvim/.luarc.json
+~/.config/nvim/.neoconf.json
+~/.config/nvim/.stylua.toml
 **/lazy-lock.json
 ~/.ssh/
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "arch")}}
