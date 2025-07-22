@@ -40,7 +40,8 @@ return {
       enabled = true,
       completion = {
         menu = {
-          auto_show = true,
+          -- 検索時は補完を表示しない
+          auto_show = function() return vim.fn.getcmdtype() ~= "/" end,
         },
         list = { selection = { preselect = false, auto_insert = true } },
       },
