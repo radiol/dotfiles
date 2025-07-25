@@ -26,7 +26,7 @@ github = "romkatv/zsh-defer"
 apply = ["source"]
 
 [templates]
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 [plugins.zsh-256color]
 github = "chrissicool/zsh-256color"
@@ -46,7 +46,7 @@ local = "~/.config/zsh/completions"
 apply = ["fpath"]
 
 [plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit"
+inline = "autoload -Uz compinit && zsh-defer compinit -C"
 
 [plugins.fzf-zsh]
 github = "unixorn/fzf-zsh-plugin"
