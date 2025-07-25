@@ -10,7 +10,7 @@ return {
   ---@type blink.cmp.Config
   opts = {
     sources = {
-      default = { "copilot", "snippets", "lsp", "ripgrep", "path", "buffer" },
+      default = { "copilot", "lsp", "snippets", "ripgrep", "path", "buffer" },
       per_filetype = {
         lua = { inherit_defaults = true, "lazydev" },
       },
