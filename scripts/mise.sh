@@ -1,13 +1,13 @@
 #!/bin/bash -xeu
 
 # ---------------------------------------------------------
-# Install Volta
+# Install Mise
 # ---------------------------------------------------------
-echo "::group::Install Volta"
+echo "::group::Install Mise"
 
-if ! (type "volta" >/dev/null 2>&1); then
-	echo "Installing Volta"
-	curl https://get.volta.sh | bash
+if ! (type "mise" >/dev/null 2>&1); then
+	echo "Installing Mise"
+	curl https://mise.run | sh
 fi
 
 echo "::endgroup::"

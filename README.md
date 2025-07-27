@@ -7,13 +7,13 @@ This repository contains my dotfiles for various operating systems, including Ma
 [![chezmoi](https://img.shields.io/badge/dotfiles%20manager-chezmoi-blue)](https://github.com/twpayne/chezmoi)
 [![sheldon](https://img.shields.io/badge/zsh%20plugin%20manager-sheldon-green)](https://github.com/rossmacarthur/sheldon)
 [![AstroNvim](https://img.shields.io/badge/Neovim%20configuration-AstroNvim-brightgreen)](https://github.com/AstroNvim/AstroNvim)
-[![Volta](https://img.shields.io/badge/Node.js%2C%20Yarn%2C%20pnpm%20version%20manager-Volta-blueviolet)](https://github.com/volta-cli/volta)
+[![mise](https://img.shields.io/badge/Universal%20version%20manager-mise-blueviolet)](https://github.com/jdx/mise)
 [![uv](https://img.shields.io/badge/Python%20version%20manager-uv-red)](https://astral.sh/blog/uv)
 
 - **Dotfiles Manager:** [Chezmoi](https://github.com/twpayne/chezmoi)
 - **Zsh Plugin Manager:** [Sheldon](https://github.com/rossmacarthur/sheldon)
 - **Neovim Configuration:** [AstroNvim](https://github.com/AstroNvim/AstroNvim)
-- **Node Version Manager:** [Volta](https://github.com/volta-cli/volta)
+- **Universal Version Manager:** [Mise](https://github.com/jdx/mise)
 - **Python Version Manager:** [uv](https://astral.sh/blog/uv)
 - **Package Managers:**
   - MacOS: [Homebrew](https://brew.sh/)

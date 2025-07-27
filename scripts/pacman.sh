@@ -34,17 +34,13 @@ sudo pacman -Sy -q --noconfirm \
 	fd \
 	fzf \
 	gcc \
-	ghq \
 	git \
-	github-cli \
 	go \
 	gtk2 \
 	jq \
 	lazygit \
-	luarocks \
 	neovim \
 	noto-fonts-emoji \
-	npm \
 	openssl \
 	ripgrep \
 	openssh \
