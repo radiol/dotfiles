@@ -10,7 +10,6 @@ if ! (type "mise" >/dev/null 2>&1); then
 	curl https://mise.run | sh
 fi
 
-alias mise="~/.local/bin/mise"
-mise use --global deno node go lua python github-cli ghq usage
+~/.local/bin/mise use --global deno node go lua python github-cli ghq usage
 
 echo "::endgroup::"
