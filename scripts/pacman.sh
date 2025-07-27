@@ -35,6 +35,7 @@ sudo pacman -Sy -q --noconfirm \
 	fzf \
 	gcc \
 	git \
+	go \
 	gtk2 \
 	jq \
 	lazygit \

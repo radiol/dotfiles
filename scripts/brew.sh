@@ -32,6 +32,7 @@ brew install -q \
   fd \
   fzf \
   git \
+  go \
   jq \
   lazygit \
   neovim \
