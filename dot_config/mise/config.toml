@@ -1,0 +1,8 @@
+[tools]
+deno = "latest"
+node = "latest"
+go = "latest"
+lua = "latest"
+python = "latest"
+github-cli = "latest"
+ghq = "latest"

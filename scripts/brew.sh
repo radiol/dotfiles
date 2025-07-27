@@ -29,18 +29,12 @@ brew install -q \
   bat \
   chezmoi \
   cmake \
-  deno \
   fd \
   fzf \
-  gh \
-  ghq \
   git \
-  go \
   jq \
   lazygit \
-  luarocks \
   neovim \
-  nodejs \
   openssl@3 \
   readline \
   ripgrep \
