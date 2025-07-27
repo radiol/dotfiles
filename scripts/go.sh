@@ -3,7 +3,9 @@
 echo "::group::Install go apps"
 
 # Activate mise
-eval "$(~/.local/bin/mise activate bash)"
+alias mise="~/.local/bin/mise"
+eval "$(mise activate bash)"
+mise install
 
 # Check go is available
 if ! type go >/dev/null 2>&1; then
