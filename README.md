@@ -13,7 +13,7 @@ This repository contains my dotfiles for various operating systems, including Ma
 - **Dotfiles Manager:** [Chezmoi](https://github.com/twpayne/chezmoi)
 - **Zsh Plugin Manager:** [Sheldon](https://github.com/rossmacarthur/sheldon)
 - **Neovim Configuration:** [AstroNvim](https://github.com/AstroNvim/AstroNvim)
-- **Node Version Manager:** [Volta](https://github.com/volta-cli/volta)
+- **Universal Version Manager:** [Mise](https://github.com/jdx/mise)
 - **Python Version Manager:** [uv](https://astral.sh/blog/uv)
 - **Package Managers:**
   - MacOS: [Homebrew](https://brew.sh/)
