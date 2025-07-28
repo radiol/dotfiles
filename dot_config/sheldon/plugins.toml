@@ -49,10 +49,10 @@ apply = ["defer"]
 
 [plugins.completions]
 local = "~/.config/zsh/completions"
-apply = ["fpath"]
+apply = ["fpath", "defer"]
 
 [plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit -C"
+inline = "autoload -Uz compinit && zsh-defer compinit -C -d ~/.cache/zsh/zcompdump"
 
 [plugins.fzf-zsh]
 github = "unixorn/fzf-zsh-plugin"
@@ -71,4 +71,4 @@ apply = ["defer"]
 [plugins.dotfiles-custom_command]
 local = "~/.config/zsh/custom_command"
 use = ["*.zsh"]
-apply = ["source"]
+apply = ["defer"]
