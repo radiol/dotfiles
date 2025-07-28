@@ -35,6 +35,10 @@ github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+apply = ["defer"]
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["defer"]
@@ -52,10 +56,6 @@ inline = "autoload -Uz compinit && zsh-defer compinit -C"
 
 [plugins.fzf-zsh]
 github = "unixorn/fzf-zsh-plugin"
-apply = ["defer"]
-
-[plugins.zeno-zsh]
-github = "yuki-yano/zeno.zsh"
 apply = ["defer"]
 
 [plugins.dotfiles-sync]
