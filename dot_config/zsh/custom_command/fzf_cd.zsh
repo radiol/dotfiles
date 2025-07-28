@@ -3,7 +3,6 @@
 # ---------------------------------------------------------
 function zd() {
   local dir
-  dir=$(fd --hidden --type directory . ${1:-.} | fzf +m)
+  dir=$(fd --hidden --type directory --exclude .git . ${1:-.} | fzf --reverse --height=50%)
   [ -n "$dir" ] && cd "$dir"
 }
-
