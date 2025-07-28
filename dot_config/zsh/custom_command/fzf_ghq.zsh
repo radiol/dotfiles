@@ -7,7 +7,6 @@ function _fzf_cd_ghq() {
     local repo="$(ghq list | fzf --preview="ls -AF --color=always ${root}/{1}")"
     local dir="${root}/${repo}"
     [ -n "${repo}" ] && [ -n "${dir}" ] && cd "${dir}"
-    zle accept-line
     zle reset-prompt
 }
 
