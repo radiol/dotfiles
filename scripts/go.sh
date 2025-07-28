@@ -5,7 +5,7 @@ echo "::group::Install go apps"
 # Check go is available
 if ! type go >/dev/null 2>&1; then
   echo "go is not available"
-  exit 0
+  return
 fi
 
 # Install go apps
