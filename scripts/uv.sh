@@ -9,7 +9,7 @@ echo "::group::Install uv"
 # Check if uv is already installed
 if type uv >/dev/null 2>&1; then
   echo "uv is already installed"
-  exit 0
+  return
 fi
 
 # Install uv
