@@ -43,6 +43,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        termsync = false, -- Fix problem(https://github.com/wezterm/wezterm/issues/4607)
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
