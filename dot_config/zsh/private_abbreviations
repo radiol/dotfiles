@@ -83,3 +83,9 @@ abbr v="nvim"
 # Wezterm
 abbr wc="wezterm connect"
 
+# Pueue
+abbr p="pueue"
+abbr pa="pueue add"
+abbr pc="pueue clean"
+abbr pk="pueue kill"
+abbr pf="pueue follow"
