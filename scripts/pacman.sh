@@ -39,7 +39,9 @@ sudo pacman -Sy -q --noconfirm \
 	gtk2 \
 	jq \
 	lazygit \
+	luarocks \
 	neovim \
+	nodejs \
 	noto-fonts-emoji \
 	openssl \
 	ripgrep \

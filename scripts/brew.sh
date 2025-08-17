@@ -35,7 +35,9 @@ brew install -q \
   go \
   jq \
   lazygit \
+  luarocks \
   neovim \
+  node \
   openssl@3 \
   readline \
   ripgrep \
