@@ -24,7 +24,7 @@ fi
 # Clean up Homebrew
 # ---------------------------------------------------------
 echo "Cleaning up Homebrew"
-brew uninstall --ignore-dependencies cmake
+brew uninstall --ignore-dependencies cmake || true
 brew update-reset && brew update
 
 # ---------------------------------------------------------
