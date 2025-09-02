@@ -21,6 +21,13 @@ if ! (type "brew" >/dev/null 2>&1); then
 fi
 
 # ---------------------------------------------------------
+# Clean up Homebrew
+# ---------------------------------------------------------
+echo "Cleaning up Homebrew"
+brew uninstall --ignore-dependencies cmake
+brew update-reset && brew update
+
+# ---------------------------------------------------------
 # Install Homebrew Apps
 # ---------------------------------------------------------
 echo "Installing Homebrew Apps"
