@@ -11,6 +11,15 @@ gemini = "latest"
 claude = "latest"
 pre-commit = "latest"
 lefthook = "latest"
+bat = "latest"
+bottom = "latest"
+chezmoi = "latest"
+dust = "latest"
+fd = "latest"
+neovim = "latest"
+yazi = "latest"
+ripgrep = "latest"
+zellij = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
