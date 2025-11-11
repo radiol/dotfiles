@@ -50,6 +50,7 @@ brew install -q \
   ripgrep \
   sqlite3 \
   tcl-tk \
+  topgrade \
   xclip \
   xz \
   yazi \

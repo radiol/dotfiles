@@ -43,8 +43,9 @@ sudo pacman -Sy -q --noconfirm \
 	nodejs \
 	noto-fonts-emoji \
 	openssl \
-	ripgrep \
 	openssh \
+	ripgrep \
+	topgrade \
 	ufw \
 	unzip \
 	wezterm \

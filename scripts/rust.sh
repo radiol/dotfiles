@@ -22,7 +22,6 @@ cargo binstall -q -y --only-signed bp \
 	eza \
 	git-delta \
 	starship \
-	topgrade \
 	xcp \
 	zoxide
 
