@@ -45,6 +45,7 @@ sudo pacman -Sy -q --noconfirm \
 	openssl \
 	openssh \
 	ripgrep \
+	starship \
 	topgrade \
 	ufw \
 	unzip \

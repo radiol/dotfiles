@@ -49,6 +49,7 @@ brew install -q \
   readline \
   ripgrep \
   sqlite3 \
+  starship \
   tcl-tk \
   topgrade \
   xclip \

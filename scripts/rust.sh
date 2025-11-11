@@ -21,7 +21,6 @@ cargo binstall -q -y --only-signed bp \
 	cargo-update \
 	eza \
 	git-delta \
-	starship \
 	xcp \
 	zoxide
 
