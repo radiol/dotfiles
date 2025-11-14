@@ -21,8 +21,8 @@
   "buffer_font_family": "UDEV Gothic 35NF",
   "theme": {
     "mode": "system",
-    "light": "Everforest Light",
-    "dark": "Everforest Dark"
+    "light": "Github Light",
+    "dark": "Github Dark"
   },
   "inlay_hints": {
     "enabled": true,
