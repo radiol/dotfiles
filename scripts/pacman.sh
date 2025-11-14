@@ -36,7 +36,6 @@ sudo pacman -Sy -q --noconfirm \
 	gcc \
 	git \
 	go \
-	gtk2 \
 	jq \
 	lazygit \
 	luarocks \
