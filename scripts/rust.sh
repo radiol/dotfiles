@@ -16,7 +16,8 @@ fi
 echo "Installing cargo-binstall"
 cargo install -q cargo-binstall
 echo "Installing Rust Apps"
-cargo binstall -q -y --only-signed bp \
+cargo-binstall -q -y --only-signed --locked \
+	bp \
 	cargo-edit \
 	cargo-update \
 	eza \
