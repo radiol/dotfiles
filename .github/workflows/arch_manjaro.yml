@@ -20,15 +20,15 @@ jobs:
       - name: Extract branch name for pull request
         if: github.event_name == 'pull_request'
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+      - name: Update pacman
+        run: pacman -Syu -q --noconfirm
+      - name: Install sudo
+        run: pacman -Sy -q --noconfirm sudo git curl
       - name: Initialize and populate keyring
         run: |
           sudo pacman-key --init
           sudo pacman-key --populate archlinux manjaro
           sudo pacman-key --refresh-keys
-      - name: Update pacman
-        run: pacman -Syu -q --noconfirm
-      - name: Install sudo
-        run: pacman -Sy -q --noconfirm sudo git curl
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
@@ -65,15 +65,15 @@ jobs:
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
       - name: Remove community repo from pacman.conf
         run: sed -i '/\[community\]/,/Include/d' /etc/pacman.conf
+      - name: Update pacman
+        run: pacman -Syu -q --noconfirm
+      - name: Install sudo
+        run: pacman -Sy -q --noconfirm sudo git curl
       - name: Initialize and populate keyring
         run: |
           sudo pacman-key --init
           sudo pacman-key --populate archlinux manjaro
           sudo pacman-key --refresh-keys
-      - name: Update pacman
-        run: pacman -Syu -q --noconfirm
-      - name: Install sudo
-        run: pacman -Sy -q --noconfirm sudo git curl
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
