@@ -26,9 +26,10 @@ jobs:
         run: pacman -Sy -q --noconfirm sudo git curl
       - name: Initialize and populate keyring
         run: |
-          sudo pacman-key --init
-          sudo pacman-key --populate archlinux manjaro
-          sudo pacman-key --refresh-keys
+          pacman -Sy -q --noconfirm --needed gnupg archlinux-keyring
+          pacman-key --init
+          pacman-key --populate archlinux
+          pacman-key --refresh-keys
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
@@ -71,9 +72,10 @@ jobs:
         run: pacman -Sy -q --noconfirm sudo git curl
       - name: Initialize and populate keyring
         run: |
-          sudo pacman-key --init
-          sudo pacman-key --populate archlinux manjaro
-          sudo pacman-key --refresh-keys
+          pacman -Sy -q --noconfirm --needed gnupg manjaro-keyring archlinux-keyring
+          pacman-key --init
+          pacman-key --populate archlinux manjaro
+          pacman-key --refresh-keys
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
