@@ -20,6 +20,12 @@ jobs:
       - name: Extract branch name for pull request
         if: github.event_name == 'pull_request'
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+      - name: Initialize and populate keyring
+        run: |
+          pacman -Sy -q --noconfirm --needed gnupg archlinux-keyring
+          pacman-key --init
+          pacman-key --populate archlinux
+          pacman-key --refresh-keys
       - name: Update pacman
         run: pacman -Syu -q --noconfirm
       - name: Install sudo
@@ -60,6 +66,12 @@ jobs:
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
       - name: Remove community repo from pacman.conf
         run: sed -i '/\[community\]/,/Include/d' /etc/pacman.conf
+      - name: Initialize and populate keyring
+        run: |
+          pacman -Sy -q --noconfirm --needed gnupg manjaro-keyring archlinux-keyring
+          pacman-key --init
+          pacman-key --populate archlinux manjaro
+          pacman-key --refresh-keys
       - name: Update pacman
         run: pacman -Syu -q --noconfirm
       - name: Install sudo
