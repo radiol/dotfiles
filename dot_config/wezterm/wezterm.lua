@@ -69,5 +69,7 @@ config.unix_domains = unix_domains
 config.default_gui_startup_args = { "connect", "unix" }
 -- keys
 config.keys = keys
+-- wayland config
+config.enable_wayland = false
 
 return config
