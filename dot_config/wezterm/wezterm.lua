@@ -3,10 +3,6 @@ local action = wezterm.action
 
 local ssh_domains = {
 	{
-		name = "node202",
-		remote_address = "node",
-	},
-	{
 		name = "lan",
 		remote_address = "lan",
 	},
@@ -46,10 +42,6 @@ end
 
 -- color_scheme
 config.color_scheme = "Catppuccin Frappe"
--- if wezterm.target_triple == "aarch64-apple-darwin" then
--- 	config.color_scheme = "Catppuccin Frappe"
--- elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
--- 	config.color_scheme = "Dracula (base16)"
 -- end
 
 -- window size
@@ -69,7 +61,7 @@ config.unix_domains = unix_domains
 config.default_gui_startup_args = { "connect", "unix" }
 -- keys
 config.keys = keys
--- wayland config
+-- wayland config(arch linux, manjaro linux)
 config.enable_wayland = false
 
 return config
