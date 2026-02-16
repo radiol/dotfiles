@@ -1,0 +1,28 @@
+theme = "Catppuccin Frappe"
+background-opacity = 0.8
+background-blur-radius = 20
+
+# font
+font-family = "UDEV Gothic 35NF"
+font-size = 14
+
+# window
+window-width = 100
+window-height = 40
+window-padding-x = 4
+window-padding-y = 4
+
+quick-terminal-position = center
+
+# cursor
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+cursor-opacity = 0.8
+mouse-hide-while-typing = true
+
+# utility
+copy-on-select = clipboard
+
+# keybind
+keybind = "global:f12=toggle_quick_terminal"
