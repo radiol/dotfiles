@@ -28,8 +28,11 @@ jobs:
           pacman-key --refresh-keys
       - name: Update pacman
         run: pacman -Syu -q --noconfirm
-      - name: Install sudo
-        run: pacman -Sy -q --noconfirm sudo git curl
+      - name: Install build deps
+        run: |
+          pacman -S -q --noconfirm --needed \
+            sudo git curl \
+            base-devel pkgconf oniguruma
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
@@ -74,8 +77,11 @@ jobs:
           pacman-key --refresh-keys
       - name: Update pacman
         run: pacman -Syu -q --noconfirm
-      - name: Install sudo
-        run: pacman -Sy -q --noconfirm sudo git curl
+      - name: Install build deps
+        run: |
+          pacman -S -q --noconfirm --needed \
+            sudo git curl \
+            base-devel pkgconf oniguruma
       - name: Run chezmoi
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
@@ -97,7 +103,7 @@ jobs:
           ls ~/go/bin/gomi
       - name: Check IME config file does NOT exist(arch only)
         run: |
-          if test -f "~/.config/environment/im.conf"; then
+          if test -f "$HOME/.config/environment/im.conf"; then
             echo "Error: Ignored file exists"
             exit 1
           fi
