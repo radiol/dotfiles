@@ -5,45 +5,71 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+
 concurrency: dotfiles-test-ubuntu
+
 jobs:
   ubuntu-test:
     runs-on: ubuntu-latest
-    # if: ${{ contains(github.event.head_commit.message, "[CI]") }}
-
     steps:
       - uses: actions/checkout@v3
+
       - name: Extract branch name for push
         if: github.event_name == 'push'
-        run: echo "CURRENT_BRANCH=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+        run: echo "CURRENT_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
       - name: Extract branch name for pull request
         if: github.event_name == 'pull_request'
         run: echo "CURRENT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
-      - name: apt update & install git curl zsh
-        run: sudo apt update -y && sudo apt install -y git curl zsh
+
+      - name: apt update & install deps
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            git curl zsh \
+            build-essential pkg-config \
+            ca-certificates
+          sudo update-ca-certificates || true
+
       - name: Run chezmoi
-        run: /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
-      # Error Check
+        shell: bash
+        run: |
+          set -euo pipefail
+          /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch "${{ env.CURRENT_BRANCH }}" radiol
+
       - name: Exec zsh and check sheldon/plugins.lock exist.
+        shell: bash
         run: |
+          set -euo pipefail
           zsh -i -l -c exit
-          if [ -f "$HOME/.local/share/sheldon/plugins.lock" ]; then
-            echo "Sheldon plugins loaded successfully."
-          else
-            echo "Failed to load Sheldon plugins."
-            exit 1
-          fi
+          test -f "$HOME/.local/share/sheldon/plugins.lock"
+
       - name: Check lazy.nvim dir
+        shell: bash
         run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          set -euo pipefail
+          if command -v brew >/dev/null 2>&1; then
+            eval "$(brew shellenv)"
+          elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          fi
+
           nvim --headless "+MasonToolsInstall" +qa
-          ls ~/.local/share/nvim/lazy/
+          ls "$HOME/.local/share/nvim/lazy/"
+
       - name: Check go app(gomi) is available
+        shell: bash
         run: |
-          ls ~/go/bin/gomi
-      - name: Check IME config file does NOT exist(arch only)
+          set -euo pipefail
+          ls "$HOME/go/bin/gomi"
+
+      - name: Check IME config file does NOT exist (arch only)
+        shell: bash
         run: |
-          if test -f "~/.config/environment/im.conf"; then
+          set -euo pipefail
+          if test -f "$HOME/.config/environment/im.conf"; then
             echo "Error: Ignored file exists"
             exit 1
           fi
