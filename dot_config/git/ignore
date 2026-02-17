@@ -1,5 +1,6 @@
 # Global gitignore
 .git/
+*.orig
 .ssh/
 ssh/
 
@@ -33,3 +34,5 @@ Desktop.ini
 *.swp
 *.swo
 
+# Jujutsu
+.jj/
