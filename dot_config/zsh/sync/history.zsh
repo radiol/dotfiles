@@ -7,7 +7,7 @@ setopt hist_ignore_all_dups
 setopt EXTENDED_HISTORY
 zshaddhistory() {
     local line="${1%%$'\n'}"
-    [[ ! "$line" =~ "^(cd|jj?|la|ll|ls|rmdir|exit)($| )" ]]
+    [[ ! "$line" =~ "^(cd|la|ll|ls|rmdir|exit)($| )" ]]
 }
 # enable substring search(up, down)
 bindkey "^[[A" history-search-backward
