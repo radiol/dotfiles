@@ -72,13 +72,13 @@ alias lg="lazygit"
 alias dcl="docker container ls"
 alias dcp="docker container prune"
 alias ds="docker stop"
-alias dsall="docker stop $(docker ps -q)"
+dsall()   { docker stop $(docker ps -q); }
 alias drm="docker rm"
-alias drmall="docker rm $(docker ps -a -q)"
+drmall()  { docker rm $(docker ps -a -q); }
 alias di="docker images"
 alias dip="docker images prune"
 alias drmi="docker rmi"
-alias drmiall="docker rmi $(docker images -q)"
+drmiall() { docker rmi $(docker images -q); }
 alias dcu="docker compose up"
 alias dcud="docker compose up -d"
 alias dcd="docker compose down"
