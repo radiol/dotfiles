@@ -45,7 +45,7 @@ config.color_scheme = "Catppuccin Frappe"
 -- end
 
 -- window size
-config.initial_cols = 125
+config.initial_cols = 110
 config.initial_rows = 35
 -- font
 config.font = wezterm.font("UDEV Gothic 35NF")
