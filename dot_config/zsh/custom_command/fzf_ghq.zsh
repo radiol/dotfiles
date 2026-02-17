@@ -11,5 +11,5 @@ function _fzf_cd_ghq() {
 }
 
 zle -N _fzf_cd_ghq
-# keubind: Ctrl+]
+# keybind: Ctrl+]
 bindkey "^]" _fzf_cd_ghq
