@@ -51,6 +51,7 @@ sudo pacman -Sy -q --noconfirm \
 	unzip \
 	wezterm \
 	xclip \
+	yay \
 	yazi \
 	zsh
 
