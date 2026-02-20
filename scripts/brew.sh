@@ -33,13 +33,16 @@ brew update-reset && brew update
 echo "Installing Homebrew Apps"
 brew install -q --cask font-hack-nerd-font
 brew install -q \
+  aicommit2 \
   bat \
   chezmoi \
   cmake \
+  direnv \
   fd \
   fzf \
   git \
   go \
+  gopass \
   jq \
   lazygit \
   luarocks \
