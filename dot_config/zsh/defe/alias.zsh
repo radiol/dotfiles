@@ -2,17 +2,17 @@
 alias ls="eza -F --group-directories-first --icons --git --time-style relative"
 
 # Change rm -> gomi
-if type gomi &>/dev/null;then
+if type gomi &>/dev/null; then
   alias rm=gomi
 fi
 
 # Change cp -> xcp
-if type xcp &>/dev/null;then
+if type xcp &>/dev/null; then
   alias cp=xcp
 fi
 
 # Change cd -> z
-if type zoxide &>/dev/null;then
+if type zoxide &>/dev/null; then
   alias cd=z
 fi
 
@@ -72,9 +72,9 @@ alias lg="lazygit"
 alias dcl="docker container ls"
 alias dcp="docker container prune"
 alias ds="docker stop"
-dsall()   { docker stop $(docker ps -q); }
+dsall() { docker stop $(docker ps -q); }
 alias drm="docker rm"
-drmall()  { docker rm $(docker ps -a -q); }
+drmall() { docker rm $(docker ps -a -q); }
 alias di="docker images"
 alias dip="docker images prune"
 alias drmi="docker rmi"
@@ -95,24 +95,24 @@ alias accft="uv run black main.py && uv run ruff --fix main.py && uv run oj t -c
 # alias accn="(){acc new $1 && cd $1}"
 accn() {
   acc new "$1" &&
-  cd "$1"
+    cd "$1"
 }
 
 # Cargo-compete
 # alias ccn="(){cargo compete new $1 && cargo member i $1 && cd $1}"
 ccn() {
   cargo compete new "$1" &&
-  cargo member i "$1" &&
-  git add -A &&
-  git commit -m "Add $1" &&
-  cd "$1"
+    cargo member i "$1" &&
+    git add -A &&
+    git commit -m "Add $1" &&
+    cd "$1"
 }
 alias cct="cargo compete test"
 # alias ccs="cargo compete submit"
 ccs() {
   cargo compete test "$1" &&
-  cat "src/bin/$1.rs" | C &&
-  echo "Copied $1.rs to clipboard"
+    cat "src/bin/$1.rs" | C &&
+    echo "Copied $1.rs to clipboard"
 }
 
 # Neovim
@@ -121,3 +121,8 @@ alias lv="NVIM_APPNAME=lazyvim nvim"
 
 # Wezterm
 alias wc="wezterm connect"
+
+# gopass
+if type gopass &>/dev/null; then
+  alias ac2='OPENAI_API_KEY=$(gopass show -o api/openai/api_key) ANTHROPIC_API_KEY=$(gopass show -o api/anthropic/api_key) aicommit2'
+fi
