@@ -51,12 +51,7 @@ sudo pacman -Sy -q --noconfirm \
 	unzip \
 	wezterm \
 	xclip \
-	yay \
 	yazi \
 	zsh
-
-# Install applications from AUR
-yay -Sy -q --noconfirm \
-	aicommit2
 
 echo "::endgroup::"
