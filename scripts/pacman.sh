@@ -31,11 +31,13 @@ sudo pacman -Sy -q --noconfirm \
 	chezmoi \
 	cmake \
 	curl \
+	direnv \
 	fd \
 	fzf \
 	gcc \
 	git \
 	go \
+	gopass \
 	jq \
 	lazygit \
 	luarocks \
