@@ -21,6 +21,11 @@ alias C=bp
 
 # gopass
 if type gopass &>/dev/null; then
+  # aicommits
+  if type aicommits &>/dev/null; then
+    alias aicommits='OPENAI_API_KEY=$(gopass show -o api/openai/api_key) aicommits'
+  fi
+  # aicommit2
   if type aicommit2 &>/dev/null; then
     alias ac2='OPENAI_API_KEY=$(gopass show -o api/openai/api_key) ANTHROPIC_API_KEY=$(gopass show -o api/anthropic/api_key) aicommit2'
   fi
