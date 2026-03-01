@@ -2,21 +2,23 @@
 -- This is just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
--- copy/paste system clipboard to OS clipboard
--- X/Wayland環境またはmacOSではシステムクリップボード、なければOSC 52
--- OSC 52はターミナルエミュレータが対応している必要がある
+-- クリップボード設定
+-- X/Wayland環境またはmacOSではシステムクリップボード連携
+-- それ以外(SSH先など)ではOSC 52でcopyのみ対応(pasteはセキュリティ上無効)
 if vim.env.DISPLAY or vim.env.WAYLAND_DISPLAY or vim.fn.has "mac" == 1 then
   vim.opt.clipboard = "unnamedplus"
 else
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local cache = { ["+"] = {}, ["*"] = {} }
   vim.g.clipboard = {
-    name = "OSC 52",
+    name = "OSC 52 (copy only)",
     copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy "+",
-      ["*"] = require("vim.ui.clipboard.osc52").copy "*",
+      ["+"] = function(lines) cache["+"] = lines; osc52.copy("+")(lines) end,
+      ["*"] = function(lines) cache["*"] = lines; osc52.copy("*")(lines) end,
     },
     paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste "+",
-      ["*"] = require("vim.ui.clipboard.osc52").paste "*",
+      ["+"] = function() return cache["+"] end,
+      ["*"] = function() return cache["*"] end,
     },
   }
   vim.opt.clipboard = "unnamedplus"
