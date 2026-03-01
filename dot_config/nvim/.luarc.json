@@ -1,3 +1,15 @@
 {
-  "format.enable": false
+  "format": {
+    "enable": false
+  },
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "diagnostics": {
+    "globals": ["vim", "Snacks", "LazyVim"],
+    "disable": ["mixed_table", "undefined-doc-name", "missing-parameter", "param-type-mismatch"]
+  },
+  "workspace": {
+    "checkThirdParty": false
+  }
 }
