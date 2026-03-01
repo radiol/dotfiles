@@ -76,6 +76,11 @@ return {
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
 
+        -- yanky history picker
+        ["<Leader>fy"] = { function() Snacks.picker.yanky() end, desc = "Find yanky history" },
+        ["<C-p>"] = { "<Plug>(YankyCycleForward)", desc = "Cycle forward in yank ring" },
+        ["<C-n>"] = { "<Plug>(YankyCycleBackward)", desc = "Cycle backward in yank ring" },
+
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
         -- toggle terminal

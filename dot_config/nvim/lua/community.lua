@@ -17,8 +17,12 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
+  -- Color
+  { import = "astrocommunity.color.transparent-nvim" },
   -- Completion
   { import = "astrocommunity.completion.avante-nvim" },
+  -- Diagnostic
+  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   -- Editing Support
   { import = "astrocommunity.editing-support.suda-vim" },
   { import = "astrocommunity.editing-support.dial-nvim" },
@@ -35,16 +39,12 @@ return {
   { import = "astrocommunity.motion.nvim-surround" },
   -- Recipe
   { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
-  -- Search
-  { import = "astrocommunity.search.grug-far-nvim" },
-  -- Utility
-  { import = "astrocommunity.utility.noice-nvim" },
-  -- Diagnostic
-  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
-  -- Git
-  { import = "astrocommunity.git.diffview-nvim" },
   -- Scrolling
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
+  -- Search
+  { import = "astrocommunity.search.grug-far-nvim" },
   -- Terminal
   { import = "astrocommunity.terminal-integration.flatten-nvim" },
+  -- Utility
+  { import = "astrocommunity.utility.noice-nvim" },
 }
