@@ -39,6 +39,7 @@ return {
   { import = "astrocommunity.motion.nvim-surround" },
   -- Recipe
   { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
+  { import = "astrocommunity.recipes.picker-lsp-mappings" },
   -- Scrolling
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   -- Search
