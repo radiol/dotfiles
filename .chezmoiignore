@@ -9,6 +9,7 @@
 ~/.config/nvim/.neoconf.json
 ~/.config/nvim/.stylua.toml
 **/lazy-lock.json
+**/lazyvim.json
 ~/.ssh/
 {{- if or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "arch")}}
   .config/environment.d/
