@@ -45,9 +45,7 @@ source {{ .chezmoi.sourceDir }}/scripts/pacman.sh
 # ---------------------------------------------------------
 # Install UDEVGothic
 # ---------------------------------------------------------
-{{if or (eq $platform "arch") (eq $platform "manjaro") (eq $platform "ubuntu") -}}
 source {{ .chezmoi.sourceDir }}/scripts/udevgothic.sh
-{{- end}}
 
 # ---------------------------------------------------------
 # Install uv
