@@ -5,11 +5,11 @@ echo "Installing Udev Gothic Fonts"
 USER_NAME="yuru7"
 REPO_NAME="udev-gothic"
 
-GITHUB_AUTH_HEADER=()
 if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-  GITHUB_AUTH_HEADER=(-H "Authorization: Bearer $GITHUB_TOKEN")
+  RELEASE_INFO=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/"$USER_NAME/$REPO_NAME"/releases/latest)
+else
+  RELEASE_INFO=$(curl -s https://api.github.com/repos/"$USER_NAME/$REPO_NAME"/releases/latest)
 fi
-RELEASE_INFO=$(curl -s "${GITHUB_AUTH_HEADER[@]}" https://api.github.com/repos/"$USER_NAME/$REPO_NAME"/releases/latest)
 ASSET_URL_HS=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | contains("UDEVGothic_HS")).browser_download_url')
 ASSET_URL_NF=$(echo "$RELEASE_INFO" | jq -r '.assets[] | select(.name | contains("UDEVGothic_NF")).browser_download_url')
 
