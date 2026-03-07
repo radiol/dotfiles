@@ -34,6 +34,8 @@ jobs:
             sudo git curl \
             base-devel pkgconf oniguruma
       - name: Run chezmoi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
@@ -83,6 +85,8 @@ jobs:
             sudo git curl \
             base-devel pkgconf oniguruma
       - name: Run chezmoi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
       - name: Exec zsh and check sheldon/plugins.lock exist.
