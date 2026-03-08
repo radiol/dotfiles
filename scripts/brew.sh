@@ -34,8 +34,6 @@ echo "Installing Homebrew Apps"
 brew install -q --cask font-hack-nerd-font
 brew install -q \
   aicommit2 \
-  bat \
-  chezmoi \
   cmake \
   direnv \
   fd \
@@ -46,15 +44,12 @@ brew install -q \
   jq \
   lazygit \
   luarocks \
-  neovim \
   node \
   openssl@3 \
   readline \
-  ripgrep \
   sqlite3 \
   tcl-tk \
   xclip \
   xz \
-  yazi \
   zlib \
   zsh

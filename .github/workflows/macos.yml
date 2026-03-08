@@ -9,6 +9,8 @@ concurrency: dotfiles-test-macos
 jobs:
   macos-test:
     runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Extract branch name for push
@@ -33,8 +35,6 @@ jobs:
           fi
       - name: Run chezmoi
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch "${{ env.CURRENT_BRANCH }}" radiol
@@ -48,6 +48,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          eval "$($HOME/.local/bin/mise activate bash)"
           nvim --headless "+MasonToolsInstall" +qa
           ls "$HOME/.local/share/nvim/lazy/"
       - name: Check go app(gomi) is available

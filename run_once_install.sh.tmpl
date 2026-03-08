@@ -67,9 +67,6 @@ source {{ .chezmoi.sourceDir }}/scripts/mise.sh
 # ---------------------------------------------------------
 source {{ .chezmoi.sourceDir }}/scripts/go.sh
 
-# Rebuild bat cache for activate catppuccine
-bat cache --build
-
 # Create XDG folder
 mkdir -p ~/.local/state
 

@@ -27,8 +27,6 @@ LANG=C xdg-user-dirs-gtk-update --noconfirm
 echo "Installing Apps with Pacman"
 sudo pacman -Sy -q --noconfirm \
 	base-devel \
-	bat \
-	chezmoi \
 	cmake \
 	curl \
 	direnv \
@@ -41,17 +39,14 @@ sudo pacman -Sy -q --noconfirm \
 	jq \
 	lazygit \
 	luarocks \
-	neovim \
 	nodejs \
 	noto-fonts-emoji \
 	openssl \
-	ripgrep \
 	openssh \
 	ufw \
 	unzip \
 	wezterm \
 	xclip \
-	yazi \
 	zsh
 
 echo "::endgroup::"
