@@ -1,33 +1,4 @@
 # ---------------------------------------------------------
-# Homebrew
-# ---------------------------------------------------------
-# Check OS and set brew path
-if [[ -d '/home/linuxbrew/.linuxbrew' ]]; then
- # Linux/WSL
-    HOMEBREW_HOME='/home/linuxbrew/.linuxbrew'
-elif [[ -d '/opt/homebrew' ]]; then
- # M1 Mac
-    HOMEBREW_HOME='/opt/homebrew'
-else
- # Intel Mac
-    HOMEBREW_HOME='/usr/local'
-fi
-
-if type $HOMEBREW_HOME/bin/brew > /dev/null;then
-    eval "$($HOMEBREW_HOME/bin/brew shellenv)"
-fi
-
-# ---------------------------------------------------------
 # Sheldon
 # ---------------------------------------------------------
 eval "$(sheldon source)"
-
-# ---------------------------------------------------------
-# Starship
-# ---------------------------------------------------------
-eval "$(starship init zsh)"
-
-# ---------------------------------------------------------
-# Mise
-# ---------------------------------------------------------
-zsh-defer eval "$(mise activate zsh)"
