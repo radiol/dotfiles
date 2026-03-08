@@ -37,4 +37,7 @@ MISE="${HOME}/.local/bin/mise"
 "${MISE}" use --global usage
 "${MISE}" use --global yazi
 
+# Rebuild bat cache (e.g. for catppuccin theme)
+"${MISE}" exec bat -- bat cache --build
+
 echo "::endgroup::"
