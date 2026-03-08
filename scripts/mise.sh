@@ -26,7 +26,6 @@ MISE="${HOME}/.local/bin/mise"
 
 "${MISE}" use --global bat
 "${MISE}" use --global bottom
-"${MISE}" use --global btop
 "${MISE}" use --global chezmoi
 "${MISE}" use --global ghq
 "${MISE}" use --global github-cli
