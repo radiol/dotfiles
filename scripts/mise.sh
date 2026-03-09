@@ -32,6 +32,7 @@ MISE="${HOME}/.local/bin/mise"
 "${MISE}" use --global jujutsu
 "${MISE}" use --global lefthook
 "${MISE}" use --global lua@5.4
+"${MISE}" use --global python
 "${MISE}" use --global ripgrep
 "${MISE}" use --global usage
 "${MISE}" use --global yazi
