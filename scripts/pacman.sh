@@ -7,13 +7,13 @@ echo "::group:: Pacman Install Apps"
 
 # Edit /etc/pacman.conf
 if grep -q "#Color" /etc/pacman.conf; then
-	echo "Setting pacman color"
-	sudo sed -i "s/#Color/Color/" /etc/pacman.conf
+  echo "Setting pacman color"
+  sudo sed -i "s/#Color/Color/" /etc/pacman.conf
 fi
 
 if ! grep -q "ILoveCandy" /etc/pacman.conf; then
-	echo "Setting pacman ILoveCandy"
-	sudo sed -i "/VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+  echo "Setting pacman ILoveCandy"
+  sudo sed -i "/VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
 fi
 
 # Update
@@ -26,27 +26,28 @@ LANG=C xdg-user-dirs-gtk-update --noconfirm
 # Install applications
 echo "Installing Apps with Pacman"
 sudo pacman -Sy -q --noconfirm \
-	base-devel \
-	cmake \
-	curl \
-	direnv \
-	fd \
-	fzf \
-	gcc \
-	git \
-	go \
-	gopass \
-	jq \
-	lazygit \
-	luarocks \
-	nodejs \
-	noto-fonts-emoji \
-	openssl \
-	openssh \
-	ufw \
-	unzip \
-	wezterm \
-	xclip \
-	zsh
+  base-devel \
+  cmake \
+  curl \
+  direnv \
+  fd \
+  fzf \
+  gcc \
+  git \
+  go \
+  gopass \
+  jq \
+  lazygit \
+  luarocks \
+  neovim \
+  nodejs \
+  noto-fonts-emoji \
+  openssl \
+  openssh \
+  ufw \
+  unzip \
+  wezterm \
+  xclip \
+  zsh
 
 echo "::endgroup::"

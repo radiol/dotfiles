@@ -44,6 +44,7 @@ brew install -q \
   jq \
   lazygit \
   luarocks \
+  neovim \
   node \
   openssl@3 \
   readline \

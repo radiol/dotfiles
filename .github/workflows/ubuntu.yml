@@ -41,6 +41,12 @@ jobs:
           set -euo pipefail
           /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch "${{ env.CURRENT_BRANCH }}" radiol
 
+      - name: Set up linuxbrew PATH
+        shell: bash
+        run: |
+          echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
+          echo "/home/linuxbrew/.linuxbrew/sbin" >> "$GITHUB_PATH"
+
       - name: Exec zsh and check sheldon/plugins.lock exist.
         shell: bash
         run: |
