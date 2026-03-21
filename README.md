@@ -6,13 +6,13 @@ This repository contains my dotfiles for various operating systems, including Ma
 
 [![chezmoi](https://img.shields.io/badge/dotfiles%20manager-chezmoi-blue)](https://github.com/twpayne/chezmoi)
 [![sheldon](https://img.shields.io/badge/zsh%20plugin%20manager-sheldon-green)](https://github.com/rossmacarthur/sheldon)
-[![AstroNvim](https://img.shields.io/badge/Neovim%20configuration-AstroNvim-brightgreen)](https://github.com/AstroNvim/AstroNvim)
+[![LazyVim](https://img.shields.io/badge/Neovim%20configuration-LazyVim-brightgreen)](https://github.com/LazyVim/LazyVim)
 [![mise](https://img.shields.io/badge/Universal%20version%20manager-mise-blueviolet)](https://github.com/jdx/mise)
 [![uv](https://img.shields.io/badge/Python%20version%20manager-uv-red)](https://astral.sh/blog/uv)
 
 - **Dotfiles Manager:** [Chezmoi](https://github.com/twpayne/chezmoi)
 - **Zsh Plugin Manager:** [Sheldon](https://github.com/rossmacarthur/sheldon)
-- **Neovim Configuration:** [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+- **Neovim Configuration:** [LazyVim](https://github.com/LazyVim/LazyVim)
 - **Universal Version Manager:** [Mise](https://github.com/jdx/mise)
 - **Python Version Manager:** [uv](https://astral.sh/blog/uv)
 - **Package Managers:**

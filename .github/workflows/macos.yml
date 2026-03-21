@@ -10,7 +10,8 @@ jobs:
   macos-test:
     runs-on: macos-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
     steps:
       - uses: actions/checkout@v3
       - name: Extract branch name for push

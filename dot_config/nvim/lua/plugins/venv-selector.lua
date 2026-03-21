@@ -1,8 +1,0 @@
-return {
-	"linux-cultist/venv-selector.nvim",
-	ft = "python", -- Load when opening Python files
-	opts = {
-		options = {}, -- plugin-wide options
-		search = {}, -- custom search definitions
-	},
-}

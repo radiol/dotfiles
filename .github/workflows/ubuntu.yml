@@ -11,6 +11,8 @@ concurrency: dotfiles-test-ubuntu
 jobs:
   ubuntu-test:
     runs-on: ubuntu-latest
+    env:
+      MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
     steps:
       - uses: actions/checkout@v3
 
@@ -36,7 +38,7 @@ jobs:
       - name: Run chezmoi
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           set -euo pipefail
           /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch "${{ env.CURRENT_BRANCH }}" radiol
