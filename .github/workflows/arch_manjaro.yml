@@ -12,6 +12,8 @@ jobs:
     # if: ${{ contains(github.event.head_commit.message, "[CI]") }}
     container:
       image: archlinux:latest
+    env:
+      MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
     steps:
       - uses: actions/checkout@v3
       - name: Extract branch name for push
@@ -63,6 +65,8 @@ jobs:
     # if: ${{ contains(github.event.head_commit.message, "[CI]") }}
     container:
       image: manjarolinux/base:latest
+    env:
+      MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
     steps:
       - uses: actions/checkout@v3
       - name: Extract branch name for push

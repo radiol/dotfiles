@@ -11,6 +11,8 @@ concurrency: dotfiles-test-ubuntu
 jobs:
   ubuntu-test:
     runs-on: ubuntu-latest
+    env:
+      MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
     steps:
       - uses: actions/checkout@v3
 
