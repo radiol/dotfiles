@@ -38,7 +38,7 @@ jobs:
       - name: Run chezmoi
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch "${{ env.CURRENT_BRANCH }}" radiol
