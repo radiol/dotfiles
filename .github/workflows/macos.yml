@@ -10,7 +10,7 @@ jobs:
   macos-test:
     runs-on: macos-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      GITHUB_TOKEN: ${{ github.token }}
       MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
     steps:
       - uses: actions/checkout@v3
