@@ -1,2 +1,10 @@
 gui:
   showIcons: true
+customCommands:
+  # for aicommit2
+  # Long commit with fzf preview (Shift+C in files panel)
+  - key: "C"
+    context: "files"
+    description: "Generate commit message (long) with aicommit2"
+    output: "terminal"
+    command: "ANTHROPIC_API_KEY=$(gopass show -o api/anthropic/api_key) ~/.config/lazygit/scripts/aicommit_fzf.sh"  # Update with your script path
