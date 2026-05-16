@@ -14,3 +14,8 @@
 - Before committing, always check the current branch with `git branch --show-current`.
 - If on `main`, do not commit directly. Create a new branch first, then commit.
   - Example: `git checkout -b feature/your-feature-name`
+
+# SuperPowers
+
+- When using the Superpowers plugin for code implementation, subagent-driven-development is the default execution mode.
+-
