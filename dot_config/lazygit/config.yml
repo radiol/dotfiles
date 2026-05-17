@@ -2,6 +2,20 @@ gui:
   showIcons: true
 customCommands:
   # for aicommit2
+  - key: "c"
+    context: "files"
+    description: "Generate commit message with aicommit2"
+    prompts:
+      - type: "menuFromCommand"
+        title: "Select commit message"
+        key: "Commit"
+        command: "bash -c 'ANTHROPIC_API_KEY=$(gopass show -o api/anthropic/api_key) aicommit2 --output json'"
+        filter: '"subject":"(?P<subject>[^"]+)","body":"(?P<body>[^"]*)"'
+        valueFormat: '{{ .subject }}<SEP>{{ .body }}'
+        labelFormat: '{{ .subject }}'
+    output: "terminal"
+    command: bash -c 'MSG="{{ .Form.Commit }}" && SUBJ="${MSG%%<SEP>*}" && BODY="${MSG#*<SEP>}" && git commit -e -m "$SUBJ" ${BODY:+-m "$BODY"}'
+  # for aicommit2
   # Long commit with fzf preview (Shift+C in files panel)
   - key: "C"
     context: "files"
