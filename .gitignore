@@ -9,6 +9,9 @@
 !/dot_config/**
 !/dot_claude/**
 
+# docs
+!docs/**
+
 # github files
 !.gitignore
 !.github/workflows/*
