@@ -1,6 +1,6 @@
 #!/bin/bash -xeu
 
-trap 'echo "::error::file=${BASH_SOURCE[0]},line=${LINENO}::Command failed: ${BASH_COMMAND}"' ERR
+trap 'echo "::error file=${BASH_SOURCE[0]},line=${LINENO}::Command failed: ${BASH_COMMAND}"' ERR
 
 # ---------------------------------------------------------
 # Install Homebrew
