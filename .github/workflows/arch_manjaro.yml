@@ -53,7 +53,9 @@ jobs:
         shell: bash
         run: |
           eval "$($HOME/.local/bin/mise activate bash)"
+          echo "::group::MasonToolsInstall"
           nvim --headless "+MasonToolsInstall" +qa
+          echo "::endgroup::"
           ls ~/.local/share/nvim/lazy/
       - name: Check go app(gomi) is available
         run: |
@@ -108,7 +110,9 @@ jobs:
         shell: bash
         run: |
           eval "$($HOME/.local/bin/mise activate bash)"
+          echo "::group::MasonToolsInstall"
           nvim --headless "+MasonToolsInstall" +qa
+          echo "::endgroup::"
           ls ~/.local/share/nvim/lazy/
       - name: Check go app(gomi) is available
         run: |

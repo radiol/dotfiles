@@ -50,7 +50,9 @@ jobs:
         run: |
           set -euo pipefail
           eval "$($HOME/.local/bin/mise activate bash)"
+          echo "::group::MasonToolsInstall"
           nvim --headless "+MasonToolsInstall" +qa
+          echo "::endgroup::"
           ls "$HOME/.local/share/nvim/lazy/"
       - name: Check go app(gomi) is available
         shell: bash
