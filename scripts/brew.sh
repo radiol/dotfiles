@@ -1,8 +1,12 @@
 #!/bin/bash -xeu
 
+trap 'echo "::error file=${BASH_SOURCE[0]},line=${LINENO}::Command failed: ${BASH_COMMAND}"' ERR
+
 # ---------------------------------------------------------
 # Install Homebrew
 # ---------------------------------------------------------
+echo "::group::Homebrew"
+
 # Check Homebrew
 if ! (type "brew" >/dev/null 2>&1); then
   # Install Homebrew
@@ -54,3 +58,5 @@ brew install -q \
   xz \
   zlib \
   zsh
+
+echo "::endgroup::"

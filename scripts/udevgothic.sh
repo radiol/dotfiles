@@ -1,4 +1,7 @@
 #!/bin/bash -xeu
+
+trap 'echo "::error file=${BASH_SOURCE[0]},line=${LINENO}::Command failed: ${BASH_COMMAND}"' ERR
+
 echo "::group::UDEV Gothic Font"
 echo "Installing Udev Gothic Fonts"
 
