@@ -1,0 +1,7 @@
+# Yazi packages to install. Only the package names are managed here;
+# revisions are left to `ya pkg upgrade` (e.g. via topgrade).
+[yazi]
+packages = [
+  "yazi-rs/plugins:smart-enter",
+  "yazi-rs/plugins:full-border",
+]

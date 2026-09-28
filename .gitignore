@@ -21,6 +21,7 @@
 !.chezmoi.toml
 !.chezmoiignore
 !.chezmoiexternal.toml
+!.chezmoidata/**
 !run_once*.sh
 !run_once*.sh.tmpl
 !run_onchange*.sh
