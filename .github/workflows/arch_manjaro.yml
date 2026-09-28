@@ -40,42 +40,35 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
-      - name: Exec zsh and check sheldon/plugins.lock exist.
+      - name: Check chezmoi targets match the source state
+        shell: bash
         run: |
-          zsh -i -l -c exit
-          if [ -f "$HOME/.local/share/sheldon/plugins.lock" ]; then
-            echo "Sheldon plugins loaded successfully."
-          else
-            echo "Failed to load Sheldon plugins."
-            exit 1
-          fi
+          bash tests/smoke/chezmoi-verify.sh
+      - name: Run unit tests
+        shell: bash
+        run: |
+          eval "$($HOME/.local/bin/mise activate bash)"
+          bash tests/unit/run.sh
+      - name: Check zsh starts cleanly with sheldon plugins
+        shell: bash
+        run: |
+          bash tests/smoke/sheldon.sh
       - name: Check lazy.nvim dir
         shell: bash
         run: |
-          eval "$($HOME/.local/bin/mise activate bash)"
-          echo "::group::MasonToolsInstall"
-          nvim --headless "+MasonToolsInstall" +qa
-          echo "::endgroup::"
-          ls ~/.local/share/nvim/lazy/
-      - name: Check go app(gomi) is available
+          bash tests/smoke/nvim.sh
+      - name: Check go app (gomi) is available
+        shell: bash
         run: |
-          ls ~/go/bin/gomi
+          bash tests/smoke/gomi.sh
       - name: Check yazi packages are installed
         shell: bash
         run: |
-          set -euo pipefail
-          eval "$($HOME/.local/bin/mise activate bash)"
-          bash "$HOME/.local/share/chezmoi/tests/yazi-packages.test.sh"
-          installed="$(ya pkg list)"
-          echo "$installed"
-          for pkg in $(chezmoi execute-template '{{ range .yazi.packages }}{{ . }} {{ end }}'); do
-            if ! grep -qF -- "$pkg (" <<<"$installed"; then
-              echo "::error::yazi package $pkg is not installed"
-              exit 1
-            fi
-          done
-      - name: Check IME config file(arch only)
-        run: cat ~/.config/environment.d/im.conf
+          bash tests/smoke/yazi-packages.sh
+      - name: Check IME config file is deployed only on arch
+        shell: bash
+        run: |
+          bash tests/smoke/im-conf.sh
   manjaro-test:
     runs-on: ubuntu-latest
     # if: ${{ contains(github.event.head_commit.message, "[CI]") }}
@@ -111,43 +104,32 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch ${{ env.CURRENT_BRANCH }} radiol
       # # Error Check
-      - name: Exec zsh and check sheldon/plugins.lock exist.
+      - name: Check chezmoi targets match the source state
+        shell: bash
         run: |
-          zsh -i -l -c exit
-          if [ -f "$HOME/.local/share/sheldon/plugins.lock" ]; then
-            echo "Sheldon plugins loaded successfully."
-          else
-            echo "Failed to load Sheldon plugins."
-            exit 1
-          fi
+          bash tests/smoke/chezmoi-verify.sh
+      - name: Run unit tests
+        shell: bash
+        run: |
+          eval "$($HOME/.local/bin/mise activate bash)"
+          bash tests/unit/run.sh
+      - name: Check zsh starts cleanly with sheldon plugins
+        shell: bash
+        run: |
+          bash tests/smoke/sheldon.sh
       - name: Check lazy.nvim dir
         shell: bash
         run: |
-          eval "$($HOME/.local/bin/mise activate bash)"
-          echo "::group::MasonToolsInstall"
-          nvim --headless "+MasonToolsInstall" +qa
-          echo "::endgroup::"
-          ls ~/.local/share/nvim/lazy/
-      - name: Check go app(gomi) is available
+          bash tests/smoke/nvim.sh
+      - name: Check go app (gomi) is available
+        shell: bash
         run: |
-          ls ~/go/bin/gomi
+          bash tests/smoke/gomi.sh
       - name: Check yazi packages are installed
         shell: bash
         run: |
-          set -euo pipefail
-          eval "$($HOME/.local/bin/mise activate bash)"
-          bash "$HOME/.local/share/chezmoi/tests/yazi-packages.test.sh"
-          installed="$(ya pkg list)"
-          echo "$installed"
-          for pkg in $(chezmoi execute-template '{{ range .yazi.packages }}{{ . }} {{ end }}'); do
-            if ! grep -qF -- "$pkg (" <<<"$installed"; then
-              echo "::error::yazi package $pkg is not installed"
-              exit 1
-            fi
-          done
-      - name: Check IME config file does NOT exist(arch only)
+          bash tests/smoke/yazi-packages.sh
+      - name: Check IME config file is deployed only on arch
+        shell: bash
         run: |
-          if test -f "$HOME/.config/environment/im.conf"; then
-            echo "Error: Ignored file exists"
-            exit 1
-          fi
+          bash tests/smoke/im-conf.sh
