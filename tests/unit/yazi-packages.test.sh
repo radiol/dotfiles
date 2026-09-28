@@ -28,6 +28,7 @@ make_sandbox() {
   CALLS="$SANDBOX/calls.log"
   mkdir -p "$FAKE_HOME" "$SANDBOX/bin"
   : >"$CALLS"
+  ya_pkg_list_output >"$SANDBOX/pkg-list"
   # Only expose the tools the script needs, so no real ya/mise leaks in
   local tool
   for tool in bash grep; do
@@ -36,8 +37,8 @@ make_sandbox() {
   SANDBOX_PATH="$SANDBOX/bin"
 }
 
-# Write a fake command that logs its arguments and reports no packages
-# for "pkg list"
+# Write a fake command that logs its arguments. "pkg list" prints the
+# content of $SANDBOX/pkg-list (no packages by default).
 write_fake() {
   local path="$1"
   mkdir -p "$(dirname "$path")"
@@ -45,10 +46,23 @@ write_fake() {
 #!/bin/bash
 echo "\${0##*/} \$*" >>"$CALLS"
 case "\$*" in
-  *"pkg list"*) printf 'Plugins:\nFlavors:\n' ;;
+  *"pkg list"*) printf "%s\\n" "\$(<"$SANDBOX/pkg-list")" ;;
 esac
 EOF
   chmod +x "$path"
+}
+
+# Set what the fake "ya pkg list" reports as installed
+set_installed() {
+  ya_pkg_list_output "$@" >"$SANDBOX/pkg-list"
+}
+
+# Assert every listed package was added with the given ya command prefix
+added_all_listed() {
+  local prefix="$1" pkg
+  while IFS= read -r pkg; do
+    grep -qx "$prefix pkg add $pkg" "$CALLS" || return 1
+  done < <(listed_yazi_packages)
 }
 
 run_rendered() {
@@ -79,7 +93,7 @@ test_uses_mise_when_ya_is_not_on_path() {
   render_script "$SANDBOX/script.sh"
   run_rendered
 
-  if grep -qx "mise exec yazi -- ya pkg add yazi-rs/plugins:smart-enter" "$CALLS" &&
+  if added_all_listed "mise exec yazi -- ya" &&
     grep -qx "mise exec yazi -- ya pkg install" "$CALLS"; then
     pass "uses mise to run ya when ya is not on PATH"
   else
@@ -95,7 +109,7 @@ test_uses_ya_on_path_directly() {
   render_script "$SANDBOX/script.sh"
   run_rendered
 
-  if grep -qx "ya pkg add yazi-rs/plugins:smart-enter" "$CALLS" &&
+  if added_all_listed "ya" &&
     grep -qx "ya pkg install" "$CALLS"; then
     pass "uses ya on PATH directly"
   else
@@ -117,9 +131,45 @@ test_skips_when_neither_ya_nor_mise_exists() {
   rm -rf "$SANDBOX"
 }
 
+test_does_not_add_installed_packages() {
+  make_sandbox
+  write_fake "$SANDBOX/bin/ya"
+  local listed=()
+  while IFS= read -r pkg; do listed+=("$pkg"); done < <(listed_yazi_packages)
+  set_installed "${listed[@]}"
+  render_script "$SANDBOX/script.sh"
+  run_rendered
+
+  if ! grep -q "pkg add" "$CALLS" && grep -qx "ya pkg install" "$CALLS"; then
+    pass "does not add packages that are already installed"
+  else
+    fail "does not add packages that are already installed" \
+      "calls:" "$(cat "$CALLS")" "output:" "$(cat "$SANDBOX/out.log")"
+  fi
+  rm -rf "$SANDBOX"
+}
+
+test_does_not_delete_unlisted_packages() {
+  make_sandbox
+  write_fake "$SANDBOX/bin/ya"
+  set_installed "someone/unlisted-plugin"
+  render_script "$SANDBOX/script.sh"
+  run_rendered
+
+  if ! grep -q "pkg delete" "$CALLS" && added_all_listed "ya"; then
+    pass "does not delete packages missing from the list"
+  else
+    fail "does not delete packages missing from the list" \
+      "calls:" "$(cat "$CALLS")" "output:" "$(cat "$SANDBOX/out.log")"
+  fi
+  rm -rf "$SANDBOX"
+}
+
 test_script_runs_after_other_scripts
 test_uses_mise_when_ya_is_not_on_path
 test_uses_ya_on_path_directly
 test_skips_when_neither_ya_nor_mise_exists
+test_does_not_add_installed_packages
+test_does_not_delete_unlisted_packages
 
 finish

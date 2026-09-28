@@ -18,3 +18,20 @@ finish() {
   fi
   echo "all tests passed"
 }
+
+# Print the yazi packages listed in .chezmoidata, one per line.
+# Requires SOURCE_DIR.
+listed_yazi_packages() {
+  chezmoi --source "$SOURCE_DIR" execute-template \
+    '{{ range .yazi.packages }}{{ . }}{{ "\n" }}{{ end }}'
+}
+
+# Print "ya pkg list" output for the given packages
+ya_pkg_list_output() {
+  local pkg
+  echo "Plugins:"
+  for pkg in "$@"; do
+    printf '\t%s (f703392)\n' "$pkg"
+  done
+  echo "Flavors:"
+}

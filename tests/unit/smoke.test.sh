@@ -24,7 +24,15 @@ make_sandbox() {
 # Write a fake command that prints the given output and succeeds
 write_fake() {
   local name="$1" output="${2:-}"
-  printf '#!/bin/bash\nprintf "%%s" %q\n' "$output" >"$SANDBOX/bin/$name"
+  write_fake_script "$name" "printf '%s' $(printf '%q' "$output")"
+}
+
+# Write a fake command with the given script body. Any existing file is
+# removed first, so a symlink to a real command is never written through.
+write_fake_script() {
+  local name="$1" body="$2"
+  rm -f "$SANDBOX/bin/$name"
+  printf '#!/bin/bash\n%s\n' "$body" >"$SANDBOX/bin/$name"
   chmod +x "$SANDBOX/bin/$name"
 }
 
@@ -60,12 +68,23 @@ mkdir -p "$FAKE_HOME/.local/share/sheldon"
 touch "$FAKE_HOME/.local/share/sheldon/plugins.lock"
 expect pass "sheldon: passes with plugins.lock" sheldon.sh
 
+make_sandbox
+write_fake_script zsh 'echo "zshrc: command not found: foo" >&2'
+mkdir -p "$FAKE_HOME/.local/share/sheldon"
+touch "$FAKE_HOME/.local/share/sheldon/plugins.lock"
+expect fail "sheldon: fails when zsh startup prints errors" sheldon.sh
+
 # ---------------------------------------------------------
 # nvim.sh
 # ---------------------------------------------------------
 make_sandbox
 write_fake nvim
 expect fail "nvim: fails without lazy.nvim dir" nvim.sh
+
+make_sandbox
+write_fake nvim
+mkdir -p "$FAKE_HOME/.local/share/nvim/lazy"
+expect fail "nvim: fails when lazy.nvim itself is not installed" nvim.sh
 
 make_sandbox
 write_fake nvim
@@ -81,17 +100,26 @@ expect fail "gomi: fails without gomi binary" gomi.sh
 make_sandbox
 mkdir -p "$FAKE_HOME/go/bin"
 touch "$FAKE_HOME/go/bin/gomi"
-expect pass "gomi: passes with gomi binary" gomi.sh
+expect fail "gomi: fails when gomi is not executable" gomi.sh
+
+make_sandbox
+mkdir -p "$FAKE_HOME/go/bin"
+touch "$FAKE_HOME/go/bin/gomi"
+chmod +x "$FAKE_HOME/go/bin/gomi"
+expect pass "gomi: passes with executable gomi binary" gomi.sh
 
 # ---------------------------------------------------------
 # yazi-packages.sh
 # ---------------------------------------------------------
+listed=()
+while IFS= read -r pkg; do listed+=("$pkg"); done < <(listed_yazi_packages)
+
 make_sandbox
-write_fake ya "$(printf 'Plugins:\n\tyazi-rs/plugins:smart-enter (f703392)\nFlavors:\n')"
+write_fake ya "$(ya_pkg_list_output "${listed[@]:1}")"
 expect fail "yazi-packages: fails when a listed package is missing" yazi-packages.sh
 
 make_sandbox
-write_fake ya "$(printf 'Plugins:\n\tyazi-rs/plugins:smart-enter (f703392)\n\tyazi-rs/plugins:full-border (f703392)\nFlavors:\n')"
+write_fake ya "$(ya_pkg_list_output "${listed[@]}")"
 expect pass "yazi-packages: passes when all listed packages are installed" yazi-packages.sh
 
 # ---------------------------------------------------------
@@ -124,5 +152,16 @@ mkdir -p "$FAKE_HOME/.config/environment.d"
 touch "$FAKE_HOME/.config/environment.d/im.conf"
 expect fail "im-conf: fails without os-release when im.conf exists" im-conf.sh
 unset OS_RELEASE
+
+# ---------------------------------------------------------
+# chezmoi-verify.sh
+# ---------------------------------------------------------
+make_sandbox
+write_fake_script chezmoi '[ "$1" = verify ] && exit 1; echo "M .zshrc"'
+expect fail "chezmoi-verify: fails when targets differ from the source state" chezmoi-verify.sh
+
+make_sandbox
+write_fake_script chezmoi 'exit 0'
+expect pass "chezmoi-verify: passes when targets match the source state" chezmoi-verify.sh
 
 finish

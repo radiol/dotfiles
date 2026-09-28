@@ -39,12 +39,16 @@ jobs:
         run: |
           set -euo pipefail
           /bin/bash -c "$(curl -fsLS chezmoi.io/get)" -- init --apply --branch "${{ env.CURRENT_BRANCH }}" radiol
+      - name: Check chezmoi targets match the source state
+        shell: bash
+        run: |
+          bash tests/smoke/chezmoi-verify.sh
       - name: Run unit tests
         shell: bash
         run: |
           eval "$($HOME/.local/bin/mise activate bash)"
           bash tests/unit/run.sh
-      - name: Check sheldon plugins.lock
+      - name: Check zsh starts cleanly with sheldon plugins
         shell: bash
         run: |
           bash tests/smoke/sheldon.sh

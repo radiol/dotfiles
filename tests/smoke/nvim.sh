@@ -8,5 +8,5 @@ nvim --headless "+MasonToolsInstall" +qa
 echo "::endgroup::"
 
 lazy_dir="$HOME/.local/share/nvim/lazy"
-[ -d "$lazy_dir" ] || check_failed "lazy.nvim dir not found: $lazy_dir"
+[ -d "$lazy_dir/lazy.nvim" ] || check_failed "lazy.nvim not found in $lazy_dir"
 ls "$lazy_dir"
