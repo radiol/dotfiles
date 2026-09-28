@@ -3,6 +3,7 @@ README.md
 .git
 .gitignore
 scripts
+tests
 ~/.config/nvim/.luarc.json
 ~/.config/nvim/.neoconf.json
 ~/.config/nvim/.stylua.toml

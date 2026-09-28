@@ -3,19 +3,26 @@
 
 # packages hash: {{ .yazi.packages | toJson | sha256sum }}
 
-if ! command -v ya &>/dev/null; then
+# On a fresh machine yazi is installed by mise but may not be on PATH yet
+MISE="${HOME}/.local/bin/mise"
+
+if command -v ya &>/dev/null; then
+  ya=(ya)
+elif [ -x "$MISE" ]; then
+  ya=("$MISE" exec yazi -- ya)
+else
   echo "ya command not found, skipping yazi package install"
   exit 0
 fi
 
-installed="$(ya pkg list)"
+installed="$("${ya[@]}" pkg list)"
 
 # Add packages that are listed but not installed yet
 {{- range .yazi.packages }}
 if ! grep -qF -- "{{ . }} (" <<<"$installed"; then
-  ya pkg add "{{ . }}"
+  "${ya[@]}" pkg add "{{ . }}"
 fi
 {{- end }}
 
 # Make sure every package in package.toml is actually installed
-ya pkg install
+"${ya[@]}" pkg install
