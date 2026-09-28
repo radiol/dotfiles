@@ -1,21 +1,13 @@
 #!/bin/bash
 # Tests for the chezmoi script that installs yazi packages.
-# Run from anywhere: bash tests/yazi-packages.test.sh
+# Run from anywhere: bash tests/unit/yazi-packages.test.sh
 
 set -u
 
-SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SCRIPT_NAME="install-yazi-packages.sh.tmpl"
 
-failures=0
-
-pass() { echo "PASS: $1"; }
-fail() {
-  echo "FAIL: $1"
-  shift
-  printf '  %s\n' "$@"
-  failures=$((failures + 1))
-}
+source "$SOURCE_DIR/tests/unit/helpers.sh"
 
 # Find the yazi script in the source dir, whatever attributes it has
 find_script() {
@@ -130,8 +122,4 @@ test_uses_mise_when_ya_is_not_on_path
 test_uses_ya_on_path_directly
 test_skips_when_neither_ya_nor_mise_exists
 
-if [ "$failures" -gt 0 ]; then
-  echo "$failures test(s) failed"
-  exit 1
-fi
-echo "all tests passed"
+finish
