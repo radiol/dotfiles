@@ -89,3 +89,6 @@ abbr pa="pueue add"
 abbr pc="pueue clean"
 abbr pk="pueue kill"
 abbr pf="pueue follow"
+
+# Zellij
+abbr zj="zellij -l welcome"
