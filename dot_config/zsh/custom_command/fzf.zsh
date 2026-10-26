@@ -1,6 +1,12 @@
 # ---------------------------------------------------------
 # fzf
 # ---------------------------------------------------------
+if (( $+commands[pbcopy] )); then
+  fzf_copy_cmd="pbcopy"
+else
+  fzf_copy_cmd="xclip -selection clipboard"
+fi
+
 fzf_default_opts=(
   "--layout=reverse"
   "--info=inline"
@@ -14,12 +20,12 @@ fzf_default_opts=(
   "--marker='✓'"
   "--bind '?:toggle-preview'"
   "--bind 'ctrl-a:select-all'"
-  "--bind 'ctrl-e:execute(vim {+} >/dev/tty)'"
+  "--bind 'ctrl-e:execute(${EDITOR:-vim} {+} >/dev/tty)'"
   "--bind 'ctrl-v:execute(code {+})'"
-  "--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'"
+  "--bind 'ctrl-y:execute-silent(echo {+} | ${fzf_copy_cmd})'"
 )
 export FZF_DEFAULT_OPTS="${(F)fzf_default_opts}"
-unset fzf_default_opts
+unset fzf_default_opts fzf_copy_cmd
 
 if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
