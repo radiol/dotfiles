@@ -12,6 +12,9 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ github.token }}
       MISE_PYTHON_PRECOMPILED_FLAVOR: install_only_stripped
+      # Do not upgrade formulae preinstalled on the runner (e.g. node@24),
+      # whose relinking conflicts with the node formula
+      HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
     steps:
       - uses: actions/checkout@v3
       - name: Extract branch name for push
