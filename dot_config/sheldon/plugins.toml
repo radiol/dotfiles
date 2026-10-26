@@ -63,5 +63,7 @@ use = ["*.zsh"]
 apply = ["defer"]
 
 [plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit -C -d $ZDOTDIR/.zcompdump"
+local = "~/.config/zsh/compinit"
+use = ["*.zsh"]
+apply = ["defer"]
 
