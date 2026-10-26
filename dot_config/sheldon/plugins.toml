@@ -62,8 +62,3 @@ local = "~/.config/zsh/custom_command"
 use = ["*.zsh"]
 apply = ["defer"]
 
-[plugins.compinit]
-local = "~/.config/zsh/compinit"
-use = ["*.zsh"]
-apply = ["defer"]
-

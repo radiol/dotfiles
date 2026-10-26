@@ -13,6 +13,3 @@ fi
 if type $HOMEBREW_HOME/bin/brew >/dev/null; then
     eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 fi
-
-# Completion
-FPATH="$HOMEBREW_HOME/share/zsh/site-functions:${FPATH}"
