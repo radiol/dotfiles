@@ -1,0 +1,20 @@
+#!/bin/bash -eu
+
+# sheldon keeps the file list of local plugins in plugins.lock, so newly
+# added zsh files are not sourced until the lock is regenerated
+# plugins.toml hash: {{ include "dot_config/sheldon/plugins.toml" | sha256sum }}
+# zsh files hash: {{ glob (joinPath .chezmoi.sourceDir "dot_config/zsh/*/*.zsh") | toJson | sha256sum }}
+
+# On a fresh machine sheldon is installed by cargo but may not be on PATH yet
+SHELDON="${HOME}/.cargo/bin/sheldon"
+
+if command -v sheldon &>/dev/null; then
+  sheldon=(sheldon)
+elif [ -x "$SHELDON" ]; then
+  sheldon=("$SHELDON")
+else
+  echo "sheldon command not found, skipping sheldon lock"
+  exit 0
+fi
+
+"${sheldon[@]}" lock
