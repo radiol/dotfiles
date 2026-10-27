@@ -26,10 +26,6 @@ apply = ["source"]
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
-[plugins.zsh-256color]
-github = "chrissicool/zsh-256color"
-apply = ["defer"]
-
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
@@ -51,10 +47,6 @@ apply = ["defer"]
 local = "~/.config/zsh/completions"
 apply = ["fpath", "defer"]
 
-[plugins.fzf-zsh]
-github = "unixorn/fzf-zsh-plugin"
-apply = ["defer"]
-
 [plugins.dotfiles-sync]
 local = "~/.config/zsh/sync"
 use = ["*.zsh"]
@@ -69,7 +61,4 @@ apply = ["defer"]
 local = "~/.config/zsh/custom_command"
 use = ["*.zsh"]
 apply = ["defer"]
-
-[plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit -C -d ~/.cache/zsh/zcompdump"
 

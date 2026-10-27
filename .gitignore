@@ -23,6 +23,7 @@
 # chezmoi files
 !.chezmoi.toml
 !.chezmoiignore
+!.chezmoiremove
 !.chezmoiexternal.toml
 !.chezmoidata/**
 !run_once*.sh
