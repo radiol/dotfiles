@@ -35,10 +35,6 @@ apply = ["defer"]
 github = "olets/zsh-abbr"
 apply = ["defer"]
 
-[plugins.zsh-completions]
-github = "zsh-users/zsh-completions"
-apply = ["fpath", "defer"]
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
