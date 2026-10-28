@@ -8,9 +8,12 @@
 () {
   local dump="$ZDOTDIR/.zcompdump"
   local fresh=($dump(N.mh-24))
+  # Adding or removing a completion file updates its directory's mtime, so
+  # also rebuild when any fpath directory is newer than the dump
+  local changed=($^fpath(N/e:'[[ $REPLY -nt $dump ]]':))
 
   autoload -Uz compinit
-  if (( $#fresh )); then
+  if (( $#fresh && ! $#changed )); then
     compinit -C -d "$dump"
   else
     compinit -d "$dump"
