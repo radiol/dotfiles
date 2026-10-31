@@ -9,11 +9,11 @@ echo "::group::Install Mise"
 
 # Check if Mise is already installed
 if type "mise" >/dev/null 2>&1; then
-	echo "Mise is already installed"
+  echo "Mise is already installed"
 else
-	# Install Mise
-	echo "Installing Mise"
-	curl https://mise.run | sh
+  # Install Mise
+  echo "Installing Mise"
+  curl https://mise.run | sh
 fi
 
 echo "::endgroup::"

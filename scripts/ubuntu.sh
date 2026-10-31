@@ -9,27 +9,27 @@ echo "::group::Ubuntu Install Apps"
 
 echo "Installing apps for Ubuntu"
 sudo apt update -qq && sudo apt upgrade -y -qq &&
-	sudo apt install -y -qq \
-		build-essential \
-		curl \
-		file \
-		language-pack-ja \
-		libbz2-dev \
-		libffi-dev \
-		liblzma-dev \
-		libncursesw5-dev \
-		libreadline-dev \
-		libsqlite3-dev \
-		libssl-dev \
-		libxml2-dev \
-		libxmlsec1-dev \
-		llvm \
-		make \
-		procps \
-		tk-dev \
-		wget \
-		zlib1g-dev &&
-	sudo apt autoclean -qq
+  sudo apt install -y -qq \
+    build-essential \
+    curl \
+    file \
+    language-pack-ja \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    llvm \
+    make \
+    procps \
+    tk-dev \
+    wget \
+    zlib1g-dev &&
+  sudo apt autoclean -qq
 
 # Install wezterm for ubuntu
 echo "Installing wezterm for Ubuntu"
