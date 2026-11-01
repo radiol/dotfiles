@@ -1,5 +1,5 @@
 ---
-allow-tools: |
+allowed-tools: |
   Bash(git-cliff:*)
   Bash(git branch --show-current), Bash(git add:*), Bash(git diff), Bash(git status), Bash(git log:*), Bash(git tag:*)
   Bash(cat:*), Bash(sed:*), Bash(date:*), Bash(grep:*)
@@ -33,7 +33,7 @@ description: プロジェクトのバージョンを上げます。セマンテ�
 プロジェクトルートから以下のファイルを探し、現在のバージョンを特定する。複数見つかった場合はすべて更新対象とする。
 
 | ファイル | 言語/ツール | バージョン記述箇所 |
-|---|---|---|
+| --- | --- | --- |
 | `Cargo.toml` | Rust | `version = "x.y.z"` (package セクション内。workspace の場合は `[workspace.package]` も確認) |
 | `package.json` | Node.js | `"version": "x.y.z"` |
 | `pyproject.toml` | Python | `version = "x.y.z"` |
@@ -82,8 +82,13 @@ description: プロジェクトのバージョンを上げます。セマンテ�
 以下の優先順でCHANGELOGを更新する:
 
 1. **git-cliff が利用可能** (`cliff.toml` や `git-cliff` コマンドが存在): `git-cliff` を使って生成する
-2. **既存の CHANGELOG ファイルがある場合** (`CHANGELOG.md`, `Changes.md`, `HISTORY.md` 等): 手動でエントリを追記する
-3. **どちらもない場合**: ユーザーにCHANGELOGの作成要否を確認する
+   - 既存の CHANGELOG に今回分だけを追記する:
+     `git-cliff --unreleased --tag <新バージョン> --prepend CHANGELOG.md`
+     (`<新バージョン>` の prefix は既存タグに合わせる。タグ作成前に実行すること)
+   - 既存の CHANGELOG があるときは `-o` で全体を作り直さない (手で直した内容が消えるため)
+   - タグがまだない、または CHANGELOG ファイルがない初回のみ `git-cliff --tag <新バージョン> -o CHANGELOG.md` を使う
+1. **既存の CHANGELOG ファイルがある場合** (`CHANGELOG.md`, `Changes.md`, `HISTORY.md` 等): 手動でエントリを追記する
+1. **どちらもない場合**: ユーザーにCHANGELOGの作成要否を確認する
 
 ### 8. コミットとタグ付け
 
