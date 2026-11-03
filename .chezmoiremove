@@ -1,3 +1,4 @@
 .config/zsh/defe/homebrew.zsh
 .config/zsh/completions/_gh
 .config/zsh/completions/_jj
+.config/zsh/defe/mise.zsh
