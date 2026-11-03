@@ -9,11 +9,11 @@ echo "::group::Install Mise"
 
 # Check if Mise is already installed
 if type "mise" >/dev/null 2>&1; then
-	echo "Mise is already installed"
+  echo "Mise is already installed"
 else
-	# Install Mise
-	echo "Installing Mise"
-	curl https://mise.run | sh
+  # Install Mise
+  echo "Installing Mise"
+  curl https://mise.run | sh
 fi
 
 echo "::endgroup::"
@@ -34,7 +34,7 @@ MISE="${HOME}/.local/bin/mise"
 "${MISE}" use --global github-cli
 "${MISE}" use --global jujutsu
 "${MISE}" use --global lefthook
-"${MISE}" use --global lua@5.4
+"${MISE}" use --global lua
 "${MISE}" use --global python
 "${MISE}" use --global ripgrep
 "${MISE}" use --global usage
