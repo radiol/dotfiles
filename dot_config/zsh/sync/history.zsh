@@ -9,6 +9,11 @@ zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|la|ll|ls|rmdir|exit)($| )" ]]
 }
-# enable substring search(up, down)
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
+# Search history by prefix up to the cursor (up, down)
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
