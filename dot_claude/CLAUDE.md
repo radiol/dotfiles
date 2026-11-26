@@ -24,7 +24,7 @@
 When delegating implementation to codex:codex-rescue, always insert the following sentence verbatim at the beginning of the prompt:
 
 > The plan is already approved. Do not use brainstorming or writing-plans. Implement following test-driven-development and verification-before-completion.
->
+
 ## Code Review via Codex
 
 In Superpowers workflows, use Codex for code review instead of Claude reviewer subagents.
