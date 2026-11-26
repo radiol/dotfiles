@@ -34,6 +34,8 @@ cargo-binstall -q -y --only-signed --locked \
   xcp \
   zoxide
 
-cargo install -q --locked sheldon
+# vendored-openssl: build with bundled OpenSSL 3, since the openssl-sys pinned
+# in sheldon's Cargo.lock does not support OpenSSL 4 (Arch/Manjaro)
+cargo install -q --locked sheldon --features vendored-openssl
 
 echo "::endgroup::"
