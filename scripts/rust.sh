@@ -34,6 +34,7 @@ cargo-binstall -q -y --only-signed --locked \
   xcp \
   zoxide
 
-cargo install -q --locked sheldon
+# Not --locked: the pinned openssl-sys in sheldon's Cargo.lock does not support OpenSSL 4
+cargo install -q sheldon
 
 echo "::endgroup::"
